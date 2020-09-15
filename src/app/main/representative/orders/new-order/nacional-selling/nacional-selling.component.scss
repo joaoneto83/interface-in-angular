@@ -1,0 +1,255 @@
+.main {
+    padding: 0 25px;
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        .title {
+            display: block;
+            font-size: 20px;
+            color: var(--title);
+        }
+    }
+
+    .representative.active {
+        background-color: var(--primary);
+
+        span {
+            color: #fff !important;
+        }
+
+        span:nth-child(3) {
+            &:before {
+                color: #fff !important;
+            }
+        }
+    }
+
+    .representative {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        background-color: var(--water-green);
+        border-radius: 10px;
+        line-height: 15px;
+        transition: .3s;
+
+        &:hover {
+            box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+            background-color: var(--primary);
+            cursor: pointer;
+
+            span {
+                color: #fff !important;
+            }
+
+            span:nth-child(3) {
+                &:before {
+                    color: #fff !important;
+                }
+            }
+        }
+
+        span {
+            color: #333333;
+        }
+
+        span:first-child {
+            display: block;
+            color: var(--title);
+            font-size: var(--sub-text);
+        }
+
+        span:nth-child(2) {
+            font-family: CoreRhino65Bold;
+            font-size: 10px;
+        }
+
+        span:nth-child(3) {
+            font-size: 10px;
+
+            &:before {
+                display: inline-block;
+                padding: 0 .5rem;
+                color: #333333;
+                content: "|";
+            }
+        }
+    }
+
+    .btn-custom {
+        padding: .275rem .75rem;
+        font-size: var(--default-text);
+        color: var(--blue);
+        border: 1px solid;
+        border-radius: 32px;
+        text-transform: capitalize;
+
+        &:hover {
+            background-color: var(--blue);
+            color: #fff !important;
+        }
+    }
+
+    label {
+        color: #6c757d;
+        font-size: 11px;
+        margin-bottom: 2px;
+        margin-left: 5px;
+    }
+
+    .search {
+        .form-group {
+            position: relative;
+
+            .fa-search {
+                position: absolute;
+                top: 30px;
+                left: 5px;
+                padding: 5px;
+                background: var(--title);
+                color: #fff;
+                border-radius: 50%;
+            }
+
+            .form-control {
+                border-radius: 10px;
+                padding-left: 40px;
+            }
+        }
+    }
+
+    .last-clients {
+        margin-top: 20px;
+
+        .client {
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 10px;
+            transition: 0.3s;
+
+            &:hover {
+                box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
+                background-color: rgba(0, 0, 0, 0.02);
+                cursor: pointer;
+            }
+
+            span {
+                display: block;
+                color: #333333;
+                font-size: 11px;
+            }
+
+            span:first-child {
+                color: var(--title);
+                font-size: var(--sub-text);
+            }
+
+            span:nth-child(2) {
+                font-family: CoreRhino65Bold;
+            }
+        }
+    }
+
+    .chosenClient {
+        .requirent {
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 10px;
+            margin-top: 20px;
+
+            .client {
+                span {
+                    display: block;
+                    color: #333333;
+                    font-size: 11px;
+                }
+
+                span:first-child {
+                    color: var(--title);
+                    font-size: var(--sub-text);
+                }
+
+                span:nth-child(2) {
+                    font-family: CoreRhino65Bold;
+                }
+            }
+
+            .btn-custom {
+                background-color: var(--success);
+                color: #fff;
+                text-transform: uppercase;
+                border-radius: 32px;
+                transition: 0.15s;
+
+                &:hover {
+                    box-shadow: none !important;
+                }
+            }
+
+            .representative {
+                cursor: default;
+            }
+
+            @media screen and (max-width: 425px) {
+
+                .client,
+                .representative {
+                    text-align: center;
+                }
+
+                .btn-custom {
+                    margin: 1rem 0;
+                }
+            }
+        }
+
+        .last-clients {
+            .search {
+                .fa-search {
+                    top: 6px;
+                }
+            }
+
+            table {
+                border-collapse: separate;
+                border-spacing: 0 3px;
+                border: 0;
+
+                thead th {
+                    background-color: #265980;
+                    color: #fff;
+                    font-family: montserratregular;
+                    font-size: var(--sub-text);
+                    padding: .5rem;
+                }
+
+                tbody tr:hover {
+                    background-color: #F8F8F8;
+                }
+
+                tbody td {
+                    font-family: montserratregular;
+                    font-size: var(--sub-text);
+                    color: var(--link);
+                    vertical-align: middle;
+
+                    .client-td {
+                        max-width: 180px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                a {
+                    font-family: CoreRhino65bold !important;
+                    color: #0986E4 !important;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}

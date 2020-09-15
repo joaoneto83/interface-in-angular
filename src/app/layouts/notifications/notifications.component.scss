@@ -1,0 +1,173 @@
+.notification {
+    position: absolute;
+    top: 13px;
+    right: 30px;
+    z-index: 1;
+
+    .toggle-display { 
+        position: relative;
+
+        .bell {
+            width: 35px;
+            height: 35px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.125);
+            transition: 0.1s;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--link);
+            }
+
+            em.fa-bell {
+                color: #fff;
+                font-size: 20px;
+            }
+
+            .count {
+                position: absolute;
+                top: 0px;
+                right: -10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+                background-color: #fd0101;
+                color: #fff;
+                font-size: var(--sub-text);
+                border-radius: 50%;
+                box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.125);
+            }
+        }
+
+        .notification-list {
+            width: 300px;
+            position: absolute;
+            top: 45px;
+            right: -3px;
+            padding: 15px 10px;
+            z-index: 1;
+            background-color: #fff;
+            box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--primary);
+
+            .pointer {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: -10px;
+                right: 10px;
+                transform: rotate(45deg);
+                background-color: #fff;
+                z-index: -1;
+            }
+
+            .sup {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+
+                span,
+                a {
+                    color: var(--title);
+                }
+
+                span {
+                    font-size: var(--default-text);
+                    text-transform: uppercase;
+                }
+
+                a {
+                    font-size: var(--sub-text);
+                    text-decoration: underline;
+                }
+            }
+
+            ul {
+                max-height: 290px;
+                font-family: montserratregular;
+                padding: 0;
+                list-style: none;
+                overflow-y: auto;
+
+                li {
+                    position: relative;
+                    display: flex;
+                    padding: 10px;
+                    border: 1px solid #EAEAEA;
+                    margin-bottom: 3px;
+
+                    .date {
+                        width: 15%;
+                        text-align: center;
+                        line-height: 18px;
+
+                        span {
+                            display: block;
+                            font-weight: 600;
+                        }
+
+                        span:first-child {
+                            font-size: 18px;
+                        }
+
+                        span:not(:first-child) {
+                            font-size: var(--sub-text);
+                        }
+
+                        span:not(:last-child) {
+                            color: var(--blue);
+                        }
+                    }
+
+                    .content {
+                        width: 80%;
+                        padding: 0px 10px;
+                        line-height: 15px;
+
+                        span {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .close {
+                        position: absolute;
+                        top: 0;
+                        right: 5px;
+                        opacity: 0.5;
+                        cursor: pointer;
+
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                }
+
+                li:nth-child(1) {
+                    background-color: #EEF8FF;
+                }
+
+                li:nth-child(2) {
+                    background-color: #FCF1F1;
+                }
+
+                li:nth-child(3),
+                li:nth-child(4) {
+                    background-color: #FFFADD;
+                }
+            }
+
+            .all {
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
+}

@@ -1,0 +1,251 @@
+<section>
+    <div class="navigation">
+
+        <div class="title">
+            <em class="fas fa-cart-arrow-down"></em>
+            <span>Pedidos</span>
+        </div>
+
+        <button class="btn btn-custom" (click)="goToNewOrder()">Novo Pedido</button>
+    </div>
+</section>
+
+<section>
+    <div class="new-filter">
+        <div class="controllers">
+            <span class="title">Aprovação e Consulta</span>
+
+            <div class="actions">
+                <button class="btn btn-custom mr-3" (click)="openFilterAddModal()">Adicionar Filtro</button>
+
+                <div class="form-group m-0">
+                    <label class="text-muted m-0">Filtros Personalizados</label>
+                    <select class="custom-select" [(ngModel)]="customFilter" (change)="selectType($event)">
+                        <option *ngFor="let stores of storesData; let i = index">{{ stores.filter }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="stores">
+            <div class="chosen-filter">
+                <span>{{ customFilter }}</span>
+            </div>
+
+            <div class="checkboxes-inline" *ngFor="let stores of storesData | filter : customFilter">
+                <div class="custom-control custom-checkbox custom-control-inline"
+                    *ngFor="let item of stores.stores; let i = index">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1-{{i}}" checked>
+                    <label class="custom-control-label" for="customCheck1-{{i}}">{{ item }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="orders-list">
+        <span class="title">Listagem de Pedidos</span>
+
+        <div class="options">
+            <div class="form-group mr-3">
+                <label>Data Início</label>
+                <div class="input-group">
+                    <input class="form-control" name="d1" #c1="ngModel" [(ngModel)]="initDate" ngbDatepicker
+                        #d1="ngbDatepicker" (input)="regex($event)" maxlength="10">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                            <em class="fas fa-calendar-alt"></em>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mr-3">
+                <label>Data Final</label>
+                <div class="input-group">
+                    <input class="form-control" name="d2" #c2="ngModel" [(ngModel)]="endDate" ngbDatepicker
+                        #d2="ngbDatepicker" (input)="regex($event)" maxlength="10">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                            <em class="fas fa-calendar-alt"></em>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input"
+                    checked>
+                <label class="custom-control-label" for="customRadioInline1">resultados de 30 dias</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Finalizados e não finalizados</label>
+            </div>
+
+            <div class="form-group mb-0 ml-lg-auto ml-md-0 ml-sm-0">
+                <select class="custom-select" (change)="changePaginationSize($event)">
+                    <option *ngFor="let orderControl of orderControls" [value]="orderControl.value">
+                        {{orderControl.title}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="list">
+
+            <div class="list-control">
+                <span class="list-total">{{ orderListQtd }} produtos encontrados</span>
+
+                <div class="apr-rep">
+                    <button class="btn btn-custom">APROVAR SELECIONADOS</button>
+                    <button class="btn btn-custom">REPROVAR SELECIONADOS</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="all"
+                                        (change)="isSelected = !isSelected">
+                                    <label class="custom-control-label" for="all"></label>
+                                </div>
+                            </th>
+                            <th scope="col" class="text-center">Data</th>
+                            <th scope="col">
+                                Cliente
+                                <em class="fas fa-search"></em>
+                            </th>
+                            <th scope="col">
+                                Representante/Área
+                                <em class="fas fa-search"></em>
+                            </th>
+                            <th scope="col">
+                                Canal
+                                <em class="fas fa-search"></em>
+                            </th>
+                            <th scope="col" class="text-center">UP</th>
+                            <th scope="col">
+                                Nota Fiscal
+                                <em class="fas fa-search"></em>
+                            </th>
+                            <th scope="col" class="text-center">Valor</th>
+                            <th scope="col">
+                                Status
+                                <em class="fas fa-search"></em>
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let order of ordersData | paginate: config; let i = index"
+                            (click)="openOrderDetailsModal(order, $event)">
+
+                            <td class="text-center">
+                                <div class="custom-control custom-checkbox" (click)="stopPropagation($event)">
+                                    <input type="checkbox" class="custom-control-input" name="selector" id="all{{i}}"
+                                        [checked]="isSelected">
+                                    <label class="custom-control-label" for="all{{i}}"></label>
+                                </div>
+                            </td>
+
+                            <td class="text-center">{{ order?.data }}</td>
+
+                            <td>
+                                <div class="client">{{ order?.cliente }}</div>
+                                <div>{{ order?.cnpj }}</div>
+                            </td>
+
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-column">
+                                        <span class="text-muted">Representante:</span>
+                                        <span>{{ order?.representate }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-muted">Área:</span>
+                                        <span>{{ order?.area }}</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>{{ order?.canal }}</td>
+
+                            <td class="text-center">{{ order?.up }}</td>
+
+                            <td class="text-center">
+                                {{ order?.pedido[0]?.notaFiscal }}
+                                <div *ngIf="order.nfQtd >= 1" class="d-flex align-items-center justify-content-center">
+                                    <span class="badge badge-pill badge-primary">{{ order?.nfQtd }}</span>
+                                    <a href="javascript:void(0)" (click)="openInvoiceDetailModal(order, $event)">NF -
+                                        ver todas</a>
+                                </div>
+                            </td>
+
+                            <td class="text-center">{{ order?.valor | currency:'BRL' }}</td>
+
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <span [ngClass]="{
+                                    'ft' : order.pedido[0].status === 'faturado', 
+                                    'ent' : order.pedido[0].status === 'entregue', 
+                                    'ftp' : order.pedido[0].status === 'faturado parcela', 
+                                    'rsc' : order.pedido[0].status === 'rascunho', 
+                                    'orc' : order.pedido[0].status === 'orçamento', 
+                                    'crt' : order.pedido[0].status === 'em carteira', 
+                                    'exc' : order.pedido[0].status === 'excluído',
+                                    'rep' : order.pedido[0].status === 'reprovado',
+                                    'anl' : order.pedido[0].status === 'em análise' }">
+                                        {{ order?.pedido[0]?.status }}
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="actions">
+                                    <div class="send">
+                                        <a class="btn" href="javascript:void(0)">
+                                            <em class="fa fa-check-circle"></em>
+                                        </a>
+                                        <span>enviar p/ analise</span>
+                                    </div>
+
+                                    <div class="exclude">
+                                        <a class="btn" href="javascript:void(0)">
+                                            <em class="fa fa-times-circle"></em>
+                                        </a>
+                                        <span>excluir</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end align-items-center flex-wrap">
+                <pagination-controls [id]="config.id" [maxSize]="optionalConfig.maxSize"
+                    [directionLinks]="optionalConfig.directionLinks" [autoHide]="optionalConfig.autoHide"
+                    [responsive]="optionalConfig.responsive" previousLabel="Anterior" nextLabel="Próximo"
+                    (pageChange)="onPageChange($event)" (pageBoundsCorrection)="onPageBoundsCorrection($event)">
+                </pagination-controls>
+
+                <div class="column">
+                    <label class="control">ir para a página
+                        <input type="number" class="input" min="1" [value]="config.currentPage"
+                            (change)="jumpToPage($event)">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

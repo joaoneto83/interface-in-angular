@@ -1,0 +1,53 @@
+<div class="side-menu hover" id="hoverMenu">
+    <div class="side-menu-superior">
+        <img src="../../../assets/images/marcaelgin1.png" alt="marca elgin up" class="elginUp-brand" hidden>
+        <img src="../../../assets/images/logo-up1.png" alt="elgin up logo" class="elginUp-icon">
+    </div>
+
+    <div class="user">
+        <em class="fa fa-user"></em>
+
+        <div class="user-opt">
+            <span>Carlos Magno</span>
+            <span>Representante Elgin</span>
+            <a href="javascript:void(null)">sair</a>
+        </div>
+    </div>
+
+    <ul>
+        <li *ngFor="let menuItem of menuItems; let i = index" [ngClass]="{active: selectedItem == i}"
+            (click)="navigateTo(i)">
+
+            <em [class]="menuItem.icon"></em>
+            <span>{{menuItem.title}}</span>
+        </li>
+    </ul>
+</div>
+
+<div class="responsive-navbar" hidden>
+    <div class="side-menu-superior">
+        <img src="../../../assets/images/logo-up1.png" alt="elgin up logo" class="elginUp-icon">
+        <img src="../../../assets/images/marcaelgin1.png" alt="marca elgin up" class="elginUp-brand">
+    </div>
+
+    <em class="fas fa-bars" (click)="toggleMenu()"></em>
+</div>
+
+<div *ngIf="toggle" class="responsive-menu">
+    <div class="backdrop" (click)="toggleMenu()"></div>
+    <div class="menu-toggle">
+
+        <button class="btn btn-close">
+            <em class="fas fa-times" (click)="toggleMenu()"></em>
+        </button>
+
+        <ul>
+            <li *ngFor="let menuItem of menuItems; let i = index" [ngClass]="{active: selectedItem == i}"
+                (click)="navigateTo(i); toggleMenu()">
+
+                <em [class]="menuItem.icon"></em>
+                <span>{{menuItem.title}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

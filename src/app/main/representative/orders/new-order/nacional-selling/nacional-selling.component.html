@@ -1,0 +1,139 @@
+<div class="main">
+    <div class="nav">
+        <span class="title">Novo Pedido</span>
+        <button class="btn btn-custom" *ngIf="index == 2 || index == 3" (click)="return()">voltar</button>
+    </div>
+
+    <div class="row" *ngIf="index == 1">
+
+        <div class="col-md-8">
+            <div class="form-row">
+                <div class="col-md-4" *ngFor="let representative of representatives; let i = index">
+                    <div class="representative" [ngClass]="{active: selectedItem == i}" (click)="navigate(i, representativeChosen = true)">
+                        <span>Representante {{representative.name}}</span>
+                        <span>Área: {{representative.area}}</span>
+                        <span>Tipo Pedido: {{representative.tipoPedido}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-md-right">
+            <button class="btn btn-custom" (click)="representativeChange()">alterar representante</button>
+        </div>
+
+        <div class="col-md-12 search" *ngIf="representativeChosen">
+            <div class="form-group">
+                <em class="fas fa-search"></em>
+                <label for="typeahead-format">Buscar Cliente</label>
+                <input id="typeahead-format" type="text" class="form-control" [ngbTypeahead]="search"
+                    [resultFormatter]="formatter" />
+            </div>
+        </div>
+
+
+        <div class="col-md-12 last-clients" *ngIf="representativeChosen">
+            <span class="sub-title">Últimos Clientes</span>
+
+            <hr>
+
+            <div class="form-row">
+                <div class="col-md-3 mb-3" *ngFor="let clients of representatives[0].clients" (click)="selectClient()">
+                    <div class="client">
+                        <span>{{clients.clientName}}</span>
+                        <span>CNPJ: {{clients.cnpj}}</span>
+                        <span>IE: {{clients.ie}}</span>
+                        <span>Tel: {{clients.tel}}</span>
+                    </div>
+                </div>
+
+                <div class="col-12 text-center my-4">
+                    <button class="btn btn-custom">Minha Lista de Clientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap chosenClient" *ngIf="index == 2">
+
+        <div class="col-12 requirent">
+
+            <div class="row align-items-center">
+                <div class="col-md-auto">
+                    <div class="client">
+                        <span>ANDRE DA SILVA 05133195907</span>
+                        <span>CNPJ: 34.463.428/0001-92</span>
+                        <span>IE: ISENTO </span>
+                        <span>Tel: (48) 3205-9233</span>
+                    </div>
+                </div>
+
+                <div class="col-md-auto text-center">
+                    <button class="btn btn-custom shadow-sm" (click)="includeOrder()">Incluir Pedido</button>
+                </div>
+
+                <div class="col-md-auto ml-md-auto">
+                    <div class="representative active mb-0 shadow-none">
+                        <span>Representante Maria</span>
+                        <span>Área: Automação</span>
+                        <span>Tipo Pedido: ZVMI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-clients w-100">
+            <span>Últimos Pedidos</span>
+
+            <hr>
+
+            <div class="d-flex align-items-center mb-4">
+                <label for="typeahead-format">Buscar Outros Pedidos</label>
+
+                <div class="search col-md-3">
+                    <div class="form-group m-0">
+                        <em class="fas fa-search"></em>
+                        <input id="typeahead-format" type="text" class="form-control" [ngbTypeahead]="search"
+                            [resultFormatter]="formatter" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
+                    <thead>
+                        <tr>
+                            <th scope="col">N&ordm; Pedido</th>
+                            <th scope="col" class="text-center">Data</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col" class="text-center">Nota Fiscal</th>
+                            <th scope="col" class="text-center">Total</th>
+                            <th scope="col" class="text-center"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1245454647</td>
+                            <td class="text-center">10/FEV</td>
+                            <td>
+                                <span class="d-block client-td">ELGIN INDUSTRIAL DA AMAZONIA LTDA</span>
+                                <span class="d-block">14.200.166/0001-66</span>
+                            </td>
+                            <td class="text-center">
+                                <span class="d-block">012345664646425</span>
+                                <a href="javascript:void(0)">ver todas as notas </a>
+                            </td>
+                            <td class="text-center">R$ 1.999.465,00</td>
+                            <td class="text-center">
+                                <button class="btn btn-custom">Duplicar Pedido</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <elgin-add-order *ngIf="index == 3"></elgin-add-order>
+</div>

@@ -1,0 +1,138 @@
+<div class="modal-header">
+    <div class="close" (click)="activeModal.dismiss()">
+        <small>fechar</small>
+        <small aria-hidden="true">&times;</small>
+    </div>
+</div>
+
+<div class="modal-body">
+    <div class="order-detail">
+        <span class="date">{{ invoiceDetail?.data }}</span>
+
+        <div class="customer">
+            <div class="d-flex flex-column">
+                <span>{{ invoiceDetail?.cliente }}</span>
+                <span>{{ invoiceDetail?.cnpj }}</span>
+            </div>
+            <div class="d-flex flex-column">
+                <span class="text-muted">Representante</span>
+                <span>{{ invoiceDetail?.representate }}</span>
+            </div>
+            <div class="d-flex flex-column">
+                <span class="text-muted">Área</span>
+                <span>{{ invoiceDetail?.area }}</span>
+            </div>
+            <div class="d-flex flex-column">
+                <span class="text-muted">Requisitante</span>
+                <span>{{ invoiceDetail?.canal }}</span>
+            </div>
+            <div class="d-flex flex-column">
+                <span class="text-muted">UP</span>
+                <span>{{ invoiceDetail?.up }}</span>
+            </div>
+            <div class="d-flex flex-column">
+                <span class="text-muted">SAP</span>
+                <span>{{ invoiceDetail?.up }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Nota Fiscal
+                        <em class="fas fa-search"></em>
+                    </th>
+                    <th scope="col">
+                        Status
+                        <em class="fas fa-search"></em>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoiceDetail?.pedido; let i = index;">
+                    <td class="invoices">
+                        <span>{{item?.notaFiscal}}</span>
+
+                        <div class="export">
+                            <button class="btn btn-custom">danfe</button>
+                            <button class="btn btn-custom">xml</button>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="status">
+                            <div class="status-point">
+                                <span class="title">Fases da remessa</span>
+
+                                <div class="columns">
+                                    <div class="column-1">
+                                        <span class="liner"></span>
+                                        <em class="fas fa-boxes"
+                                            [ngClass]="{'statusAnl' : item?.status === 'em análise'}"></em>
+                                        <em class="fas fa-cart-arrow-down"
+                                            [ngClass]="{'statusAnl' : item?.status === 'em análise'}"></em>
+                                        <em class="fas fa-dollar-sign"
+                                            [ngClass]="{
+                                                'statusFt' : item?.status === 'faturado', 
+                                                'statusExc' : item?.status === 'reprovado' || item?.status === 'excluído'}"></em>
+                                        <em class="fas fa-truck"
+                                            [ngClass]="{'statusCrt' : item?.status === 'em carteira'}"></em>
+                                        <em class="fas fa-cube"
+                                            [ngClass]="{'statusEnt' : item?.status === 'entregue'}"></em>
+                                    </div>
+
+                                    <div class="column-2">
+                                        <div>
+                                            <span>Em separação</span>
+                                            <span>15/03/2020</span>
+                                            <span>11:45</span>
+                                        </div>
+                                        <div>
+                                            <span>Estoque Baixado</span>
+                                            <span>15/03/2020</span>
+                                            <span>12:47</span>
+                                        </div>
+                                        <div>
+                                            <span>Faturado</span>
+                                            <span>16/03/2020</span>
+                                            <span>8:45</span>
+                                        </div>
+                                        <div>
+                                            <span>Entrega em Andamento</span>
+                                            <span>17/03/2020</span>
+                                            <span>11:20</span>
+                                        </div>
+                                        <div>
+                                            <span>Entregue</span>
+                                            <span>17/03/2020</span>
+                                            <span>14:24</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span [ngClass]="{
+                            'ft' : item?.status === 'faturado', 
+                            'ent' : item?.status === 'entregue', 
+                            'ftp' : item?.status === 'faturado parcela', 
+                            'rsc' : item?.status === 'rascunho', 
+                            'orc' : item?.status === 'orçamento', 
+                            'crt' : item?.status === 'em carteira', 
+                            'exc' : item?.status === 'excluído',
+                            'rep' : item?.status === 'reprovado',
+                            'anl' : item?.status === 'em análise' }">
+                                {{ item?.status }}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-close" (click)="activeModal.close()">fechar</button>
+</div>

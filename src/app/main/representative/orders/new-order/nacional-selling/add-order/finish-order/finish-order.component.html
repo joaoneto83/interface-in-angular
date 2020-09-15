@@ -1,0 +1,538 @@
+<div class="redo">
+    <span>Pedido 1064277</span>
+    <button class="btn btn-redo"><em class="fas fa-redo-alt mr-2"></em>Recalcular</button>
+</div>
+
+<section class="mx-3">
+    <ul ngbNav #navTable="ngbNav" [activeId]="1" class="nav-tabs mt-3">
+
+        <li [ngbNavItem]="1">
+            <a ngbNavLink>EL02 - Elgin S/A - Fabrica Mogi - SP</a>
+            <ng-template ngbNavContent>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless table-sm" aria-describedby="client table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Total Geral</th>
+                                <th scope="col">Total Itens</th>
+                                <th scope="col">Total IPI</th>
+                                <th scope="col">Total ICMS</th>
+                                <th scope="col">Total ICMS ST</th>
+                                <th scope="col">Total Frete</th>
+                                <th scope="col">Total Desconto</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>R$ 4,40</td>
+                                <td>R$ 4,000.00</td>
+                                <td>R$ 0,40</td>
+                                <td>R$ 0,31</td>
+                                <td>R$ 0,00</td>
+                                <td>R$ 0,00</td>
+                                <td>- R$ 3,999.08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr class="mt-0">
+
+                <div class="navigation">
+                    <ul ngbNav #navs="ngbNav" [activeId]="1" class="nav-tabs mt-3">
+
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>Produtos</a>
+                            <ng-template ngbNavContent>
+
+                                <div class="filters">
+                                    <span class="label">Filtros:</span>
+
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked
+                                            (change)="taxes = !taxes">
+                                        <label class="custom-control-label" for="customCheck1">Impostos</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2" checked
+                                            (change)="descounts = !descounts">
+                                        <label class="custom-control-label" for="customCheck2">Descontos</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3" checked
+                                            (change)="unitCalc = !unitCalc">
+                                        <label class="custom-control-label" for="customCheck3">Unitário Calc.</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4" checked
+                                            (change)="freight = !freight">
+                                        <label class="custom-control-label" for="customCheck4">Frete</label>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-sm" aria-describedby="client table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-left">Descrição / Código Elgin</th>
+                                                <th scope="col" [hidden]="!unitCalc">Unitário Calc.</th>
+                                                <th scope="col">Qtd.</th>
+                                                <th scope="col" [hidden]="!freight">Frete</th>
+                                                <th scope="col" [hidden]="!descounts">Descontos</th>
+                                                <th scope="col" [hidden]="!taxes">Impostos</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="item">
+                                                        <img src="../../../../../assets/artefacts/Group76.jpg"
+                                                            alt="representação do item"
+                                                            class="img-thumbnail mr-md-2 m-0">
+                                                        <div class="desc">
+                                                            <label for="elginCod" class="mb-0">Cód. Elgin</label>
+                                                            <span id="elginCod"
+                                                                class="mb-1 text-black-50">REF160002022700</span>
+                                                            <span id="item-model">
+                                                                UN.EXT.HW INVERTER TREND,18K,QF, 220V,1PH
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td [hidden]="!unitCalc">R$ 0,0001 </td>
+                                                <td>500</td>
+                                                <td [hidden]="!freight">R$ 0,00</td>
+                                                <td [hidden]="!taxes">
+                                                    <div class="form-row taxes taxes1">
+                                                        <div class="form-group col-12 col-md-6">
+                                                            <label for="discount">% Desconto</label>
+                                                            <span id="discount">99.900,0000%</span>
+                                                        </div>
+                                                        <div class="form-group col-12 col-md-6">
+                                                            <label for="unitDiscount">Desconto Unitário</label>
+                                                            <span id="unitDiscount">-R$ 0,0999</span>
+                                                        </div>
+                                                        <div class="form-group col-12 col-md-6">
+                                                            <label for="unitWithDiscount">Unitário Com Desconto</label>
+                                                            <span id="unitWithDiscount">R$ 0,1000</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td [hidden]="!descounts">
+                                                    <div class="form-row taxes taxes2">
+                                                        <div class="form-group">
+                                                            <label for="ipi">IPI</label>
+                                                            <span id="ipi">0,00%</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="icms">ICMS</label>
+                                                            <span id="icms">0,099%</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="descIcms">Desc. ICMS</label>
+                                                            <span id="descIcms">7,00%</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="descIcms">ICMS ST</label>
+                                                            <span id="icmsSt">0,00%</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="totalTax">Total c/ Impostos</label>
+                                                            <span id="totalTax">R$ 101465,00</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="with">% com</label>
+                                                            <span id="with">R$ 0,00</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-template>
+                        </li>
+
+                        <li [ngbNavItem]="2">
+                            <a ngbNavLink>Logística</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="freigthType">Tipo de Frete</label>
+                                        <select id="freigthType" class="custom-select"
+                                            (change)="withdrawType($event.target.value)">
+                                            <option *ngFor="let type of withdrawalTypes" [value]="type.value">
+                                                {{type.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="colector">Coletor</label>
+                                        <select id="colector" class="custom-select"
+                                            (change)="colectType($event.target.value)">
+                                            <option *ngFor="let type of filterTypes" [value]="type.value">{{type.value}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 search" [hidden]="!isTransporter">
+                                        <em class="fas fa-search"></em>
+                                        <label for="typeahead-format">Transportadora</label>
+                                        <input id="typeahead-format" type="text" class="form-control"
+                                            [ngbTypeahead]="search" [resultFormatter]="formatter" />
+                                    </div>
+                                    <div class="form-group col-md-2" [hidden]="!isDelivery">
+                                        <label for="freight">frete</label>
+                                        <input type="text" id="freight" class="form-control">
+                                        <small id="freightHelp" class="form-text">Calculado R$ 80,00</small>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" [hidden]="!isDelivery">
+                                    <div class="form-group col-md-2">
+                                        <label class="d-block">Agendamento</label>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="isScheduled" name="schedule"
+                                                class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="isScheduled">sim</label>
+                                        </div>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="isNotScheduled" name="schedule"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="isNotScheduled">não</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="scheduleType">Forma de Agendamento</label>
+                                        <select id="scheduleType" class="custom-select">
+                                            <option>E-mail</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label class="d-block">Paletizado</label>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="isPaletized" name="palet"
+                                                class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="isPaletized">sim</label>
+                                        </div>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="isNotPaletized" name="palet"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="isNotPaletized">não</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="paletizedObs">Obs de Paletizado</label>
+                                        <textarea class="form-control" id="paletizedObs" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-4 align-self-md-end" [hidden]="!isDelivery">
+                                        <div class="freight-info">
+                                            <span>Prazo de Entrega</span>
+                                            <span>3 dias úteis (somente após a emissão da NF)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" [hidden]="
+                                    !isForClient && isDelivery ||
+                                     isForClient && isWithdraw ||
+                                      isWithdraw && isTransporter">
+
+                                    <div class="form-group col-12">
+                                        <span class="address-title">Endereço de Entrega</span>
+                                    </div>
+
+                                    <div class="form-group col-md-2">
+                                        <label class="d-block">Alterar Recebedor</label>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="changeReceiver" name="receiver"
+                                                class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="changeReceiver">sim</label>
+                                        </div>
+
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="notChangeReceiver" name="receiver"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="notChangeReceiver">não</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-6 search">
+                                        <em class="fas fa-search"></em>
+                                        <label for="typeahead-format">Buscar Cliente</label>
+                                        <input id="typeahead-format" type="text" class="form-control"
+                                            [ngbTypeahead]="search" [resultFormatter]="formatter" />
+                                    </div>
+
+                                    <div class="form-group col-12 col-md-4">
+                                        <div class="client flex-md-grow-0 flex-grow-1">
+                                            <span>ANDRE DA SILVA 05133195907</span>
+                                            <span>CNPJ: 34.463.428/0001-92</span>
+                                            <span>IE: ISENTO </span>
+                                            <span> Tel: (48) 3205-9233</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" [hidden]="
+                                    !isForClient && isDelivery ||
+                                     isForClient && isWithdraw ||
+                                      isWithdraw && isTransporter">
+                                    <div class="form-group col-12 col-md-3">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="addrees1" name="deliveryAddress"
+                                                class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="addrees1"></label>
+                                            <div class="address-card">
+                                                <div class="head">
+                                                    <span>ELGIN DISTRIBUIDORA LTDA</span>
+                                                </div>
+                                                <div class="body">
+                                                    <span class="cnpj">07.023.429/0001-43</span>
+                                                    <span class="d-flex align-items-center">
+                                                        <span class="text-muted mr-1">CEP:</span>
+                                                        <span>88308-620</span>
+                                                    </span>
+                                                    <span>ROD BR 101, nº 9285 - KM 122 4 SALA 23 -
+                                                        CIDADE NOVA - ITAJAÍ - SC</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-md-3">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="addrees2" name="deliveryAddress"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="addrees2"></label>
+                                            <div class="address-card">
+                                                <div class="head">
+                                                    <span>Escritório</span>
+                                                </div>
+                                                <div class="body">
+                                                    <span class="d-flex align-items-center">
+                                                        <span class="text-muted mr-1">CEP:</span>
+                                                        <span>88308-620</span>
+                                                    </span>
+                                                    <span>AV ARARAS, 579 - DISTR INDUSTRIAL - MANAUS - AM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-md-3">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="addrees3" name="deliveryAddress"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="addrees3"></label>
+                                            <div class="address-card">
+                                                <div class="head">
+                                                    <span>Distribuidor</span>
+                                                </div>
+                                                <div class="body">
+                                                    <span class="d-flex align-items-center">
+                                                        <span class="text-muted mr-1">CEP:</span>
+                                                        <span>88308-620</span>
+                                                    </span>
+                                                    <span>AV TAMBORÉ, 12 - ALPHAVILLE INDUSTRIAL - BARUERI - SP</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </ng-template>
+                        </li>
+
+                        <li [ngbNavItem]="3">
+                            <a ngbNavLink>Financeiro</a>
+                            <ng-template ngbNavContent>
+
+                                <div class="form-row justify-content-center justify-content-md-around financial">
+                                    <div class="col-md-8">
+                                        <div class="form-row">
+                                            <div class="col-md-2 align-self-center">
+                                                <span class="segment">Pagamento</span>
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="dataBase">Data Base</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" name="d1" #c1="ngModel"
+                                                        [(ngModel)]="baseDate" ngbDatepicker #d1="ngbDatepicker"
+                                                        (input)="regex($event)" maxlength="10">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary calendar"
+                                                            (click)="d1.toggle()" type="button">
+                                                            <em class="fas fa-calendar-alt"></em>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="cond">Condições de pagamento</label>
+                                                <input type="text" class="form-control" id="cond" value="E001 - a Vista"
+                                                    disabled>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="paymentMethod">Forma de pagamento</label>
+                                                <input type="text" class="form-control" id="paymentMethod"
+                                                    value="Cartão de Crédito 12x" disabled>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <hr>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <span class="segment">Faturamento</span>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-2">
+                                                        <label>Data</label>
+                                                        <small class="d-block">23/02/2020</small>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>Natureza de Operação</label>
+                                                        <small class="d-block">9 - VENDA USO CONSUMO</small>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label>Escritório</label>
+                                                        <small class="d-block">E001 - Geral</small>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label>Código Suframa</label>
+                                                        <small class="d-block">200148940</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-3">
+                                                        <label class="d-block">Exige Nota</label>
+
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="changeReceiver" name="receiver"
+                                                                class="custom-control-input" checked>
+                                                            <label class="custom-control-label"
+                                                                for="changeReceiver">sim</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="notChangeReceiver" name="receiver"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="notChangeReceiver">não</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label>Inscrição Estadual</label>
+                                                        <small class="d-block">94216546551</small>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label>Código Cliente</label>
+                                                        <small class="d-block">53781949994949</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p class="segment">Endereço de Entrega</p>
+
+                                        <div class="charge-address">
+                                            <div class="charge-payment-head">
+                                                <span>Depósito</span>
+                                                <span>endereço principal</span>
+                                            </div>
+                                            <div class="charge-payment-body">
+                                                <div class="form-row">
+                                                    <div class="form-group">
+                                                        <label for="CEP">CEP:</label>
+                                                        <span id="CEP" class="d-block">69075-010</span>
+                                                    </div>
+                                                    <div class="form-group col-12">
+                                                        <label for="address">Logradouro:</label>
+                                                        <span id="address" class="d-block">AV ABIURANA, 579</span>
+                                                    </div>
+                                                    <div class="form-group col-12">
+                                                        <label for="neighborhood">Bairro:</label>
+                                                        <span id="neighborhood" class="d-block">Distrito
+                                                            Industrial</span>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="CEP">Cidade</label>
+                                                        <span class="d-block">MANAUS</span>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="CEP">UF:</label>
+                                                        <span class="d-block">AM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="segment mt-3">Dados Complementares</p>
+
+                                <ul ngbNav #navObs="ngbNav" [activeId]="1" class="nav-tabs coments">
+
+                                    <li [ngbNavItem]="1">
+                                        <a ngbNavLink>Obs. NF</a>
+                                        <ng-template ngbNavContent>
+                                            <textarea class="form-control" id="obsNf" rows="5"></textarea>
+                                        </ng-template>
+                                    </li>
+                                    <li [ngbNavItem]="2">
+                                        <a ngbNavLink>Comentário de Crédito</a>
+                                        <ng-template ngbNavContent>
+                                            <textarea class="form-control" id="creditComent" rows="5"></textarea>
+                                        </ng-template>
+                                    </li>
+                                    <li [ngbNavItem]="3">
+                                        <a ngbNavLink>Comentário Comercial</a>
+                                        <ng-template ngbNavContent>
+                                            <textarea class="form-control" id="comercialComent" rows="5"></textarea>
+                                        </ng-template>
+                                    </li>
+                                    <li [ngbNavItem]="4">
+                                        <a ngbNavLink>Comentário Expedição</a>
+                                        <ng-template ngbNavContent>
+                                            <textarea class="form-control" id="expeditionComent" rows="5"></textarea>
+                                        </ng-template>
+                                    </li>
+                                </ul>
+
+                                <div [ngbNavOutlet]="navObs" class="mt-2"></div>
+
+                                <div class="d-flex flex-wrap align-items-center justify-content-between my-4">
+                                    <div class="col-12 col-md-auto mb-3">
+                                        <button class="btn btn-draft w-100">RASCUNHO</button>
+                                    </div>
+                                    <div class="col-12 col-md-auto mb-3">
+                                        <button class="btn btn-budget w-100">ORÇAMENTO</button>
+                                    </div>
+                                    <div class="col-12 col-md-auto mb-3">
+                                        <button class="btn btn-finish w-100">ENVIAR PEDIDO</button>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </div>
+
+                <div [ngbNavOutlet]="navs" class="mt-2"></div>
+            </ng-template>
+        </li>
+    </ul>
+
+    <div [ngbNavOutlet]="navTable" class="mt-2"></div>
+</section>

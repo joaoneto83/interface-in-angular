@@ -1,0 +1,78 @@
+<div class="notification">
+
+    <div class="toggle-display">
+        <div class="bell" (click)="toggle()">
+            <em class="fas fa-bell"></em>
+            <span class="count">4</span>
+        </div>
+
+        <div class="notification-list" [hidden]="!isActive">
+            <span class="pointer"></span>
+
+            <div class="sup">
+                <span>Notificações e Avisos</span>
+                <a href="javascript:void(0)" (click)="toggle()">fechar</a>
+            </div>
+
+            <ul>
+                <li>
+                    <div class="date">
+                        <span>12</span>
+                        <span>mar</span>
+                        <span>2020</span>
+                    </div>
+
+                    <div class="content">
+                        <span>Você atingiu 36% da meta do mês.</span>
+                    </div>
+
+                    <span class="close">&times;</span>
+                </li>
+                <li>
+                    <div class="date">
+                        <span>13</span>
+                        <span>mar</span>
+                        <span>2020</span>
+                    </div>
+
+                    <div class="content">
+                        <span>Pedido nº 21455622 retornado. verificar pendências.</span>
+                    </div>
+
+                    <span class="close">&times;</span>
+                </li>
+                <li>
+                    <div class="date">
+                        <span>13</span>
+                        <span>mar</span>
+                        <span>2020</span>
+                    </div>
+
+                    <div class="content">
+                        <span>Pedido nº5646545 em análise comercial.</span>
+                    </div>
+
+                    <span class="close">&times;</span>
+                </li>
+                <li>
+                    <div class="date">
+                        <span>14</span>
+                        <span>mar</span>
+                        <span>2020</span>
+                    </div>
+
+                    <div class="content">
+                        <span>Pedido nº 2654944 retornado.</span>
+                    </div>
+
+                    <span class="close">&times;</span>
+                </li>
+            </ul>
+
+            <div class="all">
+                <a href="javascript:void(0)">ver todos</a>
+            </div>
+        </div>
+    </div>
+
+</div>

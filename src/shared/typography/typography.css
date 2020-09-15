@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'CoreRhino45Regular';
+  src:
+    url('./fonts/corerhino45-regular/CoreRhino45RegularW01.eot') format('eot'),
+    url('./fonts/corerhino45-regular/CoreRhino45RegularW01.otf') format('otf'),
+    url('./fonts/corerhino45-regular/CoreRhino45RegularW01.svg') format('svg'),
+    url('./fonts/corerhino45-regular/CoreRhino45RegularW01.ttf') format('ttf'),
+    url('./fonts/corerhino45-regular/CoreRhino45RegularW01.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CoreRhino65Bold';
+  src:
+    url('./fonts/corerhino65-bold/CoreRhino65BoldW01Regular.eot') format('eot'),
+    url('./fonts/corerhino65-bold/CoreRhino65BoldW01Regular.otf') format('otf'),
+    url('./fonts/corerhino65-bold/CoreRhino65BoldW01Regular.svg') format('svg'),
+    url('./fonts/corerhino65-bold/CoreRhino65BoldW01Regular.ttf') format('ttf'),
+    url('./fonts/corerhino65-bold/CoreRhino65BoldW01Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserratbold';
+  src: url('./fonts/montserrat/montserrat-bold-webfont.woff2') format('woff2'),
+    url('./fonts/montserrat/montserrat-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserratlight';
+  src: url('./fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'),
+    url('./fonts/montserrat/montserrat-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'montserratmedium';
+  src: url('./fonts/montserrat/montserrat-medium-webfont.woff2') format('woff2'),
+    url('./fonts/montserrat/montserrat-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'montserratregular';
+  src: url('./fonts/montserrat/montserrat-regular-webfont.woff2') format('woff2'),
+    url('./fonts/montserrat/montserrat-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'montserratthin';
+  src: url('./fonts/montserrat/montserrat-thin-webfont.woff2') format('woff2'),
+    url('./fonts/montserrat/montserrat-thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}

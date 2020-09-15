@@ -1,0 +1,179 @@
+<div class="modal-header">
+    <div class="close" (click)="activeModal.dismiss()">
+        <small>fechar</small>
+        <small aria-hidden="true">&times;</small>
+    </div>
+</div>
+
+<div class="modal-body">
+    <p class="title">Comparativo do produto similar</p>
+
+    <hr>
+
+    <div class="models">
+        <div class="checkboxes-inline">
+            <span class="label">Compare com outros modelos:</span>
+
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <label class="custom-control-label" for="customCheck1">45HTQE18B2NA</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
+                <label class="custom-control-label" for="customCheck2">46HTQE18B2NA</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck3" checked>
+                <label class="custom-control-label" for="customCheck3">46HTQE18B2NA</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
+                <label class="custom-control-label" for="customCheck4">46HTQE18B2NA</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-3">
+        <table class="table table-sm table-hover" aria-describedby="comparativo entre produtos">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <div></div>
+                    </th>
+                    <th scope="col">
+                        <div>
+                            <span class="title">Produto Similar</span>
+                            <div class="thumb">
+                                <img [src]="item?.imagem" alt="imagem do produto" class="img-thumbnail">
+                                <span>{{item?.cod}}</span>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div>
+                            <span class="title">Produto 01</span>
+                            <div class="thumb">
+                                <img [src]="item?.imagem" alt="imagem do produto" class="img-thumbnail">
+                                <span>{{item?.cod}}</span>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div>
+                            <span class="title">Produto 02</span>
+                            <div class="thumb">
+                                <img [src]="item?.imagem" alt="imagem do produto" class="img-thumbnail">
+                                <span>{{item?.cod}}</span>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div>
+                            <span class="title">Produto 03</span>
+                            <div class="thumb">
+                                <img [src]="item?.imagem" alt="imagem do produto" class="img-thumbnail">
+                                <span>{{item?.cod}}</span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td >Air Swinger</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Funcão Limpeza(Evaporador)</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Auto Restart</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Baixo Nível de Ruído</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >BTU/h 9.000/ 12.000/ 18.000/ 24.000/ 30.000</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Classificação A INMETRO</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Desumidificador</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Display de Temperatura</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Duplo Swing</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Filtros</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Função Conforto</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Display Digital</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+                <tr>
+                    <td >Ecológico</td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                    <td class="text-center">não <em class="fas fa-times text-danger"></em></td>
+                    <td class="text-center">sim <em class="fas fa-check text-success"></em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-close" (click)="activeModal.close()">fechar</button>
+</div>

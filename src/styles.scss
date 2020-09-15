@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import './shared/icons/fontawesome-free-5.13.0-web/css/all.min.css';
+@import './shared/colors/colors.scss';
+@import './shared/typography/typography.css';
+@import './shared/typography/typography-size.scss';
+@import './shared/animations/animations.scss';
+
+body {
+  // font-family: CoreRhino45Regular !important;
+  font-family: montserratregular !important;
+  overflow-x: hidden;
+
+  strong {
+    font-family: CoreRhino65Bold !important;
+  }
+}
+
+a {
+  color: var(--link) !important;
+
+  &:active {
+    color: var(--link-active) !important;
+  }
+}
+
+// Carousel
+.carousel:focus,
+.carousel-inner:focus {
+  outline: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url(./assets/artefacts/fa-solid_chevron-left.png) !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url(./assets/artefacts/fa-solid_chevron-right.png) !important;
+}
+
+.carousel-indicators li {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #66e8b1 !important;
+  border-radius: 50%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: .6 !important;
+}
+
+// Checkbox
+.custom-checkbox .custom-control-label::before {
+  border-radius: 2px !important;
+}
+
+.custom-control-label::before:not([type="radio"]),
+.custom-control-label::after:not([type="radio"]) {
+  width: 0.9rem !important;
+  height: 0.9rem !important;
+  left: -1.45rem !important;
+}
+
+.custom-control-input:not([type="radio"]):focus~.custom-control-label:not([type="radio"])::before {
+  box-shadow: none !important;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-image: url(./assets/artefacts/check-solid.svg) !important;
+}
+
+.custom-control-input:not([type="radio"]):checked~.custom-control-label:not([type="radio"])::before {
+  background-color: #fff !important;
+}
+
+.ngx-pagination {
+  margin: 10px 0px !important;
+
+  li {
+    font-size: var(--sub-text);
+  }
+}
+
+.ft,
+.ent,
+.ftp,
+.rsc,
+.orc,
+.crt,
+.exc,
+.rep,
+.anl {
+  display: block;
+  width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.15rem 0.5rem;
+  text-align: center;
+  margin: .25rem 0;
+}
+
+.ft,
+.ent,
+.rsc,
+.orc,
+.crt,
+.exc,
+.rep,
+.anl {
+  border-radius: 32px;
+}
+
+.ft {
+  background-color: #4DBF69;
+  color: #fff;
+}
+
+.ent {
+  background-color: #0074CC;
+  color: #fff;
+}
+
+.ftp {
+  border-radius: 8px;
+  background-color: #000;
+  border-top: 5px solid var(--danger);
+  color: #fff;
+}
+
+.rsc {
+  background-color: #333333;
+  color: #fff;
+}
+
+.orc {
+  background-color: #FFE070;
+  color: #0063AF;
+}
+
+.crt {
+  background-color: #4DB2FF;
+  color: #fff;
+}
+
+.exc,
+.rep {
+  background-color: #F42424;
+  color: #fff;
+}
+
+.anl {
+  background-color: #D3ECFF;
+  color: #0063AF;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
