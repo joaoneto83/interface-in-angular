@@ -6,11 +6,11 @@ import { NotFoundComponent } from 'src/app/layouts/not-found/not-found.component
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     loadChildren: () => import('./main/representative/representative.module').then(m => m.RepresentativeModule)
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () => import('./main/login/login.module').then(m => m.LoginModule)
   },
   {

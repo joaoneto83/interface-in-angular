@@ -24,43 +24,33 @@ export class LoginComponent implements OnInit {
 
   formNovaSenha: FormGroup
 
+  corretor:boolean;
 
   constructor(private loadingService: LoadingService,
-    private tokenService: TokenService,
-    private usuarioService: AdmUsuarioService,
+    // private tokenService: TokenService,
+    // private usuarioService: AdmUsuarioService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-
+    this.corretor=false;
     this.formLogin = this.formBuilder.group({
       login: ['', [Validators.required]],
       senha: ['', [Validators.required]]
   });
   }
 
-  login() {
-    if (this.formLogin.valid && !this.formLogin.pending) {
 
-        this.loadingService.show();
 
-        let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
-        
-        this.tokenService
-                .setToken(this.formLogin.controls["login"].value, senha)
-                .subscribe(
-                    res => this.loginSuccess(res),
-                    err => this.loginError(err)
-                );
-    }
-    else {
-        Object.keys(this.formLogin.controls).forEach(key => {
-            this.formLogin.get(key).markAsTouched();
-        });
-        return;
-    }
+login() {
+  this.corretor=true;
+    this.router.navigate(["/home"]);
+    console.log(this.router);
+
 }
+
+
 
 loginError(err: any): void {
     console.log(err);
@@ -77,7 +67,7 @@ loginError(err: any): void {
 loginSuccess(res: string): void {
     this.loadingService.hide();
 
-    this.tokenService.getTokenSuccess(res);
+    // this.tokenService.getTokenSuccess(res);
 
     this.router.navigate(["home"]);
 }
