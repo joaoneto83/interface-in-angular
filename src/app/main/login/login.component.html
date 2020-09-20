@@ -6,14 +6,14 @@
         </div>
 
         <div class="card-body">
-            <form>
+            <form [formGroup]="formLogin">
                 <div class="form-group">
                     <label for="login">Login</label>
-                    <input type="email" class="form-control" id="login">
+                    <input formControlName="login" (keydown.enter)="login()" type="text"class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="password">
+                    <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control">
                 </div>
                 <button (click) ="login();" type="submit" class="btn btn-primary" >entrar</button>
             </form>

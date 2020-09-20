@@ -6,6 +6,8 @@ import { LoadingService } from 'src/app/_shered/service/loading.service';
 import { TokenService } from 'src/app/_core/services/token.service';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { PasswordValidation } from 'src/app/_shered/validators/password/password.validator';
 
 @Component({
   selector: 'app-login',
@@ -27,31 +29,66 @@ export class LoginComponent implements OnInit {
   corretor:boolean;
 
   constructor(private loadingService: LoadingService,
-    // private tokenService: TokenService,
-    // private usuarioService: AdmUsuarioService,
+   private tokenService: TokenService,
+   private usuarioService: AdmUsuarioService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.corretor=false;
+
+
     this.formLogin = this.formBuilder.group({
+            
       login: ['', [Validators.required]],
       senha: ['', [Validators.required]]
   });
+
   }
 
 
 
-login() {
-  this.corretor=true;
-    this.router.navigate(["/home"]);
-    console.log(this.router);
+// login() {
+//   this.corretor=true;
+//     this.router.navigate(["/home"]);
+//     console.log(this.router);
 
+// }
+login() {
+  console.log("teste0");
+  if (this.formLogin.valid && !this.formLogin.pending) {
+      console.log("teste");
+      this.loadingService.show();
+
+      let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
+      
+      this.tokenService
+              .setToken(this.formLogin.controls["login"].value, senha)
+              .subscribe(
+                  res => this.loginSuccess(res),
+                  err => this.loginError(err)
+              );
+  }
+  else {
+      Object.keys(this.formLogin.controls).forEach(key => {
+          this.formLogin.get(key).markAsTouched();
+     
+      });
+      return;
+  }
 }
 
+initFormNovaSenha(){
+  this.formNovaSenha = this.formBuilder.group({
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
+  });
 
-
+  this.formNovaSenha.setValidators([PasswordValidation.MatchPassword]);
+}
+hasErrorLogin(id): boolean {
+  return this.formLogin.get(id).invalid && (this.formLogin.get(id).dirty || this.formLogin.get(id).touched)
+}
 loginError(err: any): void {
     console.log(err);
     
@@ -70,6 +107,50 @@ loginSuccess(res: string): void {
     // this.tokenService.getTokenSuccess(res);
 
     this.router.navigate(["home"]);
+}
+
+enviarCodigo() {
+
+  if (this.formResetar.controls["codigo"].valid) {
+
+      this.loadingService.show();
+
+      this.usuarioService.validarCodigo(
+          this.formLogin.controls["login"].value, 
+          this.formResetar.controls["codigo"].value
+      ).subscribe(
+          res => this.validarSuccess(res),
+          err => this.validarError(err)
+      )
+
+  }        
+}
+
+validarError(err: any): void {
+  console.log(err);
+  
+  this.loadingService.hide();
+
+  Swal.fire(
+      'Atenção',
+      'Código inválido.',
+      'warning'
+  );
+}
+validarSuccess(res: string): void {
+  this.loadingService.hide();
+
+  if(res){
+      this.passo = 3;
+      this.initFormNovaSenha();
+  }
+  else{
+      Swal.fire(
+          'Atenção',
+          'Código inválido.',
+          'warning'
+      );
+  }
 }
   
 
