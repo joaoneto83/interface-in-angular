@@ -29,7 +29,7 @@ export class TokenService {
     // Telefone: string;
     // NomeSetor: string;
     // Registro: string;
-    // Acessos: string[];
+  Acessos: string[];
 
     private userSubject = new BehaviorSubject<Usuario>(null);
 
@@ -112,12 +112,12 @@ export class TokenService {
         }
     }
 
-    // haveAdmin() {
-    //     if (this.Acessos.find(x => x.includes("EDICAO")))
-    //         return true;
+    haveAdmin() {
+        if (this.Acessos.find(x => x.includes("EDICAO")))
+            return true;
 
-    //     return false;
-    // }
+        return false;
+    }
 
     getTokenSuccess(token: string) {
         if (isPlatformBrowser(this.platformId)) {

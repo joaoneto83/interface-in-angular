@@ -19,7 +19,7 @@ export class RoleGuard implements CanActivate {
             
             if(!this.tokenService.haveRoles(roles)){
                 this.router.navigate(
-                    ['/PortaldeApoio']
+                    ['/home']
                 );
                 return false;
             }
