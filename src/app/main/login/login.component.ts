@@ -63,7 +63,8 @@ login() {
       let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
       
       this.tokenService
-              .setToken(this.formLogin.controls["login"].value, senha)
+              // .setToken(this.formLogin.controls["login"].value, senha)
+              .setToken(this.formLogin.controls["login"].value, this.formLogin.controls["senha"])
               .subscribe(
                   res => this.loginSuccess(res),
                   err => this.loginError(err)
