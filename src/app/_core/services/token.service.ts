@@ -78,7 +78,7 @@ export class TokenService {
 
     setToken(usuario, senha) {
         return this.http.post(`${environment.PORTAL_API}/Login/Login`,
-            { userID: usuario, password: senha },
+            { login: usuario, senha: senha },
             { responseType: "text" });
     }
 

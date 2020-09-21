@@ -60,15 +60,17 @@ login() {
       console.log("teste");
       this.loadingService.show();
 
-      let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
+      // let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
+      let senha = this.formLogin.controls["senha"].value
       
       this.tokenService
-              // .setToken(this.formLogin.controls["login"].value, senha)
-              .setToken(this.formLogin.controls["login"].value, this.formLogin.controls["senha"])
+              .setToken(this.formLogin.controls["login"].value, senha)
+              // .setToken(this.formLogin.controls["login"].value, this.formLogin.controls["senha"])
               .subscribe(
                   res => this.loginSuccess(res),
                   err => this.loginError(err)
               );
+              
   }
   else {
       Object.keys(this.formLogin.controls).forEach(key => {
@@ -105,7 +107,7 @@ loginError(err: any): void {
 loginSuccess(res: string): void {
     this.loadingService.hide();
 
-    // this.tokenService.getTokenSuccess(res);
+     this.tokenService.getTokenSuccess(res);
 
     this.router.navigate(["home"]);
 }
