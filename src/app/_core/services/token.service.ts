@@ -16,19 +16,25 @@ export class TokenService {
 
 
     hasError: boolean;
+    
+    Email: string;
+    Avatar: string;
+    PerfilId: number;
+    Perfil: string;
+
     Id: string;
     Nome: string;
-    Sigla: string;
-    CaminhoFoto: string;
-    Telefone: string;
-    NomeSetor: string;
-    Registro: string;
-    Acessos: string[];
+    // Sigla: string;
+    // CaminhoFoto: string;
+    // Telefone: string;
+    // NomeSetor: string;
+    // Registro: string;
+    // Acessos: string[];
 
     private userSubject = new BehaviorSubject<Usuario>(null);
 
     constructor(private http: HttpClient, handler: HttpBackend, @Inject(PLATFORM_ID) private platformId: Object) {
-        ////this.http = new HttpClient(handler); //Usar apenas quando não chamar o Auth
+       this.http = new HttpClient(handler); //Usar apenas quando não chamar o Auth
 
         if (isPlatformBrowser(this.platformId)) {
             this.hasToken() &&
@@ -42,16 +48,16 @@ export class TokenService {
         }
     }
 
-    haveRoles(roles: string[]) {
-        let have = false;
-        roles.forEach(role => {
-            if (this.Acessos.find(x => x.includes(role))) {
-                have = true;
-            }
-        });
+    // haveRoles(roles: string[]) {
+    //     let have = false;
+    //     roles.forEach(role => {
+    //         if (this.Acessos.find(x => x.includes(role))) {
+    //             have = true;
+    //         }
+    //     });
 
-        return have;
-    }
+    //     return have;
+    // }
 
     getTokenExpirationDate(token: string): Date {
         if (isPlatformBrowser(this.platformId)) {
@@ -82,6 +88,12 @@ export class TokenService {
             { responseType: "text" });
     }
 
+    // setToken(usuario, senha) {
+    //     return this.http.post(`${environment.PORTAL_API}/Token`,
+    //         { userID: usuario, password: senha },
+    //         { responseType: "text" });
+    // }
+
     getToken() {
         if (isPlatformBrowser(this.platformId)) {
             return window.localStorage.getItem(KEY);
@@ -100,12 +112,12 @@ export class TokenService {
         }
     }
 
-    haveAdmin() {
-        if (this.Acessos.find(x => x.includes("EDICAO")))
-            return true;
+    // haveAdmin() {
+    //     if (this.Acessos.find(x => x.includes("EDICAO")))
+    //         return true;
 
-        return false;
-    }
+    //     return false;
+    // }
 
     getTokenSuccess(token: string) {
         if (isPlatformBrowser(this.platformId)) {
@@ -134,6 +146,10 @@ export class TokenService {
         // this.Telefone = user.telefone;
         // this.NomeSetor = user.nomeSetor;
         // this.Registro = user.registro;
+        this.Email = user.email;
+        this.Avatar= user.avatar;
+        this.PerfilId= user.perfilId;
+        this.Perfil=user.perfil;
         this.userSubject.next(user);
     }
 }

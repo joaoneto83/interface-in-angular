@@ -16,8 +16,6 @@ import { PasswordValidation } from 'src/app/_shered/validators/password/password
 })
 export class LoginComponent implements OnInit {
 
-  
-
   passo: number = 1;
 
   formLogin: FormGroup
@@ -37,35 +35,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.formLogin = this.formBuilder.group({
-            
       login: ['', [Validators.required]],
       senha: ['', [Validators.required]]
   });
 
   }
 
-
-
-// login() {
-//   this.corretor=true;
-//     this.router.navigate(["/home"]);
-//     console.log(this.router);
-
-// }
 login() {
-  console.log("teste0");
+
   if (this.formLogin.valid && !this.formLogin.pending) {
-      console.log("teste");
+    
       this.loadingService.show();
 
-      // let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
-      let senha = this.formLogin.controls["senha"].value
+         //let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
+     let senha = this.formLogin.controls["senha"].value
       
       this.tokenService
               .setToken(this.formLogin.controls["login"].value, senha)
-              // .setToken(this.formLogin.controls["login"].value, this.formLogin.controls["senha"])
+            
               .subscribe(
                   res => this.loginSuccess(res),
                   err => this.loginError(err)
@@ -105,11 +93,12 @@ loginError(err: any): void {
 }
 
 loginSuccess(res: string): void {
+  console.log("res",res);
     this.loadingService.hide();
 
      this.tokenService.getTokenSuccess(res);
 
-    this.router.navigate(["home"]);
+    this.router.navigate(["/home"]);
 }
 
 enviarCodigo() {
