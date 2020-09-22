@@ -17,12 +17,12 @@ export class RoleGuard implements CanActivate {
             
             let roles = route.data["roles"] as Array<string>;
             
-            if(!this.tokenService.haveRoles(roles)){
-                this.router.navigate(
-                    ['/home']
-                );
-                return false;
-            }
+            // if(!this.tokenService.haveRoles(roles)){
+            //     this.router.navigate(
+            //         ['/home']
+            //     );
+            //     return false;
+            // }
             return true;
     }
 }

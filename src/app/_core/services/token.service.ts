@@ -34,7 +34,7 @@ export class TokenService {
     private userSubject = new BehaviorSubject<Usuario>(null);
 
     constructor(private http: HttpClient, handler: HttpBackend, @Inject(PLATFORM_ID) private platformId: Object) {
-       this.http = new HttpClient(handler); //Usar apenas quando não chamar o Auth
+       //this.http = new HttpClient(handler); //Usar apenas quando não chamar o Auth
 
         if (isPlatformBrowser(this.platformId)) {
             this.hasToken() &&
