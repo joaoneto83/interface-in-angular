@@ -6,10 +6,6 @@ import { environment } from 'src/environments/environments';
 
 
 
-// import { NovaSenha } from '../../login/novaSenha';
-// import { TipoUsuario } from '../../_models/tipoUsuario';
-// import { TipoDependente } from '../../_models/tipoDependente';
-
 @Injectable({
     providedIn: 'root',
 })

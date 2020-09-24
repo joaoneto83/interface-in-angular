@@ -2,9 +2,7 @@
 // import { Arquivo } from '../../_models/Arquivo';
 
 export interface Usuario {
-
-
-    id: string,
+      id: string,
       nome: string,
       email: string,
       avatar: string,

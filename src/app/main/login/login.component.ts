@@ -61,6 +61,7 @@ login() {
               );              
   }
   else {
+    this.loginvazio();
       Object.keys(this.formLogin.controls).forEach(key => {
           this.formLogin.get(key).markAsTouched();
      
@@ -90,6 +91,16 @@ loginError(err: any): void {
         'Login/Senha inválidos.',
         'warning'
     );
+}
+loginvazio(): void {
+
+  this.loadingService.hide();
+
+  Swal.fire(
+      'Atenção',
+      'por favor, informe usuário e senha.',
+      'warning'
+  );
 }
 
 

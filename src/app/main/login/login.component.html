@@ -7,11 +7,11 @@
 
         <div class="card-body">
             <form [formGroup]="formLogin">
-                <div class="form-group">
+                <div class="form-group" [class.has-danger]="hasErrorLogin('login')">
                     <label for="login">Login</label>
                     <input formControlName="login" (keydown.enter)="login()" type="text"class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group" [class.has-danger]="hasErrorLogin('senha')">
                     <label for="password">Senha</label>
                     <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control">
                 </div>

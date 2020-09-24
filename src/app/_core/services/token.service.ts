@@ -140,12 +140,6 @@ export class TokenService {
         const user = jwt_decode(token) as Usuario;
         this.Id = user.id;
         this.Nome = user.nome;
-        // this.CaminhoFoto = user.caminhoFoto;
-        // this.Sigla = user.sigla;
-        // this.Acessos = user.acessos.split("|");
-        // this.Telefone = user.telefone;
-        // this.NomeSetor = user.nomeSetor;
-        // this.Registro = user.registro;
         this.Email = user.email;
         this.Avatar= user.avatar;
         this.PerfilId= user.perfilId;
