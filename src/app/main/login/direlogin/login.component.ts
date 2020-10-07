@@ -10,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
 import { PasswordValidation } from 'src/app/_shered/validators/password/password.validator';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-direlogin',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class DireLoginComponent implements OnInit {
 
   passo: number = 1;
 
@@ -35,10 +35,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.formLogin = this.formBuilder.group({
-      login: ['', [Validators.required]],
-      senha: ['', [Validators.required]]
-  });
+    this.router.navigate(["/login"]);
 
   }
 

@@ -1,23 +1,26 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
 
-import { LoginComponent } from './login.component';
+
+
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DireLoginComponent } from './direlogin/login.component';
+import { DireLoginComponent } from './login.component';
+
+import { DireLoginRoutingModule } from './login-routing.module';
+
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    DireLoginComponent
     
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    DireLoginRoutingModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -25,8 +28,8 @@ import { DireLoginComponent } from './direlogin/login.component';
     
   ],
   exports: [
-    LoginComponent
+    DireLoginComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LoginModule { }
+export class DireLoginModule { }

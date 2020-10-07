@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RepresentativeRoutingModule } from './representative-routing.module';
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
+import { LoginModule } from '../login/login.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { ProductsModule } from './products/products.module';
     RepresentativeRoutingModule,
     HomeModule,
     OrdersModule,
+    LoginModule,
     ProductsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

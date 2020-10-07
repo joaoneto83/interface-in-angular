@@ -16,7 +16,6 @@ export class RoleGuard implements CanActivate {
         state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
             
             let roles = route.data["roles"] as Array<string>;
-            
             // if(!this.tokenService.haveRoles(roles)){
             //     this.router.navigate(
             //         ['/home']

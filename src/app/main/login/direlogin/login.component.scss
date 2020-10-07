@@ -1,0 +1,62 @@
+
+
+@media (max-width: 375px){
+  .login {
+    width: 300px !important;
+  }
+}
+.has-danger .ng-invalid{
+  border-bottom: 0.5px solid red;
+}
+
+.login {
+  width: 350px;
+  border-radius: 10px !important;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+
+  .elgin-up-logo {
+    text-align: center;
+
+    img {
+      max-width: 226px;
+      height: auto;
+    }
+  }
+
+  form {
+    label {
+      color: #9B9A9A;
+      font-size: var(--default-text);
+      margin-bottom: 5px;
+      margin-left: 5px;
+    }
+
+    input {
+      border-radius: 10px;
+    }
+
+    button[type=submit] {
+      margin: 1rem 0;
+      padding: .575rem .75rem;
+      background-color: var(--primary);
+      font-size: var(--default-text);
+      text-transform: uppercase;
+      width: 100%;
+      border: 1px solid #E5E5E5;
+      border-radius: 25px;
+      transition: 0.3s;
+      
+      &:hover {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  a {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    font-size: var(--default-text);
+    text-decoration: underline;
+  }
+}
