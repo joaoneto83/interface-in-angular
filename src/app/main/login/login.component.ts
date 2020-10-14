@@ -51,13 +51,9 @@ login() {
 
   if (this.formLogin.valid && !this.formLogin.pending) {
     let senha = this.formLogin.controls["senha"].value
-
- 
+    
       this.loadingService.show();
 
-      //  let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
-
-      
       this.tokenService
               .setToken(this.formLogin.controls["login"].value, senha)
             
@@ -68,7 +64,7 @@ login() {
               );              
   }
   else {
-    this.loginvazio();
+    // this.loginvazio();
       Object.keys(this.formLogin.controls).forEach(key => {
           this.formLogin.get(key).markAsTouched();
      

@@ -9,11 +9,11 @@
             <form [formGroup]="formLogin">
                 <div class="form-group" [class.has-danger]="hasErrorLogin('login')">
                     <label for="login">Login</label>
-                    <input formControlName="login" (keydown.enter)="login()" type="text"class="form-control">
+                    <input formControlName="login" (keydown.enter)="login()" type="text" class="form-control" placeholder="Prencha o Login">
                 </div>
                 <div class="form-group" [class.has-danger]="hasErrorLogin('senha')">
                     <label for="password">Senha</label>
-                    <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control">
+                    <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control" placeholder="Prencha a Senha">
                 </div>
                 <button (click) ="login();" type="submit" class="btn btn-primary" >entrar</button>
             </form>
