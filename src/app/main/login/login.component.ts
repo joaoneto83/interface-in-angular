@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
 
   messagem: string;
 
+  loading:boolean;
+
   constructor(private loadingService: LoadingService,
    private tokenService: TokenService,
    private usuarioService: AdmUsuarioService,
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
     private router: Router) {
      
      this.messagem ="Preencha os campos Login e Senha!";
+     this.loading = false;
      }
 
   ngOnInit() {
@@ -53,6 +56,7 @@ login() {
     let senha = this.formLogin.controls["senha"].value
     
       this.loadingService.show();
+      this.loading = true;
 
       this.tokenService
               .setToken(this.formLogin.controls["login"].value, senha)
@@ -88,7 +92,7 @@ loginError(err: any): void {
     console.log(err);
     
     this.loadingService.hide();
-
+  this.loading = false;
     Swal.fire(
         'Atenção',
         'Login/Senha inválidos.',
@@ -111,10 +115,9 @@ loginvazio(): void {
 loginSuccess(res: string): void {
   let rest = JSON.parse(res);
   let token = rest.result.data['token'].toString();
-  console.log("res",token);
 
     this.loadingService.hide();
-
+    this.loading = false;
      this.tokenService.getTokenSuccess(token);
 
     this.router.navigate(["/inicio"]);

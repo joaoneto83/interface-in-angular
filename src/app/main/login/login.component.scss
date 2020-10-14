@@ -12,6 +12,14 @@
   background-size: cover;
   z-index: -1;
 }
+.caixa-loading {
+  opacity: 0.3;
+  padding-top: 20%;
+}
+.loading{
+display: block;
+margin: auto;
+}
 
 @media (max-width: 375px){
   .login {
