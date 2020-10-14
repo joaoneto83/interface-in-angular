@@ -8,16 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  
-
-  constructor(private router: Router) {
-   
-   }
+  constructor(private router: Router) { }
 
   hasRoute(route: string) {
- 
     return this.router.url.includes(route);
-    
   }
-
 }

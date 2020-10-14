@@ -1,11 +1,12 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
-import { environment } from '../../../environments/environments';
+
 
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { Usuario } from '../../_shered/model/usuario';
+import { environment } from 'src/environments/environment';
 
 const KEY = 'ElginPortalToken';
 

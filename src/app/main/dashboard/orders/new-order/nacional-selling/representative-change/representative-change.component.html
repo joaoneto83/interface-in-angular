@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <div class="close" (click)="activeModal.dismiss()">
+        <small>fechar</small>
+        <small aria-hidden="true">&times;</small>
+    </div>
+</div>
+
+<div class="modal-body">
+    <span class="title">Alterar Representante/Área</span>
+
+    <form aria-describedby="troca de representante">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="representative">Representante</label>
+                <select id="representative" class="custom-select">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="area">Área</label>
+                <select id="area" class="custom-select">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="type">Tipo de Pedido</label>
+                <select id="type" class="custom-select">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="office">Escritório</label>
+                <select id="office" class="custom-select">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="requesterArea">Área Requisitante</label>
+                <select id="requesterArea" class="custom-select">
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-close">continuar</button>
+</div>

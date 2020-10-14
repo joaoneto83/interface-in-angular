@@ -1,0 +1,31 @@
+<section>
+    <div class="navigation">
+        <div class="title">
+            <em class="fas fa-suitcase"></em>
+            <span>Representantes</span>
+        </div>
+    </div>
+</section>
+
+<section>
+
+    <div class="types-button">
+        <button class="btn btn-item" *ngFor="let item of typeItems; let i = index"
+            [ngClass]="{active: selectedItem == i}" (click)="navigate(i)">
+            <em [class]=" item.icon"></em>
+            <span>{{item.title}}</span>
+        </button>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" routerLink="./">Produtos</li>
+            <li class="breadcrumb-item" aria-current="page" *ngIf="hasRoute('incluir')">Cadastro de Representante</li>
+            <li class="breadcrumb-item" aria-current="page" *ngIf="hasRoute('consulta')">Consulta de Representante</li>
+        </ol>
+    </nav>
+</section>
+
+<section>
+    <router-outlet></router-outlet>
+</section>

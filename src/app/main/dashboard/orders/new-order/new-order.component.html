@@ -1,0 +1,37 @@
+<section class="top">
+
+    <div class="page-title">
+        <div class="title">
+            <em class="fas fa-cart-arrow-down"></em>
+            <span>Pedidos</span>
+        </div>
+    </div>
+
+    <div class="types">
+        <div class="col-md-1">
+            <span class="title">tipos</span>
+        </div>
+        <div class="col-md-11">
+            <div class="types-button">
+                <button class="btn btn-item" *ngFor="let item of typeItems; let i = index"
+                    [ngClass]="{active: selectedItem == i}" (click)="navigate(i)">
+                    <em [class]=" item.icon"></em>
+                    <span>{{item.title}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" routerLink="../">Pedidos</li>
+            <li class="breadcrumb-item" routerLink="./" aria-current="page">Novo Pedido</li>
+            <li class="breadcrumb-item" aria-current="page" *ngIf="hasRoute('vendanacional')">Venda Nacional</li>
+        </ol>
+    </nav>
+
+</section>
+
+<section class="content">
+    <router-outlet></router-outlet>
+</section>

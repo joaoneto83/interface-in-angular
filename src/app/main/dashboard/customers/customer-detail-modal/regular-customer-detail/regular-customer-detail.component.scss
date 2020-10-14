@@ -1,0 +1,64 @@
+.custom-control-label {
+    font-size: var(--default-text);
+    color: var(--primary) !important;
+}
+
+.custom-control-label::before {
+    border: #ced4da solid 1px;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #007bff;
+    border: 3px solid #fff;
+    padding: 6px;
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    background-image: none !important;
+    background-color: unset;
+    border: 1px solid #ced4da;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+@media screen and (max-width: 425px) {
+    label {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+}
+
+label {
+    color: #6c757d !important;
+    font-size: 0.7rem;
+    margin-bottom: 0px;
+}
+
+input,
+select,
+textarea {
+    border-radius: 6px;
+    font-size: var(--default-text);
+    color: var(--primary);
+}
+
+.btn-save {
+    min-width: 150px;
+    background-color: var(--primary);
+    font-size: var(--sub-text);
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 32px;
+}
+
+.btn-update {
+    background-color: #ff8c2d;
+    font-size: var(--default-text);
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 32px;
+}

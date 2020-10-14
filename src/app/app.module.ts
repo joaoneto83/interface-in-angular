@@ -9,7 +9,7 @@ import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './main/login/login.module';
-import { RepresentativeModule } from './main/representative/representative.module';
+import { RepresentativeModule } from './main/dashboard/dashboard.module';
 import { LayoutsModule } from './layouts/layouts.module';
 
 @NgModule({

@@ -1,0 +1,97 @@
+<p class="title">Consulta</p>
+
+<div class="product-types">
+    <span *ngFor="let item of elginProducts; let i = index" [ngClass]="{active: selectedItem == i}"
+        (click)="navigate(i, item)">{{item.linha}}</span>
+</div>
+
+<div *ngIf="selectedItem == 0" class="elgin-products-container">
+    <div *ngFor="let elginProduct of elginProducts[0]?.produtosTipo; let i = index"
+        [ngClass]="{active: selectedProduct == i}" (click)="selectProduct(i, elginProduct)" class="elgin-products">
+        <img [src]="elginProduct?.thumbnail" alt="elginProduct" class="item-thumbnail">
+        <span>{{ elginProduct?.tipo }}</span>
+    </div>
+</div>
+
+<div class="product-specs" *ngIf="productSelected">
+    <div class="segments">
+        <span>{{ productLine.linha }}</span>
+        <span>{{ productType.tipo }}</span>
+    </div>
+</div>
+
+<div class="table-responsive" *ngIf="productSelected">
+    <small>186 produtos encontrados</small>
+
+    <table class="table table-bordered table-sm" aria-describedby="orders table">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="all"
+                            (change)="isSelected = !isSelected">
+                        <label class="custom-control-label" for="all"></label>
+                    </div>
+                </th>
+                <th scope="col" class="text-center">Imagem</th>
+                <th scope="col">Código<em class="fas fa-search"></em></th>
+                <th scope="col">Descrição<em class="fas fa-search"></em></th>
+                <th scope="col">Área<em class="fas fa-search"></em></th>
+                <th scope="col">Estoque</th>
+                <th scope="col">Valor/Desc./NCM</th>
+                <th scope="col" class="text-center">Venda Liberada</th>
+                <th scope="col" class="text-center">Produtos e Tipos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="selector" id="all1"
+                            [checked]="isSelected">
+                        <label class="custom-control-label" for="all1"></label>
+                    </div>
+                </td>
+
+                <td class="text-center">
+                    <img src="../../../../../assets/artefacts/splithighwall.png" alt="imagem do produto"
+                        class="img-thumbnail">
+                </td>
+                <td>0012455425</td>
+                <td>UN.EXT.HW INVERTER TREND,18K,QF, 220V,1PH</td>
+                <td>DIMACON</td>
+                <td>1 - EL02 - Elgin S/A - Fabrica Mogi - SP</td>
+                <td>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="actualPrice">Preço atual</label>
+                            <span id="actualPrice">R$ 666,0999</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="descount">% Desconto</label>
+                            <span id="descount">1,0000%</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ncm">NCM</label>
+                            <span id="ncm"> 84189900</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center"><span [ngClass]="{'green': true , 'red': false}">sim</span></td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-queries" (click)="openProductDetailModal()">
+                            <em class="fas fa-search"></em>
+                            <span>ver produtos</span>
+                        </button>
+                        <button class="btn btn-queries" (click)="openOrderTypesModal()">
+                            <em class="fas fa-external-link-alt"></em>
+                            <span>tipos de produtos</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

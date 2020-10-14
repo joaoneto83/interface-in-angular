@@ -7,10 +7,10 @@ import { NotFoundComponent } from 'src/app/layouts/not-found/not-found.component
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./main/representative/representative.module').then(m => m.RepresentativeModule)
+    loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.RepresentativeModule)
   },
   {
-    path: 'login', 
+    path: 'login',
     loadChildren: () => import('./main/login/login.module').then(m => m.LoginModule)
   },
   {

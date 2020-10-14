@@ -1,0 +1,77 @@
+<p class="title">Custo dos Produtos</p>
+
+<div class="product-types">
+    <span *ngFor="let item of elginProducts; let i = index" [ngClass]="{active: selectedItem == i}"
+        (click)="navigate(i, item)">{{item.linha}}</span>
+</div>
+
+<div *ngIf="selectedItem == 0" class="elgin-products-container">
+    <div *ngFor="let elginProduct of elginProducts[0]?.produtosTipo; let i = index"
+        [ngClass]="{active: selectedProduct == i}" (click)="selectProduct(i, elginProduct)" class="elgin-products">
+        <img [src]="elginProduct?.thumbnail" alt="elginProduct" class="item-thumbnail">
+        <span>{{ elginProduct?.tipo }}</span>
+    </div>
+</div>
+
+<div class="product-specs" *ngIf="productSelected">
+    <div class="segments">
+        <span>{{ productLine.linha }}</span>
+        <span>{{ productType.tipo }}</span>
+    </div>
+</div>
+
+<div class="d-flex flex-wrap align-items-end justify-content-between px-3" *ngIf="productSelected">
+    <small>186 produtos encontrados</small>
+
+    <div class="action-buttons">
+        <button class="btn btn-upload">UPLOAD DE ARQUIVO</button>
+        <button class="btn btn-download">DOWNLOAD MODELO EM EXECEL <em class="far fa-file-excel"></em></button>
+    </div>
+</div>
+
+<div class="table-responsive" *ngIf="productSelected">
+    <table class="table table-bordered table-sm" aria-describedby="orders table">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="all"
+                            (change)="isSelected = !isSelected">
+                        <label class="custom-control-label" for="all"></label>
+                    </div>
+                </th>
+                <th scope="col" class="text-center">Imagem</th>
+                <th scope="col">Código<em class="fas fa-search"></em></th>
+                <th scope="col">Descrição<em class="fas fa-search"></em></th>
+                <th scope="col">Área<em class="fas fa-search"></em></th>
+                <th scope="col">Estoque<em class="fas fa-search"></em></th>
+                <th scope="col" class="text-center">Custo Fixo</th>
+                <th scope="col" class="text-center">Custo Variável</th>
+                <th scope="col" class="text-center">Custo Variável ST</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="selector" id="all1"
+                            [checked]="isSelected">
+                        <label class="custom-control-label" for="all1"></label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <img src="../../../../../assets/artefacts/splithighwall.png" alt="imagem do produto"
+                        class="img-thumbnail">
+                </td>
+                <td>0012455425</td>
+                <td>UN.EXT.HW INVERTER TREND,18K,QF, 220V,1PH</td>
+                <td>DIMACON</td>
+                <td>1 - EL02 - Elgin S/A - Fabrica Mogi - SP</td>
+                <td class="text-center">30,4022</td>
+                <td class="text-center">573,8091</td>
+                <td class="text-center">0,000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

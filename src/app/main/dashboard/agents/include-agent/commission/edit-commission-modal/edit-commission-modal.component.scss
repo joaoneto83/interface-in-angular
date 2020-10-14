@@ -1,0 +1,100 @@
+@media (min-width: 1200px) {
+    .modal-xl {
+        max-width: 1340px;
+    }
+}
+
+.modal-backdrop {
+    background-color: #0063af;
+    opacity: 90% !important;
+}
+
+.modal-header {
+    padding: 1rem;
+    border: none;
+
+    .close {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        small {
+            margin: 0px 2px;
+            font-size: 13px;
+        }
+
+        small:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 15px;
+            height: 15px;
+            border: 1px solid;
+            border-radius: 50%;
+        }
+    }
+}
+
+elgin-edit-commission-modal {
+
+    .modal-body {
+        padding: 0rem 3rem 1rem 3rem;
+
+        @media screen and (max-width: 425px) {
+            label {
+                font-size: 0.8rem !important;
+                margin-bottom: 0.25rem !important;
+            }
+        }
+
+        label {
+            color: #6c757d !important;
+            font-size: var(--sub-text);
+            margin-bottom: 2px;
+        }
+
+        input,
+        select {
+            border-radius: 6px;
+            font-size: var(--default-text);
+            color: var(--primary);
+        }
+
+
+        .btn.calendar {
+            font-size: var(--sub-text) !important;
+            border-color: #ced4da;
+            border-top-right-radius: 6px !important;
+            border-bottom-right-radius: 6px !important;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            em {
+                color: #c7c7c7;
+            }
+        }
+
+        .btn-save {
+            min-width: 150px;
+            background-color: #4BD37B;
+            font-size: var(--sub-text);
+            text-transform: uppercase;
+            color: #ffffff;
+            border-radius: 32px;
+        }
+    }
+
+    .modal-footer {
+        justify-content: center !important;
+
+        .btn-custom {
+            font-size: var(--sub-text);
+            text-transform: uppercase;
+            color: #ffffff;
+            border-radius: 32px;
+            background-color: var(--primary);
+        }
+    }
+}

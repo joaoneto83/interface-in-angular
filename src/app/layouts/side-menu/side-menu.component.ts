@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class SideMenuComponent implements OnInit {
 
-  // @Output() sideMenuData = new EventEmitter();
-
   routeId: number;
   routeTitle: string;
 
@@ -33,11 +31,6 @@ export class SideMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() { }
-
-  // emitEventData() {
-  //   const data = { id: this.routeId, title: this.routeTitle };
-  //   this.sideMenuData.emit(data);
-  // }
 
   hideSideMenu() {
     const hover = document.getElementById('hoverMenu');
@@ -86,8 +79,15 @@ export class SideMenuComponent implements OnInit {
     if (this.routeId === 2) {
       this.router.navigate(['produtos']);
     }
-
-    // this.emitEventData();
+    if (this.routeId === 4) {
+      this.router.navigate(['representantes']);
+    }
+    if (this.routeId === 5) {
+      this.router.navigate(['clientes']);
+    }
+    if (this.routeId === 8) {
+      this.router.navigate(['relatorios']);
+    }
     this.hideSideMenu();
   }
 }

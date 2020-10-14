@@ -1,0 +1,95 @@
+<div class="modal-header">
+    <div class="close" (click)="activeModal.dismiss()">
+        <small>fechar</small>
+        <small aria-hidden="true">&times;</small>
+    </div>
+</div>
+
+<div class="modal-body">
+    <p>Adicionar Linha </p>
+
+    <div class="card product">
+        <div class="card-body">
+            <div class="thumb col-md-4">
+                <div class="thumb-frame">
+                    <img [src]="url" alt="" *ngIf="url != '' else disclaimer">
+                </div>
+                <ng-template #disclaimer>
+                    <div class="disclaimer">
+                        <em class="fas fa-server fa-5x"></em>
+                        <span>foto da linha de produto</span>
+                    </div>
+                </ng-template>
+            </div>
+
+            <div class="product-info col-md-8">
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="lineStructure">Estrutura de linha</label>
+                        <select class="custom-select" id="lineStructure">
+                            <option value="" selected disabled>Selecione</option>
+                            <option value="">Ar-Condicionado</option>
+                            <option value="">Automação</option>
+                            <option value="">Costura</option>
+                            <option value="">Energia Solar</option>
+                            <option value="">Iluminação</option>
+                            <option value="">Informatica</option>
+                            <option value="">Refrigeração</option>
+                            <option value="">Segurança</option>
+                            <option value="">Telefonia</option>
+                            <option value="">Maquinas de Sorvete</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="line">Linha</label>
+                        <input type="text" id="line" class="form-control">
+                    </div>
+                    <div class="form-group col-md-auto">
+                        <input type="file" accept="image/*" (change)="selectFile($event)" hidden #file>
+                        <button class="btn btn-custom w-100" (click)="file.click()">upload de imagem</button>
+                    </div>
+                    <div class="form-group col-md-auto">
+                        <label for="linePosition">Ordenar posição</label>
+                        <select class="custom-select" id="linePosition">
+                            <option value="">01</option>
+                            <option value="">02</option>
+                            <option value="">03</option>
+                            <option value="">04</option>
+                            <option value="">05</option>
+                            <option value="">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-auto ml-auto">
+                        <button class="btn btn-save w-100" (click)="isNewLine = true">Salvar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="my-3 type-title">Ar-Condicionado</p>
+
+    <div class="elgin-products-container">
+        <div *ngFor="let elginProduct of elginProducts[0]?.produtosTipo; let i = index" class="elgin-products">
+            <img [src]="elginProduct?.thumbnail" alt="elginProduct" class="item-thumbnail">
+            <span>{{ elginProduct?.tipo }}</span>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="prodLine{{i}}">
+                <label class="custom-control-label" for="prodLine{{i}}"><em class="fas fa-pen fa-sm"></em></label>
+            </div>
+        </div>
+        <div class="elgin-products new-line-product" [hidden]="!isNewLine">
+            <img src="../../../../../../assets/artefacts/evaporador.png" alt="elginProduct" class="item-thumbnail">
+            <span>Evaporadores</span>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="newProdLine">
+                <label class="custom-control-label" for="newProdLine"><em class="fas fa-pen fa-sm"></em></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center my-3">
+        <button type="button" class="btn btn-custom">editar linhas selecionadas</button>
+    </div>
+</div>

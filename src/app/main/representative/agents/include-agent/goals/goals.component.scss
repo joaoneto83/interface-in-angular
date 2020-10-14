@@ -1,0 +1,160 @@
+.title {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 425px) {
+
+        .btn-upload,
+        .btn-download {
+            width: 100%;
+            margin: 0.75rem 0rem !important;
+        }
+    }
+
+    .btn-upload,
+    .btn-download {
+        font-size: var(--sub-text);
+        margin: 0.5rem 0.35rem;
+        border-radius: 32px;
+    }
+
+    .btn-upload {
+        border: 1px solid;
+        color: var(--primary);
+    }
+
+    .btn-download {
+        border: 1px solid;
+        color: #4DBF69;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    label {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+}
+
+label {
+    color: #6c757d !important;
+    font-size: 0.7rem;
+    margin-bottom: 0px;
+}
+
+input,
+select {
+    border-radius: 6px;
+    font-size: var(--default-text);
+    color: var(--primary);
+}
+
+.search.form-group {
+    position: relative;
+
+    .fa-search {
+        position: absolute;
+        top: 31px;
+        left: 13px;
+        padding: 5px;
+        background: var(--title);
+        color: #fff;
+        border-radius: 50%;
+        font-size: var(--default-text);
+    }
+
+    .form-control {
+        padding-left: 40px;
+    }
+}
+
+.btn.calendar {
+    font-size: var(--sub-text) !important;
+    border-color: #ced4da;
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    em {
+        color: #c7c7c7;
+    }
+}
+
+.btn-save {
+    min-width: 150px;
+    background-color: var(--primary);
+    font-size: var(--sub-text);
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 32px;
+}
+
+.btn-add {
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.bottom-part {
+    padding: 0.75rem;
+    background-color: #F8F8F8;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0 3px;
+    border: 0;
+
+    thead th {
+        background-color: #265980;
+        color: #fff;
+        font-family: montserratregular;
+        font-size: var(--sub-text);
+        padding: .5rem;
+    }
+
+    tbody td:nth-child(1) {
+        width: 50px;
+    }
+
+    @media screen and (max-width: 425px) {
+        tbody td:not(:first-child) {
+            min-width: 160px;
+        }
+    }
+
+    tbody td {
+        font-family: montserratregular;
+        font-size: 11px;
+        color: var(--link);
+        vertical-align: middle;
+
+        .fa-times-circle {
+            opacity: 0.8;
+            transition: 0.1s;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+
+            }
+        }
+
+        .fa-times-circle {
+            color: #FF0000;
+        }
+
+        .img-thumbnail {
+            width: 100%;
+        }
+    }
+}

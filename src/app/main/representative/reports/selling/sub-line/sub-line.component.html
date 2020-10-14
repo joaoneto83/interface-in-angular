@@ -1,0 +1,218 @@
+<p class="title my-3">Realizado por Sub Linha</p>
+
+<div class="form-row align-items-end">
+    <div class="form-group col-md-4 search">
+        <label for="representative">Representante</label>
+        <em class="fas fa-search"></em>
+        <input type="text" id="representative" class="form-control" [ngbTypeahead]="search"
+            [resultFormatter]="formatter">
+    </div>
+    <div class="form-group col-md-4 search">
+        <label for="representativeCod">Código do Representante</label>
+        <em class="fas fa-search"></em>
+        <input type="text" id="representativeCod" class="form-control" [ngbTypeahead]="search"
+            [resultFormatter]="formatter">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="init-date">Data Início</label>
+        <div class="input-group">
+            <input class="form-control" id="init-date" name="d1" #c1="ngModel" [(ngModel)]="initDate" ngbDatepicker
+                #d1="ngbDatepicker" (input)="regex($event)" maxlength="10">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                    <em class="fas fa-calendar-alt"></em>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="end-date">Data Final</label>
+        <div class="input-group">
+            <input class="form-control" id="end-date" name="d2" #c2="ngModel" [(ngModel)]="endDate" ngbDatepicker
+                #d2="ngbDatepicker" (input)="regex($event)" maxlength="10">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                    <em class="fas fa-calendar-alt"></em>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="area">Área</label>
+        <select class="custom-select" id="area">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="subLine">Sub Linha</label>
+        <select class="custom-select" id="subLine">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group col-md-2">
+        <button class="btn btn-filter">FILTRAR</button>
+    </div>
+</div>
+
+<hr>
+
+<div class="form-row justify-content-end">
+    <div class="form-group col-md-auto">
+        <button class="btn btn-custom">SELECIONAR ARQUIVO</button>
+    </div>
+    <div class="form-group col-md-auto">
+        <button class="btn btn-custom">DOWNLOAD MODELO</button>
+    </div>
+    <div class="form-group col-md-auto">
+        <button class="btn btn-export">EXPORTAR EXCEL<em class="far fa-file-excel ml-2"></em></button>
+    </div>
+</div>
+
+<div class="form-row">
+
+    <div class="col-md-12 mb-3 px-2">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <span class="title">Realizado por Sub Linha</span>
+                    <a href="javascript:void(0)">+ detalhes</a>
+                </div>
+
+                <div class="overflow-auto">
+                    <elgin-grouped-vertical-chart [barChart]="subLine" [view]="groupedVerticalview" [legend]="true"
+                        [legendTitle]="groupedVerticallegendTitle" [legendPosition]="groupedVerticallegendPosition"
+                        [scheme]="groupedVerticalcolorScheme" [showXAxis]="true" [showYAxisLabel]="true"
+                        [showDataLabel]="true" [barPadding]="groupedVerticalbarPadding"
+                        [groupPadding]="groupedVerticalgroupPadding">
+                    </elgin-grouped-vertical-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 mb-3 px-2">
+        <div class="card card-product-line shadow-sm h-100">
+            <div class="card-body">
+
+                <div class="d-flex flex-wrap align-items-center mb-3">
+                    <span class="title col-md-4 mb-3">Linha de produtos</span>
+
+                    <div class="checkboxes-inline col-md-8 mb-3">
+                        <div class="form-row">
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="airConditioner">
+                                <label class="custom-control-label" for="airConditioner">Ar condicionado</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="automation">
+                                <label class="custom-control-label" for="automation">Automação</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="seam">
+                                <label class="custom-control-label" for="seam">Costura</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="solarEnergy">
+                                <label class="custom-control-label" for="solarEnergy">Energia Solar</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="lighting">
+                                <label class="custom-control-label" for="lighting">Iluminação</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="informatic">
+                                <label class="custom-control-label" for="informatic">Informática</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="cooling">
+                                <label class="custom-control-label" for="cooling">Refrigeração</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="security">
+                                <label class="custom-control-label" for="security">Segurança</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="telephony">
+                                <label class="custom-control-label" for="telephony">Telefonia</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline col-md-2">
+                                <input type="checkbox" class="custom-control-input" id="iceCreamMachine">
+                                <label class="custom-control-label" for="iceCreamMachine">Máquina de Sorvete</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-3 px-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <span class="title">Ar Condicionados</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                                <span class="sub-title">Sub-linha</span>
+                                <div class="overflow-auto">
+                                    <elgin-pie-grid [data]="airConditioner" [view]="pieGridView"
+                                        [colorScheme]="pieGridColorScheme">
+                                    </elgin-pie-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3 px-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <span class="title">Costura</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                                <span class="sub-title">Sub-linha</span>
+                                <div class="overflow-auto">
+                                    <elgin-pie-grid [data]="airConditioner" [view]="pieGridView"
+                                        [colorScheme]="pieGridColorScheme">
+                                    </elgin-pie-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3 px-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <span class="title">Telefonia</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                                <span class="sub-title">Sub-linha</span>
+                                <div class="overflow-auto">
+                                    <elgin-pie-grid [data]="airConditioner" [view]="pieGridView"
+                                        [colorScheme]="pieGridColorScheme">
+                                    </elgin-pie-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3 px-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <span class="title">Energia Solar</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                                <span class="sub-title">Sub-linha</span>
+                                <div class="overflow-auto">
+                                    <elgin-pie-grid [data]="airConditioner" [view]="pieGridView"
+                                        [colorScheme]="pieGridColorScheme">
+                                    </elgin-pie-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

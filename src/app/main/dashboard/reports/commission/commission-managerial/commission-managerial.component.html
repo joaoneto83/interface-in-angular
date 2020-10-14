@@ -1,0 +1,149 @@
+<p class="title my-3">Gerencial</p>
+
+<div class="form-row align-items-end">
+    <div class="form-group col-md-2 ">
+        <label for="date">Mês/Ano</label>
+        <div class="input-group">
+            <input class="form-control" id="date" name="d1" #c1="ngModel" [(ngModel)]="date" ngbDatepicker
+                #d1="ngbDatepicker" (input)="regex($event)" maxlength="10">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                    <em class="fas fa-calendar-alt"></em>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-2 mr-auto">
+        <button class="btn btn-filter">FILTRAR</button>
+    </div>
+    <div class="form-group col-md-auto">
+        <button class="btn btn-custom">SELECIONAR ARQUIVO</button>
+    </div>
+    <div class="form-group col-md-auto">
+        <button class="btn btn-custom">DOWNLOAD MODELO</button>
+    </div>
+    <div class="form-group col-md-auto">
+        <button class="btn btn-export">EXPORTAR EXCEL<em class="far fa-file-excel ml-2"></em></button>
+    </div>
+</div>
+
+<hr>
+
+<div class="form-row">
+    <div class="col-md-12 mb-3 px-2">
+        <div class="card card-representative shadow-sm">
+            <div class="card-body">
+                <p class="title">Comissionados</p>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <select id="area" class="custom-select">
+                            <option value="" selected readonly disabled>Selecionar Área</option>
+                            <option value="">...</option>
+                            <option value="">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 search">
+                        <em class="fas fa-search"></em>
+                        <input id="lineSearch" type="text" class="form-control" [ngbTypeahead]="search"
+                            [resultFormatter]="formatter" placeholder="Busca por linha">
+                    </div>
+                    <div class="form-group col-md-4 search">
+                        <em class="fas fa-search"></em>
+                        <input id="managerSearch" type="text" class="form-control" [ngbTypeahead]="search"
+                            [resultFormatter]="formatter" placeholder="Busca por Gerente">
+                    </div>
+                </div>
+
+                <div class="overflow-auto">
+                    <elgin-advanced-pie-chart [data]="representativesGoals" [view]="advancedPieChartView"
+                        [colorScheme]="advancedPieChartScheme"></elgin-advanced-pie-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7 mb-3 px-2">
+        <div role="button" class="card effective-commission-card shadow-sm h-100" (click)="openEffectiveCommissionModal()">
+            <div class="card-body">
+                <p class="sub-title text-dark mb-3">COMISSÕES EFETIVAS</p>
+
+                <div class="approved">
+                    <div class="content">
+                        <div class="state avaliable">
+                            <em class="fas fa-money-bill"></em>
+                            <span class="status">Liberadas</span>
+                            <span>252</span>
+                            <span class="value">R$ 2.0240,00</span>
+                        </div>
+
+                        <img src="../../../../assets/artefacts/Ellipse31.png" alt="straight line">
+
+                        <div class="state approval">
+                            <em class="fas fa-coins"></em>
+                            <span class="status">Em Aprovação</span>
+                            <span>253</span>
+                            <span class="value">R$ 3.0278,00</span>
+                        </div>
+
+                        <img src="../../../../assets/artefacts/Ellipse31.png" alt="straight line">
+
+                        <div class="state overdue">
+                            <em class="far fa-clock"></em>
+                            <span class="status">Em atraso</span>
+                            <span>53</span>
+                            <span class="value">R$ 1.0278,00</span>
+                        </div>
+
+                        <img src="../../../../assets/artefacts/Ellipse31.png" alt="straight line">
+
+                        <div class="state new">
+                            <em class="fas fa-money-bill"></em>
+                            <span class="status">Futuras</span>
+                            <span>753</span>
+                            <span class="value">R$ 2.0240,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 mb-3 px-2">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p class="sub-title text-dark mb-3">COMISSÕES ABERTAS</p>
+
+                <div class="approved">
+                    <div class="content">
+                        <div class="state avaliable">
+                            <em class="fas fa-money-bill avaliable"></em>
+                            <span class="status">Liberadas</span>
+                            <span>252</span>
+                            <span class="value">R$ 2.0240,00</span>
+                        </div>
+
+                        <img src="../../../../assets/artefacts/Ellipse31.png" alt="straight line">
+
+                        <div class="state approval">
+                            <em class="fas fa-coins"></em>
+                            <span class="status">Em Aprovação</span>
+                            <span>253</span>
+                            <span class="value">R$ 3.0278,00</span>
+                        </div>
+
+                        <img src="../../../../assets/artefacts/Ellipse31.png" alt="straight line">
+
+                        <div class="state overdue">
+                            <em class="far fa-clock"></em>
+                            <span class="status">Em atraso</span>
+                            <span>53</span>
+                            <span class="value">R$ 1.0278,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

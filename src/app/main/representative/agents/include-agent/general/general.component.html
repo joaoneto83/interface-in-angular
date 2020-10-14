@@ -1,0 +1,211 @@
+<div class="px-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <span class="title">Cadastro de Representantes</span>
+
+        <div class="action-buttons">
+            <button class="btn btn-upload">UPLOAD DE ARQUIVO</button>
+            <button class="btn btn-download">DOWNLOAD MODELO EM EXECEL <em class="far fa-file-excel"></em></button>
+        </div>
+    </div>
+
+    <form>
+        <p>Informações Principais</p>
+
+        <div class="form-row align-items-end">
+            <div class="form-group col-md-3">
+                <label for="itemStatus" class="d-block">Classificação de Pessoa Jurídica ou Física</label>
+                <div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="juridic" name="juridicFisic" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="juridic">Pessoa Jurídica</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="fisic" name="juridicFisic" class="custom-control-input">
+                        <label class="custom-control-label" for="fisic">Pessoa Física</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="comissionedCod">Cód. Comissionado</label>
+                <input id="comissionedCod" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="comissionedCodERP">Cód. Comissionado ERP</label>
+                <input id="comissionedCodERP" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="area">Área</label>
+                <select id="area" class="custom-select">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="d-block">Status</label>
+                <div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="isActive" name="status" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="isActive">Ativo</label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="isNotActive" name="status" class="custom-control-input">
+                        <label class="custom-control-label" for="isNotActive">Inativo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cnpj">CNPJ</label>
+                <input id="cnpj" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="companyName">Razão Social</label>
+                <input id="companyName" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="representativeName">Nome do Representante</label>
+                <input id="representativeName" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cep">CEP</label>
+                <input id="cep" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="address">Logradouro</label>
+                <input id="address" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="number">Número</label>
+                <input id="number" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="complement">Complemento</label>
+                <input id="complement" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="neighborhood">Bairro</label>
+                <input id="neighborhood" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="state">UF</label>
+                <select id="state" class="custom-select">
+                    <option value="SP">SP</option>
+                </select>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="city">Cidade</label>
+                <select id="city" class="custom-select">
+                    <option value="Graça">Graça</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="email">E-mail</label>
+                <input id="email" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="alternativeEmail">E-mail Alternativo</label>
+                <input id="alternativeEmail" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="fixedTel">Telefone Fixo</label>
+                <input id="fixedTel" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="mobileTel">Telefone Celular</label>
+                <input id="mobileTel" class="form-control" type="text">
+            </div>
+        </div>
+
+        <hr>
+
+        <p>Setor</p>
+
+        <div class="form-row align-items-end">
+            <div class="form-group col-md-3">
+                <label for="sectorArea">Área</label>
+                <select id="sectorArea" class="custom-select">
+                    <option value="Refrigeração">Refrigeração</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="canal">Canal</label>
+                <select id="canal" class="custom-select">
+                    <option value="REFRIGERAÇÃO(17REFRI)">REFRIGERAÇÃO(17REFRI)</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3 search">
+                <em class="fas fa-search"></em>
+                <label for="manager">Gerente</label>
+                <input id="manager" type="text" class="form-control" [ngbTypeahead]="search"
+                    [resultFormatter]="formatter">
+            </div>
+        </div>
+
+        <hr>
+
+        <p>Gerente Responsável</p>
+
+        <div class="form-row align-items-end">
+            <div class="form-group col-md-3">
+                <label for="managerCpf">CPF</label>
+                <input id="managerCpf" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-9">
+                <label for="managerName">Nome do Representante</label>
+                <input id="managerName" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="managerCep">CEP</label>
+                <input id="managerCep" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="managerAddress">Logradouro</label>
+                <input id="managerAddress" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="managerNumber">Número</label>
+                <input id="managerNumber" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="managerComplement">Complemento</label>
+                <input id="managerComplement" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="managerNeighborhood">Bairro</label>
+                <input id="managerNeighborhood" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="managerState">UF</label>
+                <select id="managerState" class="custom-select">
+                    <option value="SP">SP</option>
+                </select>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="managerCity">Cidade</label>
+                <select id="managerCity" class="custom-select">
+                    <option value="Graça">Graça</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="managerEmail">E-mail</label>
+                <input id="managerEmail" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="managerAlternativeEmail">E-mail Alternativo</label>
+                <input id="managerAlternativeEmail" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="managerFixedTel">Telefone Fixo</label>
+                <input id="managerFixedTel" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="managerMobileTel">Telefone Celular</label>
+                <input id="managerMobileTel" class="form-control" type="text">
+            </div>
+        </div>
+
+        <div class="text-center my-5">
+            <button class="btn btn-save">GRAVAR DADOS</button>
+        </div>
+    </form>
+</div>

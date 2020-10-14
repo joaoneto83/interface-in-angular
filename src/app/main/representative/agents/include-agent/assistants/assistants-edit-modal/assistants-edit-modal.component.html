@@ -1,0 +1,96 @@
+<div class="modal-header">
+    <div class="close" (click)="activeModal.dismiss()">
+        <small>fechar</small>
+        <small aria-hidden="true">&times;</small>
+    </div>
+</div>
+
+<div class="modal-body">
+    <p>Edição de Assistente Cadastrado</p>
+
+    <form>
+        <div class="form-row align-items-end">
+            <div class="form-group col-md-3">
+                <label for="assistantCpf">CPF</label>
+                <input id="assistantCpf" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantRg">RG</label>
+                <input id="assistantRg" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantArea">Área</label>
+                <select id="assistantArea" class="custom-select">
+                    <option value="">Refrigeração Nacional</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantRepresentative">Representante</label>
+                <select id="assistantRepresentative" class="custom-select">
+                    <option value="">FABRICIO FIORI - ME</option>
+                </select>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="assistantName">Nome</label>
+                <input id="assistantName" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantCep">CEP</label>
+                <input id="assistantCep" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="assistantAddress">Logradouro</label>
+                <input id="assistantAddress" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="assistantAddressNumber">Número</label>
+                <input id="assistantAddressNumber" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="assistantAddressComplement">Complemento</label>
+                <input id="assistantAddressComplement" class="form-control" type="text">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="assistantAddressNeighborhood">Bairro</label>
+                <input id="assistantAddressNeighborhood" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantAddressState">UF</label>
+                <select id="assistantAddressState" class="custom-select">
+                    <option value="">RJ</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="assistantAddressCity">Cidade</label>
+                <select id="assistantAddressCity" class="custom-select">
+                    <option value="">SAO SEBASTIAO</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantEmail">E-mail</label>
+                <input id="assistantEmail" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantAlternativeEmail">E-mail Alternativo</label>
+                <input id="assistantAlternativeEmail" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantFixedTel">Telefone Fixo</label>
+                <input id="assistantFixedTel" class="form-control" type="text">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="assistantMobileTel">Telefone Celular</label>
+                <input id="assistantMobileTel" class="form-control" type="text">
+            </div>
+        </div>
+
+        <div class="text-center my-5">
+            <button class="btn btn-save">CONCLUIR</button>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-custom" (click)="activeModal.close('Close click')">Fechar</button>
+</div>

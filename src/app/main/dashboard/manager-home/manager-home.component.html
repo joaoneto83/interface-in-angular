@@ -1,0 +1,229 @@
+<section>
+    <div class="navigation">
+        <div class="col-md-auto">
+            <span class="title">Global</span>
+            <span class="date">Hoje 25/Abril/2020</span>
+        </div>
+        <div class="col-md-auto">
+            <label for="segment">Selecione o segmento de negócio</label>
+            <select id="segment" class="custom-select">
+                <option value="">Global</option>
+                <option value="">Home Office</option>
+                <option value="">Dimacon</option>
+                <option value="">Refrigeração</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="superior">
+        <div class="superior-left col-md-4">
+            <span class="title">Meta Global/Mês</span>
+            <span class="sub-title">Desempenho diário da Meta Global: Abril de 2020</span>
+
+            <div class="form-row mt-2">
+                <div class="form-group col-md-6">
+                    <label for="init-date">Data Início</label>
+                    <div class="input-group">
+                        <input class="form-control" id="init-date" name="d1" #c1="ngModel" [(ngModel)]="initDate"
+                            ngbDatepicker #d1="ngbDatepicker" (input)="regex($event)" maxlength="10">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                                <em class="fas fa-calendar-alt"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="end-date">Data Final</label>
+                    <div class="input-group">
+                        <input class="form-control" id="end-date" name="d2" #c2="ngModel" [(ngModel)]="endDate"
+                            ngbDatepicker #d2="ngbDatepicker" (input)="regex($event)" maxlength="10">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                                <em class="fas fa-calendar-alt"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="superior-right col-md-8">
+            <div class="global-goal">
+                <div class="date">
+                    <span class="mr-3">De 01/04/2020 à 25/04/2020</span>
+                    <span>
+                        <em class="fas fa-arrow-up mr-1 text-muted"></em>
+                        <em class="fas fa-arrow-down text-danger"></em>
+                        -20% abaixo da meta
+                    </span>
+                    <a href="javascript:void(0)">+ detalhes</a>
+                </div>
+                <div class="horizontal-bar mt-3">
+                    <elgin-horizontal-bar-chart [barChart]="horizontalBarChart" [view]="horizontalBarChartView">
+                    </elgin-horizontal-bar-chart>
+
+                    <div class="percentage">
+                        <div class="actual-percentage mb-2">
+                            <span>{{horizontalBarChart[0]?.value}}%</span>
+                            <span>meta mensal atingidos</span>
+                        </div>
+
+                        <span class="total">R$ 14.564.520,05</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="superior-below col-md-12 mt-3">
+            <elgin-line-chart-legend [multi]="multi"></elgin-line-chart-legend>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="orders-container">
+        <div class="orders">
+            <div class="col-md-12">
+                <p>Pedidos</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="sup">
+                            <span>Status</span>
+                            <a href="javascript:void(0)">+ detalhes</a>
+                        </div>
+                        <div class="content-values">
+                            <span>Comercial</span>
+                            <span>Pendente a análise</span>
+                            <span>R$ 16.526.235,48</span>
+                            <span>1.198 pedidos</span>
+                        </div>
+                        <div class="content-chart">
+                            <elgin-vertical-bar-chart [barChart]="comercial" [view]="elginVerticalBarChart"
+                                [legend]="true" [legendPosition]="legendPosition" [scheme]="colorScheme"
+                                [showXAxis]="true" [legendTitle]="legendTitle" [showYAxisLabel]="true"
+                                [yAxisLabel]="yAxisLabel" [showDataLabel]="true" [barPadding]="barPadding">
+                            </elgin-vertical-bar-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="sup">
+                            <span>Status</span>
+                            <a href="javascript:void(0)">+ detalhes</a>
+                        </div>
+                        <div class="content-values">
+                            <span>Crédito</span>
+                            <span>Em análise</span>
+                            <span>R$ 4.526.245,06</span>
+                            <span>152 pedidos</span>
+
+                            <div class="cash-down shadow-sm">
+                                <span>Total à vista</span>
+                                <span>71</span>
+                            </div>
+                        </div>
+                        <div class="content-chart">
+                            <elgin-vertical-bar-chart [barChart]="credit" [view]="elginVerticalBarChart" [legend]="true"
+                                [legendPosition]="legendPosition" [scheme]="colorScheme" [showXAxis]="true"
+                                [legendTitle]="legendTitle" [showYAxisLabel]="true" [yAxisLabel]="yAxisLabel"
+                                [showDataLabel]="true" [barPadding]="barPadding">
+                            </elgin-vertical-bar-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="position-relative d-flex flex-wrap justify-content-between">
+                            <div class="pie-chart">
+                                <elgin-pie-chart [pieChart]="logistic" [view]="pieView" [showLabels]="true"
+                                    [showsDoughnut]="true" [colorScheme]="pieColorScheme">
+                                </elgin-pie-chart>
+                                <div class="statistic">
+                                    <em class="fas fa-box-open"></em>
+                                    <span class="amount">252</span>
+                                    <span>Em separação</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                            </div>
+
+                            <div class="total-amount">
+                                <span>Logística</span>
+                                <span>R$ 21.757.235,96</span>
+                                <span>887 pedidos</span>
+                            </div>
+
+                            <div class="pie-chart">
+                                <elgin-pie-chart [pieChart]="transport" [view]="pieView" [showLabels]="true"
+                                    [showsDoughnut]="true" [colorScheme]="pieColorScheme">
+                                </elgin-pie-chart>
+                                <div class="statistic">
+                                    <em class="fas fa-truck"></em>
+                                    <span class="amount">635</span>
+                                    <span>Em transporte</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+
+                            <div class="col-md-4">
+                                <div class="total-amount">
+                                    <span>Em Carteira</span>
+                                    <span>R$ 21.757.235,96</span>
+                                    <span>887 pedidos</span>
+                                    <a href="javascript:void(0)">+ detalhes</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="pie-chart">
+                                    <elgin-pie-chart [pieChart]="wallet" [view]="pieWalletView" [showLabels]="true"
+                                        [showsDoughnut]="true" [colorScheme]="pieColorScheme">
+                                    </elgin-pie-chart>
+                                    <em class="fas fa-wallet"></em>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="more-info-container">
+                                    <div class="more-info">
+                                        <div class="info">
+                                            <span>28</span>
+                                            <span>pedidos</span>
+                                        </div>
+                                        <span class="desc">Acima de 30 dias</span>
+                                    </div>
+                                    <div class="more-info">
+                                        <div class="info">
+                                            <span>17</span>
+                                            <span>pedidos</span>
+                                        </div>
+                                        <span class="desc">Pedido Programado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

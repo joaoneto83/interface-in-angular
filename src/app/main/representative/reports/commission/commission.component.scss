@@ -1,0 +1,37 @@
+section {
+    padding: 0rem 1rem;
+}
+
+.title {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.nav-tabs {
+    border-bottom: 2px solid var(--primary);
+}
+
+@media screen and (max-width: 425px) {
+    .nav-tabs .nav-link {
+        width: 100%;
+        border-radius: 0 !important;
+        margin: 0.35rem 0 !important;
+
+    }
+}
+
+.nav-tabs .nav-link {
+    margin: 0rem 0.25rem;
+    background-color: #F0F0F0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: var(--sub-text);
+    color: #333333 !important;
+    border: 0 !important;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--primary);
+    color: #fff !important;
+}
+

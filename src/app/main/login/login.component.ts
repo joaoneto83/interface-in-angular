@@ -26,12 +26,17 @@ export class LoginComponent implements OnInit {
 
   corretor:boolean;
 
+  messagem: string;
+
   constructor(private loadingService: LoadingService,
    private tokenService: TokenService,
    private usuarioService: AdmUsuarioService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+     
+     this.messagem ="Preencha os campos Login e Senha!";
+     }
 
   ngOnInit() {
 
@@ -45,11 +50,13 @@ export class LoginComponent implements OnInit {
 login() {
 
   if (this.formLogin.valid && !this.formLogin.pending) {
-    
+    let senha = this.formLogin.controls["senha"].value
+
+ 
       this.loadingService.show();
 
       //  let senha = CryptoJS.HmacSHA1(this.formLogin.controls["senha"].value, 'PorElg2ER019intal').toString();
-    let senha = this.formLogin.controls["senha"].value
+
       
       this.tokenService
               .setToken(this.formLogin.controls["login"].value, senha)
@@ -98,7 +105,7 @@ loginvazio(): void {
 
   Swal.fire(
       'Atenção',
-      'por favor, informe usuário e senha.',
+      this.messagem,
       'warning'
   );
 }

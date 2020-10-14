@@ -1,0 +1,168 @@
+<div class="px-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <span class="title">Metas por Representantes</span>
+
+        <div class="action-buttons">
+            <button class="btn btn-upload">UPLOAD DE ARQUIVO</button>
+            <button class="btn btn-download">DOWNLOAD MODELO EM EXECEL <em class="far fa-file-excel"></em></button>
+        </div>
+    </div>
+
+    <form>
+        <div class="form-row align-items-end">
+            <div class="form-group col-md-6 search">
+                <em class="fas fa-search"></em>
+                <label for="representative">Representante</label>
+                <input id="representative" type="text" class="form-control" [ngbTypeahead]="search"
+                    [resultFormatter]="formatter">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="area">Área</label>
+                <select id="area" class="custom-select">
+                    <option value="">El06 - Elgin Ind. Fábrica Manaus</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="period">Período - Mês/Ano</label>
+                <div class="input-group">
+                    <input class="form-control" id="period" name="d1" #c1="ngModel" [(ngModel)]="date" ngbDatepicker
+                        #d1="ngbDatepicker" (input)="regex($event)" maxlength="10">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                            <em class="fas fa-calendar-alt"></em>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-part">
+            <div class="form-row align-items-end">
+                <div class="form-group col-md-4">
+                    <label for="productGroup">Grupo de Produtos</label>
+                    <select id="productGroup" class="custom-select">
+                        <option value="">Ar-Condicionado</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="line">Linha</label>
+                    <select id="line" class="custom-select">
+                        <option value="">Split</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="subLine">Sub Linha</label>
+                    <select id="subLine" class="custom-select">
+                        <option value="">Split</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="product">Produto</label>
+                    <select id="product" class="custom-select">
+                        <option value="">Ar condicionado</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="office">Escritório</label>
+                    <select id="office" class="custom-select">
+                        <option value="">Elgin</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="state">Estado</label>
+                    <select id="state" class="custom-select">
+                        <option value="">São Paulo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="city">Cidade</label>
+                    <select id="city" class="custom-select">
+                        <option value="">São Paulo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="country">País</label>
+                    <select id="country" class="custom-select">
+                        <option value="">Brasil</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="clientType">Tipo de Cliente</label>
+                    <select id="clientType" class="custom-select">
+                        <option value="">Nacional</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="amount">Quantidade</label>
+                    <input id="amount" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="value">Valor</label>
+                    <input id="value" class="form-control" type="text">
+                </div>
+                <div class="form-group col-md-12 text-center">
+                    <button class="btn btn-add"><em class="fas fa-plus-circle mr-1"></em>Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="table-responsive my-4">
+        <table class="table table-bordered table-sm" aria-describedby="included products table">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">Imagem</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Linha/Sublinha</th>
+                    <th scope="col" class="text-center">Escritório</th>
+                    <th scope="col" class="text-center">Estado/Cidade</th>
+                    <th scope="col" class="text-center">País</th>
+                    <th scope="col" class="text-center">Qtd.</th>
+                    <th scope="col" class="text-center">Tipo de Cliente</th>
+                    <th scope="col" class="text-center">Valor</th>
+                    <th scope="col" class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        <img src="../../../../../assets/artefacts/splithighwall.png" alt="imagem do produto"
+                            class="img-thumbnail">
+                    </td>
+                    <td>
+                        <div class="form-group m-0">
+                            <label for="codDesc">Cód/ Descrição:</label>
+                            <span id="cod" class="d-block text-dark">45HTQE18B2NA</span>
+                            <span id="desc" class="d-block">UN.EXT.HW INVERTER TREND,18K,QF, 220V,1PH</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group m-0">
+                            <span id="area" class="d-block">Ar-condicionado</span>
+                            <span id="stock" class="d-block text-dark">Ar-Condicionado</span>
+                        </div>
+                    </td>
+                    <td class="text-center">Elgin/SP</td>
+                    <td>
+                        <div class="form-group m-0">
+                            <span id="area" class="d-block">São Paulo</span>
+                            <span id="stock" class="d-block text-dark">São Paulo</span>
+                        </div>
+                    </td>
+                    <td class="text-center">Brasil</td>
+                    <td class="text-center">1214</td>
+                    <td class="text-center">Nacional</td>
+                    <td class="text-center">0.0099</td>
+                    <td class="text-center"><em class="fas fa-times-circle fa-lg"></em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="text-center my-5">
+        <button class="btn btn-save">GRAVAR DADOS</button>
+    </div>
+</div>

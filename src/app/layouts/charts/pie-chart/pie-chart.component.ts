@@ -8,10 +8,9 @@ import { Component, Input } from '@angular/core';
 export class PieChartComponent {
 
   @Input() pieChart: any[];
-
-  view: any[] = [170, 170];
-
-  colorScheme = {
-    domain: ['#FE0D64', '#0063AF', '#4BD37B', '#FFE070']
-  };
+  @Input() view: any[] = [170, 170];
+  @Input() colorScheme = { domain: ['#FE0D64', '#0063AF', '#4BD37B', '#FFE070'] };
+  @Input() showLegend = false;
+  @Input() showLabels = false;
+  @Input() showsDoughnut = false;
 }

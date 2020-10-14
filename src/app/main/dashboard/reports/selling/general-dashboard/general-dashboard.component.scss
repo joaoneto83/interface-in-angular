@@ -1,0 +1,248 @@
+@media screen and (max-width: 425px) {
+    label {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+}
+
+label {
+    color: #6c757d !important;
+    font-size: 0.7rem;
+    margin-bottom: 0px;
+}
+
+a {
+    font-size: var(--sub-text);
+}
+
+input,
+select {
+    border-radius: 6px;
+    font-size: var(--default-text);
+    color: var(--primary);
+}
+
+.btn.calendar {
+    font-size: var(--sub-text) !important;
+    border-color: #ced4da;
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    em {
+        color: #c7c7c7;
+    }
+}
+
+.title {
+    color: var(--title);
+}
+
+.sub-title {
+    font-size: var(--default-text);
+    color: var(--title);
+}
+
+@media screen and (max-width: 425px) {
+    .btn-export {
+        width: 100%;
+        margin: 0.75rem 0rem !important;
+    }
+}
+
+.btn-export {
+    margin: 0.5rem 0.35rem;
+    font-size: var(--sub-text);
+    color: #4DBF69;
+    border: 1px solid;
+    border-radius: 32px;
+
+    em {
+        font-size: var(--default-text);
+    }
+}
+
+.btn-filter {
+    width: 100%;
+    background-color: var(--primary);
+    font-size: var(--sub-text);
+    color: #ffffff;
+    border-radius: 32px;
+}
+
+.total,
+.monthly,
+.annual {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0.35rem;
+
+    span {
+        display: block;
+        font-weight: lighter;
+
+        &:first-child {
+            font-size: 11px;
+            color: #333333;
+        }
+
+        &:last-child {
+            font-size: 20px;
+            color: var(--primary);
+            letter-spacing: 0.75px;
+        }
+    }
+}
+
+.total {
+    background-color: #AFFF7D;
+}
+
+.monthly,
+.annual {
+    background-color: #F8F8F8;
+}
+
+.approved {
+    @media screen and (min-width: 320px) and (max-width: 425px) {
+        .content {
+            flex-wrap: wrap;
+
+            .state {
+                width: 50%;
+                margin: 15px 0;
+            }
+
+            img {
+                display: none;
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1377px) {
+        .content {
+            flex-wrap: wrap;
+
+            .state {
+                width: 50%;
+                margin: 15px 0;
+            }
+
+            img {
+                display: none;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 20px 0;
+
+        .state {
+            text-align: center;
+
+            span {
+                display: block;
+                margin-top: 10px;
+                font-size: var(--sub-text);
+                text-transform: capitalize;
+            }
+
+            em {
+                font-size: 25px;
+                color: #C4C4C4;
+            }
+        }
+
+        img {
+            margin-top: -25px;
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .approved {
+        margin-bottom: 30px;
+    }
+}
+
+.card-representative {
+    background-color: #F8F8F8;
+}
+
+.approved {
+    .content {
+        .state {
+            span:nth-child(2) {
+                font-size: 22px;
+                margin-top: 2px;
+            }
+
+            span:nth-child(3) {
+                margin-top: 0 !important;
+            }
+        }
+
+        img {
+            margin-top: -50px;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .filters {
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+}
+
+.custom-control-label {
+    font-size: var(--default-text);
+    color: var(--primary) !important;
+}
+
+.custom-control-label::before {
+    border: #ced4da solid 1px;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #007bff;
+    border: 3px solid #fff;
+    padding: 6px;
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    background-image: none !important;
+    background-color: unset;
+    border: 1px solid #ced4da;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.search.form-group {
+    position: relative;
+
+    .fa-search {
+        position: absolute;
+        top: 6px;
+        left: 13px;
+        padding: 5px;
+        background: var(--title);
+        color: #fff;
+        border-radius: 50%;
+        font-size: var(--default-text);
+    }
+
+    .form-control {
+        padding-left: 40px;
+    }
+}

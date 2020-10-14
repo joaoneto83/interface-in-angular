@@ -1,0 +1,118 @@
+<section>
+    <div class="px-3">
+        <p class="title">Aprovação</p>
+
+        <div class="form-row align-items-end">
+
+            <div class="form-group col-md-12 m-0 search">
+                <em class="fas fa-search"></em>
+                <label for="customerSearch">Buscar Cliente</label>
+                <input id="customerSearch" type="text" class="form-control" [ngbTypeahead]="search"
+                    [resultFormatter]="formatter">
+            </div>
+        </div>
+
+        <div class="action-buttons my-2">
+            <div class="checkboxes-inline">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="isJuridic">
+                    <label class="custom-control-label" for="isJuridic">Pessoa Jurídica</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="isFisic">
+                    <label class="custom-control-label" for="isFisic">Pessoa Física</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="isExport">
+                    <label class="custom-control-label" for="isExport">Cliente Exportação</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="approveds">
+                    <label class="custom-control-label" for="approveds">Aprovados</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="reproveds">
+                    <label class="custom-control-label" for="reproveds">Reprovados</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="pending">
+                    <label class="custom-control-label" for="pending">Pendentes</label>
+                </div>
+            </div>
+            <button class="btn btn-export">EXPORTAR PARA EXECEL <em class="far fa-file-excel"></em></button>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-end justify-content-between mt-4">
+            <small>186 clientes encontrados</small>
+
+            <div class="action-buttons">
+                <button class="btn btn-enable">LIBERAR SELECIONADOS</button>
+                <button class="btn btn-disable">BLOQUEAR SELECIONADOS</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="all"
+                                    (change)="isSelected = !isSelected">
+                                <label class="custom-control-label" for="all"></label>
+                            </div>
+                        </th>
+                        <th scope="col" class="text-center">Data fase</th>
+                        <th scope="col">Pedido<em class="fas fa-search"></em></th>
+                        <th scope="col">CNPJ<em class="fas fa-search"></em></th>
+                        <th scope="col">Cliente <em class="fas fa-search"></em></th>
+                        <th scope="col" class="text-center">País</th>
+                        <th scope="col" class="text-center">Nº NF</th>
+                        <th scope="col" class="text-center">Fase</th>
+                        <th scope="col" class="text-center">Tipo</th>
+                        <th scope="col">Status<em class="fas fa-search"></em></th>
+                        <th scope="col" class="text-center">Aprovar</th>
+                        <th scope="col" class="text-center">Reprovar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of client; let i = index" (click)="openCustomerDetailsModal($event)">
+                        <td class="text-center">
+                            <div class="custom-control custom-checkbox" (click)="stopPropagation($event)">
+                                <input type="checkbox" class="custom-control-input" name="selector" id="all{{i}}"
+                                    [checked]="isSelected">
+                                <label class="custom-control-label" for="all{{i}}"></label>
+                            </div>
+                        </td>
+                        <td class="text-center">{{item?.faseDate}}</td>
+                        <td>{{item?.order}}</td>
+                        <td>{{item?.cnpj}}</td>
+                        <td>{{item?.customer}}</td>
+                        <td class="text-center">{{item?.country}}</td>
+                        <td class="text-center">{{item?.invoiceNumber}}</td>
+                        <td class="text-center">{{item?.fase}}</td>
+                        <td class="text-center">{{item?.type}}</td>
+                        <td class="text-center">
+                            <span class="status" [ngClass]="{
+                                    'approved' : item?.stautus === 'aprovado',
+                                    'reproved' : item?.stautus === 'reprovado',
+                                    'pending' : item?.stautus === 'pendente'
+                                }">{{item?.stautus}}</span>
+                        </td>
+                        <td class="text-center" (click)="stopPropagation($event)">
+                            <button class="btn" [disabled]="item?.stautus === 'reprovado'">
+                                <em class="fas fa-check-circle fa-lg"></em>
+                            </button>
+                        </td>
+                        <td class="text-center" (click)="stopPropagation($event)">
+                            <button class="btn" [disabled]="item?.stautus === 'aprovado'">
+                                <em class="fas fa-times-circle fa-lg"></em>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

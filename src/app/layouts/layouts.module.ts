@@ -9,6 +9,11 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { VerticalBarChartComponent } from './charts/vertical-bar-chart/vertical-bar-chart.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { HorizontalBarChartComponent } from './charts/horizontal-bar-chart/horizontal-bar-chart.component';
+import { LineChartLegendComponent } from './charts/line-chart-legend/line-chart-legend.component';
+import { GroupedVerticalChartComponent } from './charts/grouped-vertical-chart/grouped-vertical-chart.component';
+import { PieGridComponent } from './charts/pie-grid/pie-grid.component';
+import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-pie-chart.component';
 
 @NgModule({
     imports: [
@@ -16,19 +21,29 @@ import { NotificationsComponent } from './notifications/notifications.component'
         FormsModule,
         NgxChartsModule,
     ],
-    exports: [
-        SideMenuComponent,
-        LineChartComponent,
-        PieChartComponent,
-        VerticalBarChartComponent,
-        NotificationsComponent
-    ],
     declarations: [
         SideMenuComponent,
         LineChartComponent,
         PieChartComponent,
         VerticalBarChartComponent,
-        NotificationsComponent
+        NotificationsComponent,
+        HorizontalBarChartComponent,
+        LineChartLegendComponent,
+        GroupedVerticalChartComponent,
+        PieGridComponent,
+        AdvancedPieChartComponent
+    ],
+    exports: [
+        SideMenuComponent,
+        LineChartComponent,
+        PieChartComponent,
+        VerticalBarChartComponent,
+        NotificationsComponent,
+        HorizontalBarChartComponent,
+        LineChartLegendComponent,
+        GroupedVerticalChartComponent,
+        PieGridComponent,
+        AdvancedPieChartComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

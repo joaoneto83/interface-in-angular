@@ -9,7 +9,7 @@ export class LineChartComponent {
 
   @Input() lineChart: any[];
 
-  view: any[] = [750, 140];
+  view: any[] = [720, 140];
 
   // options
   showLabels = true;

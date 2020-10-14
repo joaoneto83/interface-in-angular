@@ -1,0 +1,21 @@
+<section>
+    <nav ngbNav #nav="ngbNav" class="nav-tabs">
+
+        <ng-container ngbNavItem>
+            <a ngbNavLink>Clientes</a>
+            <ng-template ngbNavContent>
+                <elgin-regular-customer></elgin-regular-customer>
+            </ng-template>
+        </ng-container>
+
+        <ng-container ngbNavItem>
+            <a ngbNavLink>VPC</a>
+            <ng-template ngbNavContent>
+                <elgin-vpc-customer></elgin-vpc-customer>
+            </ng-template>
+        </ng-container>
+
+    </nav>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</section>

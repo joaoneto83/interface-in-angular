@@ -8,15 +8,20 @@ import { Component, Input } from '@angular/core';
 export class VerticalBarChartComponent {
 
   @Input() barChart: any[];
-
-  view: number[] = [100, 130];
-
-  // options for the chart
-  showYAxis = true;
-  showXAxisLabel = true;
-  autoScale = true;
-  colorScheme = { domain: ['#4BD37B'] };
-  showLabels = true;
-  minYScaleValue = 1;
-  maxYScaleValue = 100;
+  @Input() view: number[] = [100, 130];
+  @Input() legend: boolean;
+  @Input() legendTitle = 'Legend';
+  @Input() legendPosition = 'right';
+  @Input() scheme = { domain: ['#4BD37B'] };
+  @Input() showYAxis = true;
+  @Input() showXAxis = false;
+  @Input() showXAxisLabel = true;
+  @Input() showYAxisLabel = false;
+  @Input() showDataLabel = false;
+  @Input() yAxisLabel = '';
+  @Input() autoScale = true;
+  @Input() showLabels = true;
+  @Input() minYScaleValue = 1;
+  @Input() maxYScaleValue = 100;
+  @Input() barPadding = 10;
 }
