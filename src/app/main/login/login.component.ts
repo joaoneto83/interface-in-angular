@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit {
 
   messagem: string;
 
+  trocaSenha:boolean;
+
+
   loading:boolean;
 
   constructor(private loadingService: LoadingService,
@@ -39,6 +42,8 @@ export class LoginComponent implements OnInit {
      
      this.messagem ="Preencha os campos Login e Senha!";
      this.loading = false;
+     this.trocaSenha = false;
+     
      }
 
   ngOnInit() {
@@ -48,7 +53,18 @@ export class LoginComponent implements OnInit {
       senha: ['', [Validators.required]]
   });
 
+
   }
+
+
+  initFormResetar(){
+    this.formResetar = this.formBuilder.group({
+      login2: ['', [Validators.required]],
+      numeroDocumento: ['', [Validators.required]]
+    });
+}
+
+
 
 login() {
 
@@ -68,13 +84,51 @@ login() {
               );              
   }
   else {
-    // this.loginvazio();
+ 
       Object.keys(this.formLogin.controls).forEach(key => {
           this.formLogin.get(key).markAsTouched();
      
       });
       return;
   }
+}
+
+enviar() {
+  console.log("TESTE")
+  if (this.formResetar.valid && !this.formResetar.pending) {
+    let numeroDocumento = this.formResetar.controls["numeroDocumento"].value
+    
+      this.loadingService.show();
+      this.loading = true;
+
+      this.tokenService
+              .setRecuperar(this.formResetar.controls["login2"].value, numeroDocumento)
+            
+              .subscribe(
+                  res => this.reseteSuccess(res),
+                  err => this.reseteError(err)
+                
+              );              
+  }
+  else {
+   
+      Object.keys(this.formResetar.controls).forEach(key => {
+          this.formResetar.get(key).markAsTouched();
+     
+      });
+      return;
+  }
+}
+
+
+trocaSenhaFunction(){
+  console.log(this.trocaSenha);
+  this.trocaSenha = true;
+  this.initFormResetar();
+}
+
+voltarFunction(){
+  this.trocaSenha = false;
 }
 
 initFormNovaSenha(){
@@ -88,6 +142,9 @@ initFormNovaSenha(){
 hasErrorLogin(id): boolean {
   return this.formLogin.get(id).invalid && (this.formLogin.get(id).dirty || this.formLogin.get(id).touched)
 }
+hasErrorResetar(id): boolean {
+  return this.formResetar.get(id).invalid && (this.formResetar.get(id).dirty || this.formResetar.get(id).touched)
+}
 loginError(err: any): void {
     console.log(err);
     
@@ -99,16 +156,38 @@ loginError(err: any): void {
         'warning'
     );
 }
-loginvazio(): void {
-
+reseteError(err: any): void {
+  console.log(err);
+  
   this.loadingService.hide();
-
+this.loading = false;
   Swal.fire(
       'Atenção',
-      this.messagem,
+      'Login e CPF/CNPJ inválidos.',
       'warning'
   );
 }
+reseteSuccess(err: any): void {
+  console.log(err);
+  
+  this.loadingService.hide();
+this.loading = false;
+  Swal.fire(
+      '',
+      'nova senha enviada com sucesso para seu e-mail.',
+      'warning'
+  );
+}
+// loginvazio(): void {
+
+//   this.loadingService.hide();
+
+//   Swal.fire(
+//       'Atenção',
+//       this.messagem,
+//       'warning'
+//   );
+// }
 
 
 

@@ -9,19 +9,53 @@
         </div>
 
         <div class="card-body">
+            <div *ngIf="!trocaSenha">
             <form [formGroup]="formLogin">
                 <div class="form-group" [class.has-danger]="hasErrorLogin('login')">
                     <label for="login">Login</label>
-                    <input formControlName="login" (keydown.enter)="login()" type="text" class="form-control" placeholder="Prencha o Login">
+                    <input formControlName="login" (keydown.enter)="login()" type="text" class="form-control" placeholder="Preencha o Login">
                 </div>
                 <div class="form-group" [class.has-danger]="hasErrorLogin('senha')">
                     <label for="password">Senha</label>
-                    <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control" placeholder="Prencha a Senha">
+                    <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control" placeholder="Preencha a Senha">
                 </div>
                 <button (click) ="login();" type="submit" class="btn btn-primary" >entrar</button>
             </form>
+            <div class="trocaSenha"  (click) ="trocaSenhaFunction();">
+                <span>Esqueci a senha</span>
+            </div>
+        </div>
 
-            <a href="javascript:void(0)" routerLink="/" routerLinkActive="active">Esqueci a senha</a>
+
+        <div *ngIf="trocaSenha">
+
+            <div class="voltar"  (click) ="voltarFunction();">
+                <span>Voltar</span>
+            </div>
+            <div  class="titulo">
+                <span>Recuperar Senha</span>
+            </div>
+
+
+            <form [formGroup]="formResetar" class="form">
+              
+               
+                 <div class="form-group"  [class.has-danger]="hasErrorResetar('login2')">
+                    <label for="login2">Login</label>
+                    <input formControlName="login2" (keydown.enter)="enviar()" type="text" class="form-control" placeholder="Preencha o Login">
+                </div> 
+             <div class="form-group"  [class.has-danger]="hasErrorResetar('numeroDocumento')" >
+                    <label for="NumeroDocumento">CPF/CNPJ</label>
+                    <input formControlName="numeroDocumento"  (keydown.enter)="enviar()" type="text" class="form-control" placeholder="Preencha o CPF/CNPJ">
+                </div>
+                <div>
+                    <button (click) ="enviar();" type="submit" class="btn btn-primary"  >enviar</button>
+                </div>
+             
+            </form>
+
+            </div>
+     
         </div>
     </div>
 </div>

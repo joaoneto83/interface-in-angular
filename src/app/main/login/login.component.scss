@@ -20,6 +20,30 @@
 display: block;
 margin: auto;
 }
+.recuperarSenha{
+  font-family: fontPrincipal;
+  font-size: 18px;
+  font-weight: 200;
+  color: #EAEAEA;
+  cursor: pointer;
+}
+
+.titulo{
+  text-align: center;
+  color: blue;
+}
+.trocaSenha{
+  text-align: center;
+  color: blue;
+  cursor: pointer;
+}
+
+
+.voltar{
+  color:grey;
+  cursor: pointer;
+  margin-top: -47px;
+}
 
 @media (max-width: 375px){
   .login {
@@ -31,6 +55,7 @@ margin: auto;
   color:red;
   background-color: #f9f9438a;
   text-align: center;
+  font-size: 11px;
 }
 
 .login {

@@ -49,16 +49,7 @@ export class TokenService {
         }
     }
 
-    // haveRoles(roles: string[]) {
-    //     let have = false;
-    //     roles.forEach(role => {
-    //         if (this.Acessos.find(x => x.includes(role))) {
-    //             have = true;
-    //         }
-    //     });
-
-    //     return have;
-    // }
+  
 
     getTokenExpirationDate(token: string): Date {
         if (isPlatformBrowser(this.platformId)) {
@@ -88,12 +79,12 @@ export class TokenService {
             { login: usuario, senha: senha },
             { responseType: "text" });
     }
+    setRecuperar(login2, numeroDocumento) {
+        return this.http.post(`${environment.PORTAL_API}/Login/RecuperarSenha`,
+            { Login: login2, NumeroDocumento: numeroDocumento },
+            { responseType: "text" });
+    }
 
-    // setToken(usuario, senha) {
-    //     return this.http.post(`${environment.PORTAL_API}/Token`,
-    //         { userID: usuario, password: senha },
-    //         { responseType: "text" });
-    // }
 
     getToken() {
         if (isPlatformBrowser(this.platformId)) {
