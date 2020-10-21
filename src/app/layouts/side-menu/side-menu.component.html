@@ -5,10 +5,10 @@
     </div>
 
     <div class="user">
-        <em class="fa fa-user"></em>
+        <em  (click)="this.router.navigate(['perfil', userName ])" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Ver Perfil" class="fa fa-user"></em>
 
         <div class="user-opt">
-            <span>Carlos Magno</span>
+            <span data-toggle="tooltip" (click)="this.router.navigate(['perfil', userName ])" data-placement="top" title="Ver Perfil" style="cursor: pointer;">{{ userName }}</span>
             <span>Representante Elgin</span>
             <a href="javascript:void(null)">sair</a>
         </div>

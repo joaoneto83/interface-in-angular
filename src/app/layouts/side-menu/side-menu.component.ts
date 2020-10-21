@@ -10,7 +10,7 @@ export class SideMenuComponent implements OnInit {
 
   routeId: number;
   routeTitle: string;
-
+  userName:string;
   selectedItem = 0;
 
   menuItems = [
@@ -23,12 +23,15 @@ export class SideMenuComponent implements OnInit {
     { icon: 'fa fa-file-invoice-dollar', title: 'Financeiro', id: 6 },
     { icon: 'fa fa-user-tie', title: 'Poítica Comercial', id: 7 },
     { icon: 'fa fa-file-alt', title: 'Relatórios', id: 8 },
-    { icon: 'fa fa-cog', title: 'Admin', id: 9 },
+    { icon: 'fa fa-cog', title: 'Admin', id: 9 }
   ];
 
   toggle = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+
+    this.userName = 'Carlos Magno';
+   }
 
   ngOnInit() { }
 
@@ -88,6 +91,7 @@ export class SideMenuComponent implements OnInit {
     if (this.routeId === 8) {
       this.router.navigate(['relatorios']);
     }
+
     this.hideSideMenu();
   }
 }

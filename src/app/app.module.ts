@@ -12,10 +12,12 @@ import { LoginModule } from './main/login/login.module';
 import { RepresentativeModule } from './main/dashboard/dashboard.module';
 import { LayoutsModule } from './layouts/layouts.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NotFoundComponent
+
   ],
   imports: [
     CommonModule,

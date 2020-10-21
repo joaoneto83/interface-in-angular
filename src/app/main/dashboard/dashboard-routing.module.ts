@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'relatorios',
     loadChildren: () => import('./reports/reports-routing.module').then(m => m.ReportsRoutingModule)
+  },
+  {
+    path: 'perfil/:nomeUser',
+    loadChildren: () => import('./user-profile/user-profile.module').then(m => m.UserProfileModule)
   }
 ];
 @NgModule({
