@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './main/login/login.module';
 import { RepresentativeModule } from './main/dashboard/dashboard.module';
 import { LayoutsModule } from './layouts/layouts.module';
+import { rotas } from './routes/app.routes';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { LayoutsModule } from './layouts/layouts.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    rotas,
     BrowserAnimationsModule,
     LayoutsModule,
     NgbModule,

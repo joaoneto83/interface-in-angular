@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'elgin-root',
@@ -11,6 +11,7 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   hasRoute(route: string) {
+    console.log(route);
     return this.router.url.includes(route);
   }
 }

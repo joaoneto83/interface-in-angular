@@ -43,13 +43,23 @@ export class TokenService {
         }
     }
 
+  
+
     hasToken() {
         if (isPlatformBrowser(this.platformId)) {
             return !!this.getToken();
         }
     }
 
-  
+    haveRoles(roles: string[]) {​​​​​
+        let have = false;
+        roles.forEach(role => {​​​​​
+            if (this.Acessos.find(x => x.includes(role))) {​​​​​
+                have = true;
+            }​​​​​
+        }​​​​​);
+        return have;
+    }​​​​​
 
     getTokenExpirationDate(token: string): Date {
         if (isPlatformBrowser(this.platformId)) {

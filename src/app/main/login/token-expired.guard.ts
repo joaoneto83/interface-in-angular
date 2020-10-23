@@ -19,7 +19,7 @@ export class TokenExpiredGuard implements CanActivate {
 
                 this.tokenService.removeToken();
 
-                this.router.navigate(['/Login']);
+                this.router.navigate(['/login']);
                 return false;
             }
             return true;
