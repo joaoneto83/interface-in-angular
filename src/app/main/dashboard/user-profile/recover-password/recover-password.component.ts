@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { TokenService } from 'src/app/_core/services/token.service';
 import { RecoverPasswordService } from './recover-password.service';
 
 
@@ -33,16 +34,21 @@ validationConfirmSenhaAtual:string;
 
   dadosFormulario:alterPasswordModel;
 
-  constructor(private service:RecoverPasswordService) { }
+  constructor(
+    private serviceRecover:RecoverPasswordService,
+    private serviceToken:TokenService
+    ) 
+    { 
+      console.log('token Atual: ' + serviceToken.getToken());
+    }
 
 
   ngOnInit(): void {
     this.limpaCamposCadastro();
-    
   }
 
    getMensagem(){
-     return this.service.msgTeste().subscribe(
+     return this.serviceRecover.msgTeste().subscribe(
       (res) => {
         console.log(res);
       },(error)=>{
@@ -64,6 +70,11 @@ validationConfirmSenhaAtual:string;
      this.validationSenhaAtual = '';
      this.validationNewSenhaAtual = '';
      this.validationConfirmSenhaAtual = '';
+
+     this.CurrentPassInputComponent.nativeElement.className  = "form-control"; 
+     this.NewPassInputComponent.nativeElement.className  = "form-control";
+     this.ConfirmInputComponent.nativeElement.className  = "form-control";
+
      this.validaBtnConfirm();
    }
 
@@ -98,13 +109,27 @@ validationConfirmSenhaAtual:string;
 
      this.validationNewSenhaAtual = "";
 
-     if(this.dadosFormulario.newPassword === ""){
+     // Regex para validar formato de senha
+
+     let regex:RegExp = /[A-Z]{1,}.[a-z]{1,}.[\d]{1,}./g;
+      
+     if(this.dadosFormulario.newPassword == ""){
         this.validationNewSenhaAtual += "* Nova Senha não pode ficar em branco. <br/><br/>";
      }
 
-     if(this.dadosFormulario.newPassword.length < 10 ){
-       this.validationNewSenhaAtual += "* Nova Senha não pode ser menor que 10 caracteres. <br/><br/>";
+     if(this.dadosFormulario.newPassword.length < 8 || this.dadosFormulario.newPassword.length > 10 ){
+       this.validationNewSenhaAtual += "* Nova Senha não pode ser menor que 8 e maior que 10 caracteres. <br/><br/>";
      }
+
+     if(this.dadosFormulario.newPassword == this.dadosFormulario.currentPassword){
+       this.validationNewSenhaAtual += "* A Nova senha não pode ser igual a senha atual. <br/><br/>";
+     }
+
+     if (!this.dadosFormulario.newPassword.match(regex)){
+      this.validationNewSenhaAtual += "* A nova senha deve conter pelo menos 1 Caractere maiusulo 1 Minusculo e 1 Numero.";
+     }
+
+
 
      if(this.validationNewSenhaAtual.length > 0){
       
@@ -153,19 +178,26 @@ validationConfirmSenhaAtual:string;
      let senhaValida = (this.validationSenhaAtual.length == 0 && (this.dadosFormulario.currentPassword != "" && this.dadosFormulario.currentPassword != null)) ? true : false;
      let newsenhaValida = (this.validationNewSenhaAtual.length == 0 && (this.dadosFormulario.newPassword != "" && this.dadosFormulario.newPassword != null)) ? true : false;
      let ConfirmsenhaValida = (this.validationConfirmSenhaAtual.length == 0 && (this.dadosFormulario.confirmNewPassword != "" && this.dadosFormulario.confirmNewPassword != null)) ? true : false;
-      console.log( this.btnConfirmar);
+     //console.log( this.btnConfirmar);
+
+    // Valida se todas as validações estão de acordo para prosseguir com o submit 
+
      if(senhaValida && newsenhaValida && ConfirmsenhaValida){
-        this.btnConfirmar.nativeElement.className = "btn btn-success";
+        this.btnConfirmar.nativeElement.disabled = false;
         this.btnConfirmar.nativeElement.style.cursor = "pointer";
      }
      else
      {
-      this.btnConfirmar.nativeElement.className = "btn btn-success disabled";
+      this.btnConfirmar.nativeElement.disabled = true;
       this.btnConfirmar.nativeElement.style.cursor = "not-allowed";
      }
 
    }
 
-
+   submitFormAlter(){
+     alert("foi");
+     
+     this.limpaCamposCadastro();
+   }
 
 }

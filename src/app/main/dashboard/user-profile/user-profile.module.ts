@@ -6,6 +6,7 @@ import { InfoProfileComponent } from './info-profile/info-profile.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { RecoverPasswordService } from './recover-password/recover-password.service';
 import { FormsModule } from '@angular/forms';
+import { TokenService } from 'src/app/_core/services/token.service';
 
 
 
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
   exports:[UserProfileComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers:[
-    RecoverPasswordService
+    RecoverPasswordService,
+    TokenService
   ]
 })
 export class UserProfileModule { }
