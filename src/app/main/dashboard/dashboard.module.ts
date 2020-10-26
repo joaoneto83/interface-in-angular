@@ -11,6 +11,7 @@ import { CustomersModule } from './customers/customers.module';
 import { ReportsModule } from './reports/reports.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
+import { rotas } from 'src/app/routes/app.routes';
 
 
 
@@ -19,7 +20,7 @@ import { UserProfileModule } from './user-profile/user-profile.module';
   imports: [
     CommonModule,
     LayoutsModule,
-    RepresentativeRoutingModule,
+    //RepresentativeRoutingModule,
     HomeModule,
     ManagerHomeModule,
     OrdersModule,

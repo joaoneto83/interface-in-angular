@@ -27,6 +27,7 @@ import { GoalsAgentsComponent } from './goals/goals-agents/goals-agents.componen
 import { GoalsManagerialComponent } from './goals/goals-managerial/goals-managerial.component';
 import { RevenuesComponent } from './revenues/revenues.component';
 import { RevenuesGeneralDashboardComponent } from './revenues/revenues-general-dashboard/revenues-general-dashboard.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { RevenuesGeneralDashboardComponent } from './revenues/revenues-general-d
     NgbDatepickerModule,
     NgbTypeaheadModule,
     LayoutsModule,
-    ReportsRoutingModule
+    rotas
+    //ReportsRoutingModule
+
   ],
   exports: [
     ReportsComponent,

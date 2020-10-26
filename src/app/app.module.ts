@@ -1,3 +1,4 @@
+import { HomeModule } from './main/dashboard/home/home.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,16 +13,19 @@ import { LoginModule } from './main/login/login.module';
 import { RepresentativeModule } from './main/dashboard/dashboard.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { rotas } from './routes/app.routes';
+import { HomeComponent } from './main/dashboard/home/home.component';
+import { AuthComponentComponent } from './auth_component/auth-component/auth-component.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
-
+    NotFoundComponent,
+    AuthComponentComponent
   ],
   imports: [
     CommonModule,
+    HomeModule,
     rotas,
     BrowserAnimationsModule,
     LayoutsModule,

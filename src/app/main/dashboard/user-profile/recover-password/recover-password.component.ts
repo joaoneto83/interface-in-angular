@@ -86,11 +86,11 @@ validationConfirmSenhaAtual:string;
     if(this.dadosFormulario.currentPassword === ""){
       this.validationSenhaAtual += "* Senha atual não pode ficar em branco . <br/><br/>";
     }
-
+/* 
     if(this.dadosFormulario.currentPassword.length < 10){
       this.validationSenhaAtual += "* Senha atual não pode ser menor que 10. <br/><br/>";
     }
-
+*/
 
     if(this.validationSenhaAtual.length > 0){
       

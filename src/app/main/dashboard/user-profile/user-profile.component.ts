@@ -29,7 +29,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.nomeUser = this.route.snapshot.paramMap.get('nomeUser');
-    this.router.navigate(['infoProfile'],{ relativeTo:this.route })
+    this.router.navigate(['infoProfile'],{ relativeTo:this.route });
+    console.log(this.route.url);
    }
 
    navigate(index: number) {

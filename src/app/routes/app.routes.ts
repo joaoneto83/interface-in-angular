@@ -31,7 +31,8 @@ import { UserProfileComponent } from '../main/dashboard/user-profile/user-profil
 import { InfoProfileComponent } from '../main/dashboard/user-profile/info-profile/info-profile.component';
 import { RecoverPasswordComponent } from '../main/dashboard/user-profile/recover-password/recover-password.component';
 import { RoleGuard } from './role.guard';
-import { TokenExpiredGuard } from '../main/login/token-expired.guard';
+import { AuthComponentComponent } from '../auth_component/auth-component/auth-component.component';
+import { AppComponent } from '../app.component';
 import { AuthGuard } from '../main/login/auth.guard';
 
 /*
@@ -41,72 +42,77 @@ import { AuthGuard } from '../main/login/auth.guard';
  DATA CRIAÇÃO : 23/10/2020
 
 */
+
 const APP_ROUTES : Routes = [
-    { path: '**' ,    component: NotFoundComponent },
-    { path: 'login' ,
-       component : LoginComponent ,
-       canActivate:[
-            RoleGuard,
-            AuthGuard,
-            TokenExpiredGuard
-        ],
-        children:[
-            { path: 'inicio' , component:HomeComponent },
-            { path: 'inicio/gerente' , component:ManagerHomeComponent },
-            { path: 'pedidos' ,
-              component:OrderInitComponent , 
-              children:[
-                {
-                    path:'novopedido',
-                    component:NewOrderComponent,
-                    children:[ { path:'vendanacional', component:NacionalSellingComponent }]
-                }]
-            },
+
+    { path:'', component:AuthComponentComponent , 
+      canActivate:[AuthGuard],
+      children:[
+        { path: 'inicio' , component:HomeComponent },
+        { path: 'inicio/gerente' , component:ManagerHomeComponent },
+        { path: 'pedidos' ,
+          component:OrderInitComponent , 
+          children:[
             {
-                path:'produtos',
-                component:ProductsComponent,
-                children:[          
-                        { path: 'incluir', component: IncludeProductComponent },
-                        { path: 'consulta', component: QueryProductComponent },
-                        { path: 'estruturadelinha', component: LineStructureComponent },
-                        { path: 'gruposdeprodutos', component: ProductsGroupComponent },
-                        { path: 'custodosprodutos', component: ProductsPriceComponent }
-                ]
-            },
-            {
-                path:'representantes',
-                component:AgentsComponent,
-                children:[{ path: 'incluir', component: IncludeAgentComponent }]
-            },
-            {
-                path:'clientes',
-                component:CustomersComponent,
-                children:[
-                    { path: 'incluir', component: IncludeCustomerComponent },
-                    { path: 'consulta', component: QueryCustomerComponent },
-                    { path: 'aprovacao', component: ApproveCustomerComponent }
-                ]
-            },
-            {
-                path:'relatorios',
-                component:ReportsComponent,
-                children:[
-                    { path: 'comissao', component: CommissionComponent },
-                    { path: 'vendas', component: SellingComponent },
-                    { path: 'metas', component: GoalsComponent },
-                    { path: 'faturamento', component: RevenuesComponent }
-                ]
-            },
-            {
-                path:'perfil/:nomeUser',
-                component:UserProfileComponent,
-                children:[
-                    { path:'infoProfile', component:InfoProfileComponent },
-                    { path:'AlterPass', component:RecoverPasswordComponent }
-                ]
-            }
-        ]
-     }
+                path:'novopedido',
+                component:NewOrderComponent,
+                children:[ { path:'vendanacional', component:NacionalSellingComponent }]
+            }]
+        },
+        {
+            path:'produtos',
+            component:ProductsComponent,
+            children:[          
+                    { path: 'incluir', component: IncludeProductComponent },
+                    { path: 'consulta', component: QueryProductComponent },
+                    { path: 'estruturadelinha', component: LineStructureComponent },
+                    { path: 'gruposdeprodutos', component: ProductsGroupComponent },
+                    { path: 'custodosprodutos', component: ProductsPriceComponent }
+            ]
+        },
+        {
+            path:'representantes',
+            component:AgentsComponent,
+            children:[{ path: 'incluir', component: IncludeAgentComponent }]
+        },
+        {
+            path:'clientes',
+            component:CustomersComponent,
+            children:[
+                { path: 'incluir', component: IncludeCustomerComponent },
+                { path: 'consulta', component: QueryCustomerComponent },
+                { path: 'aprovacao', component: ApproveCustomerComponent }
+            ]
+        },
+        {
+            path:'relatorios',
+            component:ReportsComponent,
+            children:[
+                { path: 'comissao', component: CommissionComponent },
+                { path: 'vendas', component: SellingComponent },
+                { path: 'metas', component: GoalsComponent },
+                { path: 'faturamento', component: RevenuesComponent }
+            ]
+        },
+        {
+            path:'perfil/:nomeUser',
+            component:UserProfileComponent,
+            
+            children:[
+                { path:'infoProfile', component:InfoProfileComponent },
+                { path:'AlterPass', component:RecoverPasswordComponent }
+            ]
+        }
+      ]
+    },
+
+    { path:'' , component:AppComponent ,
+        children:[  
+            { path: 'login' , component : LoginComponent }
+         ]
+    },
+    { path: '404', component: NotFoundComponent },
+    { path: '**', redirectTo: '404' }
 ];
 
 export const rotas: ModuleWithProviders<RouterModule> = RouterModule.forRoot(APP_ROUTES);

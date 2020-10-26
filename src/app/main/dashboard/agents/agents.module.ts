@@ -20,6 +20,7 @@ import { GoalsComponent } from './include-agent/goals/goals.component';
 import { SellerGoalsComponent } from './include-agent/seller-goals/seller-goals.component';
 import { SignupSellerModalComponent } from './include-agent/seller-goals/signup-seller-modal/signup-seller-modal.component';
 import { ResumeComponent } from './include-agent/resume/resume.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
     declarations: [
@@ -40,10 +41,11 @@ import { ResumeComponent } from './include-agent/resume/resume.component';
         CommonModule,
         RouterModule,
         FormsModule,
-        AgentsRoutingModule,
+        //AgentsRoutingModule,
         NgbNavModule,
         NgbTypeaheadModule,
         NgbDatepickerModule,
+        rotas
     ],
     exports: [
         AgentsComponent,

@@ -8,15 +8,17 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home.component';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    //HomeRoutingModule,
     NgxChartsModule,
     LayoutsModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    rotas
   ],
   exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

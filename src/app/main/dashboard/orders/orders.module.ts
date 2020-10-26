@@ -31,6 +31,7 @@ import { AddOrderComponent } from './new-order/nacional-selling/add-order/add-or
 import { OrdersRoutingModule } from './orders-routing.module';
 import { ProductComparativeComponent } from './new-order/nacional-selling/add-order/product-comparative/product-comparative.component';
 import { FinishOrderComponent } from './new-order/nacional-selling/add-order/finish-order/finish-order.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,7 @@ import { FinishOrderComponent } from './new-order/nacional-selling/add-order/fin
     ],
     imports: [
         CommonModule,
-        RouterModule,
+        //RouterModule,
         FormsModule,
         ReactiveFormsModule,
         NgbDatepickerModule,
@@ -57,9 +58,10 @@ import { FinishOrderComponent } from './new-order/nacional-selling/add-order/fin
         LayoutsModule,
         NgbTypeaheadModule,
         NgImageSliderModule,
-        OrdersRoutingModule,
+        //OrdersRoutingModule,
         NgbCollapseModule,
-        AngularDraggableModule
+        AngularDraggableModule,
+        rotas
     ],
     entryComponents: [
         InvoiceDetailComponent,

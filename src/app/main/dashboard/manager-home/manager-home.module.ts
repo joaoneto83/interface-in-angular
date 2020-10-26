@@ -12,6 +12,7 @@ import { ManagerHomeRoutingModule } from './manager-home-routing.module';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
 
 import { ManagerHomeComponent } from './manager-home.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { ManagerHomeComponent } from './manager-home.component';
   ],
   imports: [
     CommonModule,
-    ManagerHomeRoutingModule,
+    //ManagerHomeRoutingModule,
     FormsModule,
     NgbDatepickerModule,
     LayoutsModule,
     NgxChartsModule,
+    rotas
   ],
   exports: [
     ManagerHomeComponent

@@ -16,6 +16,7 @@ import { CustomerDetailModalComponent } from './customer-detail-modal/customer-d
 import { RegularCustomerDetailComponent } from './customer-detail-modal/regular-customer-detail/regular-customer-detail.component';
 import { VpcCustomerDetailComponent } from './customer-detail-modal/vpc-customer-detail/vpc-customer-detail.component';
 import { ApproveCustomerComponent } from './approve-customer/approve-customer.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 @NgModule({
     declarations: [
@@ -33,9 +34,10 @@ import { ApproveCustomerComponent } from './approve-customer/approve-customer.co
     imports: [
         CommonModule,
         FormsModule,
-        CustomersRoutingModule,
+        //CustomersRoutingModule,
         NgbNavModule,
-        NgbTypeaheadModule
+        NgbTypeaheadModule,
+        rotas
     ],
     exports: [CustomersComponent],
     entryComponents: [

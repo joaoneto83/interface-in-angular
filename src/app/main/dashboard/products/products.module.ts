@@ -16,14 +16,16 @@ import { ProductsGroupComponent } from './products-group/products-group.componen
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProductGroupModalComponent } from './products-group/edit-product-group-modal/edit-product-group-modal.component';
 import { ProductsPriceComponent } from './products-price/products-price.component';
+import { rotas } from 'src/app/routes/app.routes';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    //ProductsRoutingModule,
     FormsModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+    rotas
   ],
   declarations: [
     ProductsComponent,

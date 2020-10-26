@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { barChart, lineChart, pieChart } from '../../../../shared/ObejctMock/data';
 
 @Component({
@@ -13,7 +14,8 @@ export class HomeComponent {
   lineChart: any[];
   pieChart: any[];
 
-  constructor() {
+  constructor(private router: Router) {
     Object.assign(this, { barChart, lineChart, pieChart });
+    console.log(this.router.url);
   }
 }

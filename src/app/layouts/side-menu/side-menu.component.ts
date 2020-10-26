@@ -1,5 +1,8 @@
+import { TokenService } from 'src/app/_core/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/_shered/model/usuario';
+
 
 @Component({
   selector: 'elgin-side-menu',
@@ -12,7 +15,8 @@ export class SideMenuComponent implements OnInit {
   routeTitle: string;
   userName:string;
   selectedItem = 0;
-
+  dataUser:Usuario;
+  
   menuItems = [
     { icon: 'fa fa-home', title: 'Inicial', id: 0 },
     { icon: 'fa fa-cart-arrow-down', title: 'Pedidos', id: 1 },
@@ -28,9 +32,12 @@ export class SideMenuComponent implements OnInit {
 
   toggle = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router , private ServiceToken:TokenService) {
 
-    this.userName = 'Carlos Magno';
+     ServiceToken.getUser().subscribe(r => {
+       //console.log(r);
+       this.dataUser = r;
+     });
    }
 
   ngOnInit() { }
@@ -93,5 +100,10 @@ export class SideMenuComponent implements OnInit {
     }
 
     this.hideSideMenu();
+  }
+
+  deslogar(){
+    this.ServiceToken.removeToken();
+    this.router.navigate(['/login'])
   }
 }
