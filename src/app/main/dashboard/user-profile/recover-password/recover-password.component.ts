@@ -199,7 +199,7 @@ validationGeral:string;
      let dataUsuario:any;
    
       this.serviceToken.getUser().subscribe(r => dataUsuario = r);
-      console.log(dataUsuario);
+      //console.log(dataUsuario);
       this.serviceToken.setToken(dataUsuario.unique_name,this.dadosFormulario.currentPassword)
       .subscribe(
         ()=>{
@@ -210,14 +210,11 @@ validationGeral:string;
             NovaSenha:this.dadosFormulario.newPassword
           }
           // Troca a senha
-          this.serviceRecover.RecuperarSenha(dadosEnvio).subscribe(
-          () => {
-            console.log('Trocado ! sucesso');
-            this.limpaCamposCadastro();
-          },
-          (error) => {
-            console.log('Erro ' + error);
-          });
+          this.serviceRecover.RecuperarSenha(dadosEnvio,this.serviceToken.getToken()).subscribe(
+          res =>  console.log(res),
+            //this.limpaCamposCadastro();
+          error => console.log('Erro ' + error)
+          )
         //console.log('Senha atual correta!');
       },
       ()=> {
