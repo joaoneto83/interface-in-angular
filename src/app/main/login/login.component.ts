@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
    private usuarioService: AdmUsuarioService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router
+    ) {
      
      this.messagem ="Preencha os campos Login e Senha!";
      this.loading = false;

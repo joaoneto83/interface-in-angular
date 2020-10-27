@@ -1,3 +1,4 @@
+import { TokenExpiredGuard } from './../main/login/token-expired.guard';
 import { ApproveCustomerComponent } from './../main/dashboard/customers/approve-customer/approve-customer.component';
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
@@ -46,7 +47,7 @@ import { AuthGuard } from '../main/login/auth.guard';
 const APP_ROUTES : Routes = [
 
     { path:'', component:AuthComponentComponent , 
-      canActivate:[AuthGuard],
+      canActivate:[AuthGuard,TokenExpiredGuard],
       children:[
         { path: 'inicio' , component:HomeComponent },
         { path: 'inicio/gerente' , component:ManagerHomeComponent },
@@ -73,7 +74,8 @@ const APP_ROUTES : Routes = [
         {
             path:'representantes',
             component:AgentsComponent,
-            children:[{ path: 'incluir', component: IncludeAgentComponent }]
+            children:[
+                { path: 'incluir', component: IncludeAgentComponent }]
         },
         {
             path:'clientes',

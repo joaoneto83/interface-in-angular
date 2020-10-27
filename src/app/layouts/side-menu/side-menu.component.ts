@@ -15,7 +15,7 @@ export class SideMenuComponent implements OnInit {
   routeTitle: string;
   userName:string;
   selectedItem = 0;
-  dataUser:Usuario;
+  dataUser:any;
   
   menuItems = [
     { icon: 'fa fa-home', title: 'Inicial', id: 0 },

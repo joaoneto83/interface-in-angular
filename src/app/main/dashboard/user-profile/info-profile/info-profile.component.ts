@@ -10,7 +10,7 @@ import { Usuario } from 'src/app/_shered/model/usuario';
 })
 export class InfoProfileComponent implements OnInit {
   
-  dataUser:Usuario;
+  dataUser:any;
 
   constructor(serviceToken:TokenService) {
     serviceToken.getUser().subscribe(r=>{
@@ -18,9 +18,9 @@ export class InfoProfileComponent implements OnInit {
       //console.log(this.dataUser);
     },
     ()=>{
-      console.log('Falha ao coletar os dados');
+      //console.log('Falha ao coletar os dados');
     })
-    console.log(this.dataUser);
+    //console.log(this.dataUser);
 
    }
 

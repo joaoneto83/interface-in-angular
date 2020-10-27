@@ -11,7 +11,7 @@
 
     <div class="types-button">
         <button class="btn btn-item" *ngFor="let item of typeItems; let i = index"
-            [ngClass]="{active: selectedItem == i}" (click)="navigate(i)">
+            [ngClass]="{active: selectedItem == i}" [routerLink]="item.route">
             <em [class]=" item.icon"></em>
             <span>{{item.title}}</span>
         </button>

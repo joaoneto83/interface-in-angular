@@ -1,6 +1,9 @@
+import { Usuario } from './../../../../_shered/model/usuario';
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { RecoverPasswordService } from './recover-password.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AtualizarSenha } from 'src/shared/models/AtualizarSenhaModel';
 
 
 
@@ -25,21 +28,25 @@ export class RecoverPasswordComponent implements OnInit{
 @ViewChild('newPass') NewPassInputComponent : ElementRef;
 @ViewChild('ConfirmNewPass') ConfirmInputComponent : ElementRef;
 @ViewChild('btnConfirm') btnConfirmar : ElementRef;
+@ViewChild('AlertGeral') alertaGeral : ElementRef;
 
+//bools
+mostraValidacoesGeral:string = 'none';
 
 // Msg Validações
 validationSenhaAtual:string;
 validationNewSenhaAtual:string;
 validationConfirmSenhaAtual:string;
+validationGeral:string;
 
   dadosFormulario:alterPasswordModel;
 
   constructor(
     private serviceRecover:RecoverPasswordService,
-    private serviceToken:TokenService
-    ) 
+    private serviceToken:TokenService) 
     { 
-      console.log('token Atual: ' + serviceToken.getToken());
+      console.log(this.alertaGeral);
+      //console.log('token Atual: ' + serviceToken.getToken());
     }
 
 
@@ -47,17 +54,7 @@ validationConfirmSenhaAtual:string;
     this.limpaCamposCadastro();
   }
 
-   getMensagem(){
-     return this.serviceRecover.msgTeste().subscribe(
-      (res) => {
-        console.log(res);
-      },(error)=>{
-        console.log(error);
-      }
-
-     );
-   }
-
+  
    limpaCamposCadastro(){
 
      this.dadosFormulario = {
@@ -70,10 +67,13 @@ validationConfirmSenhaAtual:string;
      this.validationSenhaAtual = '';
      this.validationNewSenhaAtual = '';
      this.validationConfirmSenhaAtual = '';
+     this.validationGeral = '';
 
      this.CurrentPassInputComponent.nativeElement.className  = "form-control"; 
      this.NewPassInputComponent.nativeElement.className  = "form-control";
      this.ConfirmInputComponent.nativeElement.className  = "form-control";
+
+     this.mostraValidacoesGeral = 'none';
 
      this.validaBtnConfirm();
    }
@@ -191,13 +191,50 @@ validationConfirmSenhaAtual:string;
       this.btnConfirmar.nativeElement.disabled = true;
       this.btnConfirmar.nativeElement.style.cursor = "not-allowed";
      }
-
    }
 
+
    submitFormAlter(){
-     alert("foi");
+     //alert("foi");
+     let dataUsuario:any;
+   
+      this.serviceToken.getUser().subscribe(r => dataUsuario = r);
+      console.log(dataUsuario);
+      this.serviceToken.setToken(dataUsuario.unique_name,this.dadosFormulario.currentPassword)
+      .subscribe(
+        ()=>{
+
+          let dadosEnvio:AtualizarSenha = {
+            Id:dataUsuario.UsuarioId,
+            Login:dataUsuario.unique_name,
+            NovaSenha:this.dadosFormulario.newPassword
+          }
+          // Troca a senha
+          this.serviceRecover.RecuperarSenha(dadosEnvio).subscribe(
+          () => {
+            console.log('Trocado ! sucesso');
+            this.limpaCamposCadastro();
+          },
+          (error) => {
+            console.log('Erro ' + error);
+          });
+        //console.log('Senha atual correta!');
+      },
+      ()=> {
+        this.mostraValidacoesGeral = 'block';
+        this.alertaGeral.nativeElement.className = 'alert alert-danger';
+        this.validationGeral += "Senha Atual incorreta !";
+        return false;
+        //console.log('');
+      });
+
+      // Monta objeto
+      
+    
+ 
+     //console.log(dataUsuario);
+     //itemValidacao:Boolean = this.serviceToken.setToken(dataUsuario.)
      
-     this.limpaCamposCadastro();
    }
 
 }
