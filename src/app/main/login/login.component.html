@@ -1,6 +1,4 @@
-<div class="caixa-loading" *ngIf="loading">
-    <img class="loading"src="../../../assets/login.svg" alt="elgin up logo"> 
-</div>
+
 <div class="bg">
 
     <div class="card login">
@@ -9,8 +7,11 @@
         </div>
 
         <div class="card-body">
+            <div class="caixa-loading" *ngIf="loading">
+                <img class="loading"src="../../../assets/login.svg" alt="elgin up logo"> 
+            </div>
             <div *ngIf="!trocaSenha">
-            <form [formGroup]="formLogin">
+            <form [formGroup]="formLogin" *ngIf="!loading" >
                 <div class="form-group" [class.has-danger]="hasErrorLogin('login')">
                     <label for="login">Login</label>
                     <input formControlName="login" (keydown.enter)="login()" type="text" class="form-control" placeholder="Preencha o Login">
@@ -19,25 +20,23 @@
                     <label for="password">Senha</label>
                     <input formControlName="senha" (keydown.enter)="login()" type="password" class="form-control" placeholder="Preencha a Senha">
                 </div>
-                <button (click) ="login();" type="submit" class="btn btn-primary" >entrar</button>
+                <button (click) ="login();" type="submit" class="btn btn-primary">entrar</button>
             </form>
-            <div class="trocaSenha"  (click) ="trocaSenhaFunction();">
+            <div class="trocaSenha"  (click) ="trocaSenhaFunction();" *ngIf="!loading">
                 <span>Esqueci a senha</span>
             </div>
         </div>
-
-
         <div *ngIf="trocaSenha">
 
-            <div class="voltar"  (click) ="voltarFunction();">
+            <div class="voltar"  (click) ="voltarFunction();" *ngIf="!loading">
                 <span>Voltar</span>
             </div>
-            <div  class="titulo">
+            <div  class="titulo" *ngIf="!loading">
                 <span>Recuperar Senha</span>
             </div>
 
 
-            <form [formGroup]="formResetar" class="form">
+            <form [formGroup]="formResetar" class="form" *ngIf="!loading">
               
                
                  <div class="form-group"  [class.has-danger]="hasErrorResetar('login2')">
