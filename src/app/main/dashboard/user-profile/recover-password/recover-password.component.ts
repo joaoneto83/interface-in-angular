@@ -2,9 +2,8 @@ import { Usuario } from './../../../../_shered/model/usuario';
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { RecoverPasswordService } from './recover-password.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { AtualizarSenha } from 'src/shared/models/AtualizarSenhaModel';
 
+import { AtualizarSenha } from 'src/shared/models/AtualizarSenhaModel';
 
 
 class alterPasswordModel{
@@ -31,7 +30,7 @@ export class RecoverPasswordComponent implements OnInit{
 @ViewChild('AlertGeral') alertaGeral : ElementRef;
 
 //bools
-mostraValidacoesGeral:string = 'none';
+mostraValidacoesGeral:boolean = false;
 
 // Msg Validações
 validationSenhaAtual:string;
@@ -51,11 +50,11 @@ validationGeral:string;
 
 
   ngOnInit(): void {
-    this.limpaCamposCadastro();
+    this.limpaCamposCadastro(true);
   }
 
   
-   limpaCamposCadastro(){
+   limpaCamposCadastro(limpaValidacoes:boolean){
 
      this.dadosFormulario = {
        idLogin:0,
@@ -67,13 +66,15 @@ validationGeral:string;
      this.validationSenhaAtual = '';
      this.validationNewSenhaAtual = '';
      this.validationConfirmSenhaAtual = '';
-     this.validationGeral = '';
+
+     if(limpaValidacoes){
+        this.validationGeral = '';
+        this.mostraValidacoesGeral = false;
+     }
 
      this.CurrentPassInputComponent.nativeElement.className  = "form-control"; 
      this.NewPassInputComponent.nativeElement.className  = "form-control";
      this.ConfirmInputComponent.nativeElement.className  = "form-control";
-
-     this.mostraValidacoesGeral = 'none';
 
      this.validaBtnConfirm();
    }
@@ -196,8 +197,7 @@ validationGeral:string;
 
    submitFormAlter(){
      //alert("foi");
-     let dataUsuario:any;
-   
+      let dataUsuario:any;
       this.serviceToken.getUser().subscribe(r => dataUsuario = r);
       //console.log(dataUsuario);
       this.serviceToken.setToken(dataUsuario.unique_name,this.dadosFormulario.currentPassword)
@@ -210,28 +210,33 @@ validationGeral:string;
             NovaSenha:this.dadosFormulario.newPassword
           }
           // Troca a senha
-          this.serviceRecover.RecuperarSenha(dadosEnvio,this.serviceToken.getToken()).subscribe(
-          res =>  console.log(res),
-            //this.limpaCamposCadastro();
-          error => console.log('Erro ' + error)
-          )
-        //console.log('Senha atual correta!');
+          this.serviceRecover.RecuperarSenha(dadosEnvio , this.serviceToken.getToken())
+          .subscribe( 
+                success => {
+                    if(success.result.success)
+                    {
+                      this.validationGeral = success.result.message[0];
+                      this.mostraValidacoesGeral = true;
+                      this.alertaGeral.nativeElement.className = 'alert alert-success';
+                      this.limpaCamposCadastro(false);
+                    }
+                    else
+                    {
+                      success.result.message.array.forEach( message => {
+                        this.validationGeral += message;
+                      });
+                      this.mostraValidacoesGeral = true;
+                      this.alertaGeral.nativeElement.className = 'alert alert-danger';
+                    }
+                },
+                error =>{ console.log(error) }
+              );
       },
       ()=> {
-        this.mostraValidacoesGeral = 'block';
+        this.validationGeral = "Senha Atual incorreta !";
+        this.mostraValidacoesGeral = true;
         this.alertaGeral.nativeElement.className = 'alert alert-danger';
-        this.validationGeral += "Senha Atual incorreta !";
         return false;
-        //console.log('');
       });
-
-      // Monta objeto
-      
-    
- 
-     //console.log(dataUsuario);
-     //itemValidacao:Boolean = this.serviceToken.setToken(dataUsuario.)
-     
    }
-
 }
