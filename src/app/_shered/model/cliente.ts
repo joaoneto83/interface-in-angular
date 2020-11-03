@@ -1,7 +1,7 @@
 import { Pessoa } from './pessoa';
 import { VpcCliente } from './VpcClientes';
 
-export interface Clientes {
+export interface Cliente {
 
     PessoaId: number;
     CategoriaCfop: number;
