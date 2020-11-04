@@ -3,14 +3,14 @@
 
 export interface Cidades {
   Nome: string;
-  CidadeIncentivada: true;
+  CidadeIncentivada: boolean;
   Id: number;
   DataInclusao: string;
   UsuarioInclusaoId: number;
   DataUltimaAtualizacao: string;
   UsuarioUltimaAtualizacaoId: number;
-  Ativo: true;
-  Excluido: true;
+  Ativo: boolean;
+  Excluido: boolean;
   DataExcluido: string;
   UsuarioExcluidoId: number
 

@@ -2,7 +2,7 @@ import { Cidades } from './cidades';
 
 export interface Estado {
     Nome: string;
-    CidadeIncentivada: true;
+    CidadeIncentivada: boolean;
     Estado: {
       Uf: string;
       Nome: string;
@@ -12,16 +12,16 @@ export interface Estado {
       UsuarioInclusaoId: number;
       DataUltimaAtualizacao: string;
       UsuarioUltimaAtualizacaoId: number;
-      Ativo: true;
-      Excluido: true;
+      Ativo: boolean;
+      Excluido: boolean;
       DataExcluido: string;
       UsuarioExcluidoId: number
     };
     Top: number;
     Skip: number;
-    ContarRegistros: true;
+    ContarRegistros: boolean;
     OrderBy: string;
-    Ativo: true;
-    Excluido: true;
+    Ativo: boolean;
+    Excluido: boolean;
     Includes: string
   }

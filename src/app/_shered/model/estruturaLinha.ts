@@ -4,7 +4,7 @@
 export interface EstruturaLinha {
   AreaNegocioId: number;
   Descricao: string;
-  LiberadoVenda: true;
+  LiberadoVenda: boolean;
   Imagem: string;
   CodigoErp: string;
   AreaNegocio: AreaNegocio[];
@@ -13,8 +13,8 @@ export interface EstruturaLinha {
   UsuarioInclusaoId: number;
   DataUltimaAtualizacao: string;
   UsuarioUltimaAtualizacaoId: number;
-  Ativo: true;
-  Excluido: true;
+  Ativo: boolean;
+  Excluido: boolean;
   DataExcluido: string;
   UsuarioExcluidoId: number;
 

@@ -15,8 +15,8 @@ export interface Documento {
   UsuarioInclusaoId: number;
   DataUltimaAtualizacao: string;
   UsuarioUltimaAtualizacaoId: number;
-  Ativo: true;
-  Excluido: true;
+  Ativo: boolean;
+  Excluido: boolean;
   DataExcluido: string;
   UsuarioExcluidoId: number
     
