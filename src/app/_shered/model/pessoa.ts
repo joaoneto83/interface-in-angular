@@ -2,7 +2,7 @@
   import { Telefone } from './telefone';
   import { Email } from './email';
   import { Documento } from './documento';
-  import { Cliente } from './cliente';
+  import { Cliente } from './cliente_';
   import { AlteracaoCadastralCliente } from './alteracaoCadastralCliente';
   import { TipoPessoa } from './tipoPessoa';
 

@@ -1,5 +1,5 @@
 import { Pessoa } from './pessoa';
-import { VpcCliente } from './VpcClientes';
+import { VpcCliente } from './VpcCliente';
 
 export interface Clientes {
 
@@ -18,5 +18,5 @@ export interface Clientes {
     UsuarioInclusaoId: number;
     Ativo: boolean;
     Excluido: boolean;
-    
+
 }; 

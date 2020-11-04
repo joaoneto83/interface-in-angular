@@ -1,5 +1,5 @@
 import { Pessoa } from './pessoa';
-import { VpcCliente } from './VpcClientes';
+import { VpcCliente } from './VpcCliente';
 
 export interface Cliente {
 
