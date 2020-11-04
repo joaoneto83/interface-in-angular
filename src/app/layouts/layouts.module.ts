@@ -14,6 +14,7 @@ import { LineChartLegendComponent } from './charts/line-chart-legend/line-chart-
 import { GroupedVerticalChartComponent } from './charts/grouped-vertical-chart/grouped-vertical-chart.component';
 import { PieGridComponent } from './charts/pie-grid/pie-grid.component';
 import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-pie-chart.component';
+import { InfoPopoverComponent } from './General/info-popover/info-popover.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-
         LineChartLegendComponent,
         GroupedVerticalChartComponent,
         PieGridComponent,
-        AdvancedPieChartComponent
+        AdvancedPieChartComponent,
+        InfoPopoverComponent
     ],
     exports: [
         SideMenuComponent,
@@ -43,6 +45,7 @@ import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-
         LineChartLegendComponent,
         GroupedVerticalChartComponent,
         PieGridComponent,
+        InfoPopoverComponent,
         AdvancedPieChartComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

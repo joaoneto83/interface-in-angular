@@ -35,6 +35,7 @@ import { RoleGuard } from './role.guard';
 import { AuthComponentComponent } from '../auth_component/auth-component/auth-component.component';
 import { AppComponent } from '../app.component';
 import { AuthGuard } from '../main/login/auth.guard';
+import { RedirectLoggedGuard } from './redirect-logged.guard';
 
 /*
 
@@ -45,8 +46,8 @@ import { AuthGuard } from '../main/login/auth.guard';
 */
 
 const APP_ROUTES : Routes = [
-
-    { path:'', component:AuthComponentComponent , 
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', component:AuthComponentComponent , 
       canActivate:[AuthGuard,TokenExpiredGuard],
       children:[
         { path: 'inicio' , component:HomeComponent },
@@ -108,9 +109,9 @@ const APP_ROUTES : Routes = [
       ]
     },
 
-    { path:'' , component:AppComponent ,
+    { path:'' , component:AppComponent ,  canActivate:[RedirectLoggedGuard],
         children:[  
-            { path: 'login' , component : LoginComponent }
+            { path: 'login' , component : LoginComponent  }
          ]
     },
     { path: '404', component: NotFoundComponent },

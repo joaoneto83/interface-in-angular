@@ -8,6 +8,7 @@ import { RecoverPasswordService } from './recover-password/recover-password.serv
 import { FormsModule } from '@angular/forms';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { rotas } from 'src/app/routes/app.routes';
+import { LayoutsModule } from 'src/app/layouts/layouts.module';
 
 
 
@@ -24,6 +25,7 @@ import { rotas } from 'src/app/routes/app.routes';
     //UserProfileRoutingModule,
     rotas,
     CommonModule,
+    LayoutsModule,
     FormsModule
     
   ],

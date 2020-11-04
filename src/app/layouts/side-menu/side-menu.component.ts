@@ -18,6 +18,7 @@ export class SideMenuComponent implements OnInit {
   dataUser:any;
   
   menuItems = [
+    
     { icon: 'fa fa-home', title: 'Inicial', id: 0 },
     { icon: 'fa fa-cart-arrow-down', title: 'Pedidos', id: 1 },
     { icon: 'fa fa-box-open', title: 'Produtos', id: 2 },
@@ -28,6 +29,7 @@ export class SideMenuComponent implements OnInit {
     { icon: 'fa fa-user-tie', title: 'Poítica Comercial', id: 7 },
     { icon: 'fa fa-file-alt', title: 'Relatórios', id: 8 },
     { icon: 'fa fa-cog', title: 'Admin', id: 9 }
+    
   ];
 
   toggle = false;

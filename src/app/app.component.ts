@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLinkActive } from '@angular/router';
 
+
 @Component({
   selector: 'elgin-root',
   templateUrl: './app.component.html',
@@ -11,6 +12,9 @@ export class AppComponent {
   escondeItens:boolean;
 
   constructor(private router: Router) {
+    
+    
+     
         //router.events.subscribe((url:any) => console.log(url));
         //this.escondeItens = this.router.url == '/' ?  true :  false;
         //console.log(this.escondeItens);
@@ -19,8 +23,7 @@ export class AppComponent {
     }
 
 
-  
-    
+
 
     /*
   hasRoute(route: string) {
