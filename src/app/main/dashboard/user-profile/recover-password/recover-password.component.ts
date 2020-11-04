@@ -38,6 +38,9 @@ validationNewSenhaAtual:string;
 validationConfirmSenhaAtual:string;
 validationGeral:string;
 
+
+
+
   dadosFormulario:alterPasswordModel;
 
   constructor(

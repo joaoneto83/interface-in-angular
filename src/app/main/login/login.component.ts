@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit {
      this.messagem ="Preencha os campos Login e Senha!";
      this.loading = false;
      this.trocaSenha = false;
+
+
      
      }
 
