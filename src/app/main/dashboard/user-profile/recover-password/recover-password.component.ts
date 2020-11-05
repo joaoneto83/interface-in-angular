@@ -47,7 +47,7 @@ validationGeral:string;
     private serviceRecover:RecoverPasswordService,
     private serviceToken:TokenService) 
     { 
-      console.log(this.alertaGeral);
+      //console.log(this.alertaGeral);
       //console.log('token Atual: ' + serviceToken.getToken());
     }
 

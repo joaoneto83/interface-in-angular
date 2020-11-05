@@ -1,8 +1,11 @@
+import { MenuLateral } from './../../_shered/model/MenuLateral';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/_shered/model/usuario';
-
+import { MenuServiceService } from './menu-service.service';
+import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
+import { skipWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'elgin-side-menu',
@@ -16,6 +19,11 @@ export class SideMenuComponent implements OnInit {
   userName:string;
   selectedItem = 0;
   dataUser:any;
+  
+
+  retornoMenu:RetornoDataModel<MenuLateral[]>;
+
+  /* 
   
   menuItems = [
     
@@ -31,15 +39,31 @@ export class SideMenuComponent implements OnInit {
     { icon: 'fa fa-cog', title: 'Admin', id: 9 }
     
   ];
-
+*/
   toggle = false;
 
-  constructor(private router: Router , private ServiceToken:TokenService) {
+  constructor(private router: Router , private serviceMenu : MenuServiceService, private ServiceToken:TokenService) {
 
      ServiceToken.getUser().subscribe(r => {
        //console.log(r);
        this.dataUser = r;
      });
+
+     
+     serviceMenu.getEstruturaMenuLateral({
+      cabecalho:this.ServiceToken.retornaCabecalhoRequestGlobal(),
+       idPerfil: this.dataUser.PerfilId
+     }).subscribe(
+       r => {
+        this.retornoMenu = r;
+        //console.log(this.retornoMenu); 
+        //console.log(this.retornoMenu.result.data); 
+     },
+     error => {
+        console.log(`Ocorreu um erro ao tentar coletar os dados do menu \n \n ${ error }`);
+     });
+
+
    }
 
   ngOnInit() { }
@@ -72,35 +96,45 @@ export class SideMenuComponent implements OnInit {
   }
 
   navigateTo(index: number) {
-    this.selectedItem = index;
-    this.routeId = this.menuItems[this.selectedItem].id;
+    this.selectedItem = index -1;
+    //this.routeId = this.menuItems[this.selectedItem].id;
 
+    /* 
     console.log(
       'INDEX ==>', index,
       'item selecionado ==>', this.selectedItem,
       'Id da rota ==>', this.routeId,
       'Titulo da rota ==>', this.routeTitle
     );
+    */
+    switch(index){
+      case 1:
+          this.router.navigate(['inicio']);
+      break;
 
-    if (this.routeId === 0) {
-      this.router.navigate(['inicio']);
-    }
-    if (this.routeId === 1) {
-      this.router.navigate(['pedidos']);
-    }
-    if (this.routeId === 2) {
-      this.router.navigate(['produtos']);
-    }
-    if (this.routeId === 4) {
-      this.router.navigate(['representantes']);
-    }
-    if (this.routeId === 5) {
-      this.router.navigate(['clientes']);
-    }
-    if (this.routeId === 8) {
-      this.router.navigate(['relatorios']);
-    }
+      case 2:
+        this.router.navigate(['pedidos']);
+      break;
 
+      case 3:
+        this.router.navigate(['produtos']);
+      break;
+
+      case 5:
+        this.router.navigate(['representantes']);
+      break;
+
+      case 6:
+        this.router.navigate(['clientes']);
+      break;
+
+      case 9:
+        this.router.navigate(['relatorios']);
+      break;
+
+
+    }
+    
     this.hideSideMenu();
   }
 
@@ -108,4 +142,7 @@ export class SideMenuComponent implements OnInit {
     this.ServiceToken.removeToken();
     this.router.navigate(['/login'])
   }
+
+
+
 }

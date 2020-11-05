@@ -16,8 +16,8 @@ export class HomeComponent {
   pieChart: any[];
 
   constructor(private router: Router,service:TokenService) {
-    console.log(service.getToken());
+    //console.log(service.getToken());
     Object.assign(this, { barChart, lineChart, pieChart });
-    console.log(this.router.url);
+    //console.log(this.router.url);
   }
 }
