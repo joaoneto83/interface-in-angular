@@ -12,8 +12,7 @@ export class InfoPopoverComponent implements OnInit {
 
   constructor() {
     
-
-      console.log(this.description);
+      console.log(this.description); /* Aqui nao vem descricão */
    }
 
   ngOnInit(): void {

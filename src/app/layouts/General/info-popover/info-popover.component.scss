@@ -37,3 +37,37 @@
 }
 
 */
+
+#mostrar {
+  display: none;
+  margin-left:30px;
+  background-color: white;
+  border: groove #f0f0f0;
+  margin-top: -38px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#group-message{
+  margin-top: -24px;
+}
+
+#arrow {
+    display:none;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    margin: 0px 0px 14px 20px;
+    position: relative;
+    border-right:10px solid; 
+  }
+
+  #passar_mouse:hover + #group-message  #arrow {
+    display: block;
+  } 
+
+  #passar_mouse:hover + #group-message  #mostrar {
+    display: block;
+  } 
+
