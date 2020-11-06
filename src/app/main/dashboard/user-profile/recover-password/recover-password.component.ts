@@ -28,6 +28,7 @@ export class RecoverPasswordComponent implements OnInit{
 @ViewChild('ConfirmNewPass') ConfirmInputComponent : ElementRef;
 @ViewChild('btnConfirm') btnConfirmar : ElementRef;
 @ViewChild('AlertGeral') alertaGeral : ElementRef;
+@ViewChild('messagem') messagemGeral : ElementRef;
 
 //bools
 mostraValidacoesGeral:boolean = false;

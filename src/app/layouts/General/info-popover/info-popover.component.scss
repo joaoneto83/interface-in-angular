@@ -51,8 +51,14 @@
 #group-message{
   margin-top: -24px;
 }
-
+.fa-question-circle{
+  color: #e6e617;
+}
+.posicao{
+  margin-top: -30px;
+}
 #arrow {
+    color: #e6e617;
     display:none;
     width: 0; 
     height: 0; 
@@ -65,9 +71,11 @@
 
   #passar_mouse:hover + #group-message  #arrow {
     display: block;
+    position: absolute;
   } 
 
   #passar_mouse:hover + #group-message  #mostrar {
     display: block;
+    position: absolute;
   } 
 
