@@ -1,5 +1,5 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 
 
@@ -147,5 +147,16 @@ export class TokenService {
         this.PerfilId= user.perfilId;
         this.Perfil=user.perfil;
         this.userSubject.next(user);
+    }
+
+    retornaCabecalhoRequestGlobal(){
+        const HttpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${this.getToken()}`
+            }),
+            responseType: 'json' as const 
+          };
+        return HttpOptions; 
     }
 }

@@ -15,12 +15,15 @@ import { GroupedVerticalChartComponent } from './charts/grouped-vertical-chart/g
 import { PieGridComponent } from './charts/pie-grid/pie-grid.component';
 import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-pie-chart.component';
 import { InfoPopoverComponent } from './General/info-popover/info-popover.component';
+import { MenuServiceService } from './side-menu/menu-service.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         NgxChartsModule,
+        RouterModule
     ],
     declarations: [
         SideMenuComponent,
@@ -47,6 +50,9 @@ import { InfoPopoverComponent } from './General/info-popover/info-popover.compon
         PieGridComponent,
         InfoPopoverComponent,
         AdvancedPieChartComponent
+    ],
+    providers:[
+        MenuServiceService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
