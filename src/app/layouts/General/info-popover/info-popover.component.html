@@ -1,9 +1,9 @@
-    <div id="content" class="posicao">
+    <div id="content" class="posicao" (mouseover)="chamaDescricao()">
         <span class="fas fa-question-circle" id="passar_mouse"></span>
-        <div id="group-message">
-                <div id="arrow"></div>
-                <div id="mostrar">  Fusce ac luctus nisi. Donec consequat augue sed ultrices dapibus. Integer ornare a velit non finibus. </div>
-        </div>   
+            <div id="group-message">
+                    <div id="arrow"></div>
+                    <div id="mostrar"> {{ description }}</div>
+            </div>   
     </div><br/>
     
         

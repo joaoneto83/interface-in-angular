@@ -19,5 +19,9 @@ export class InfoPopoverComponent implements OnInit {
    
   }
 
+  chamaDescricao(){
+    console.log(this.description);
+  }
+
 
 }
