@@ -7,8 +7,7 @@
             <div class="form-group col-md-12 m-0 search">
                 <em class="fas fa-search"></em>
                 <label for="customerSearch">Buscar Cliente</label>
-                <input id="customerSearch" type="text" class="form-control" [ngbTypeahead]="search"
-                    [resultFormatter]="formatter">
+                <input id="customerSearch" type="text" class="form-control" [(ngModel)]="searchCmp">
             </div>
         </div>
 
@@ -27,9 +26,16 @@
                     <label class="custom-control-label" for="isExport">Cliente Exportação</label>
                 </div>
             </div>
-            <button class="btn btn-export">EXPORTAR PARA EXECEL <em class="far fa-file-excel"></em></button>
+           
         </div>
 
+        <div class="text-center my-5">
+            <button (click)="pesquisaCliente()" class="btn btn-save"><span class="fa-search fas"></span> Pesquisar </button>
+        </div>
+
+        <div class="action-buttons my-2">
+            <button class="btn btn-export">EXPORTAR PARA EXCEL <em class="far fa-file-excel"></em></button>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-sm" aria-describedby="orders table">
                 <thead>
@@ -60,36 +66,9 @@
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-center">02</td>
-                        <td>Elgin</td>
-                        <td>30672661000125</td>
-                        <td>R. Barão de Campinas, 305</td>
-                        <td>Brasil</td>
-                        <td>REFRIGERACAO NACIONAL</td>
-                        <td class="text-center">ativo</td>
-                        <td class="text-center">
-                            <button class="btn" (click)="openCustomerDetailModal()">
-                                <em class="fas fa-eye"></em>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">03</td>
-                        <td>Maria Pereira</td>
-                        <td>30672661000125</td>
-                        <td>Av. Pres. Costa e Silva, 1212 </td>
-                        <td>Brasil</td>
-                        <td>REFRIGERACAO NACIONAL</td>
-                        <td class="text-center">ativo</td>
-                        <td class="text-center">
-                            <button class="btn" (click)="openCustomerDetailModal()">
-                                <em class="fas fa-eye"></em>
-                            </button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
+            <br/><br/>
         </div>
     </div>
 </section>

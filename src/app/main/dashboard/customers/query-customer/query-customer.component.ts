@@ -1,11 +1,17 @@
+import { TokenService } from 'src/app/_core/services/token.service';
 import { Component, OnInit } from '@angular/core';
-
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
 import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-detail-modal.component';
+import { QueryServiceService } from './query-service.service';
+
+
+export class searchParameters{
+  Nome:string;
+  CodERP:string;
+  NumDoc:string;
+}
 
 
 @Component({
@@ -15,11 +21,15 @@ import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-
 })
 export class QueryCustomerComponent implements OnInit {
 
+  modelPesquisa:searchParameters;
+
   clients = ['1215151515000198', '2215151515000198'];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal , private queryService:QueryServiceService , private tokenService:TokenService) { }
 
   ngOnInit(): void { }
+
+  searchCmp:string;
 
   formatter = (result: string) => result.toUpperCase();
 
@@ -34,4 +44,20 @@ export class QueryCustomerComponent implements OnInit {
   openCustomerDetailModal() {
     this.modalService.open(CustomerDetailModalComponent, { size: 'xl', centered: true, scrollable: true });
   }
+
+  pesquisaCliente(){
+      console.log(this.searchCmp);
+      this.modelPesquisa = {
+        Nome : this.searchCmp,
+        CodERP : this.searchCmp,
+        NumDoc : this.searchCmp
+      }
+      
+      this.queryService
+      .getConsutaCliente(this.tokenService.retornaCabecalhoRequestGlobal(),this.modelPesquisa).subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );  
+  }
+
 }

@@ -32,6 +32,7 @@ export class TokenService {
     // Registro: string;
   Acessos: string[];
 
+
     private userSubject = new BehaviorSubject<Usuario>(null);
 
     constructor(private http: HttpClient, handler: HttpBackend, @Inject(PLATFORM_ID) private platformId: Object) {

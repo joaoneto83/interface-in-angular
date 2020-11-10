@@ -17,13 +17,15 @@ import { AdvancedPieChartComponent } from './charts/advanced-pie-chart/advanced-
 import { InfoPopoverComponent } from './General/info-popover/info-popover.component';
 import { MenuServiceService } from './side-menu/menu-service.service';
 import { RouterModule } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         NgxChartsModule,
-        RouterModule
+        RouterModule,
+        Ng2SearchPipeModule
     ],
     declarations: [
         SideMenuComponent,

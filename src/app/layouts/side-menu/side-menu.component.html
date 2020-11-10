@@ -15,7 +15,7 @@
     </div>
 
     <ul>
-        <li *ngFor="let menuItem of retornoMenu.result.data; let i = index"   [ngClass]="{active: selectedItem == i}"
+        <li *ngFor="let menuItem of retornoMenu.result.data | filter:menuItem"  [ngClass]="{ active: menuItem.ordem == getSelectedItem() }"
             (click)="navigateTo(menuItem.id)">
 
             <em [class]="menuItem.icone"></em>
@@ -42,8 +42,8 @@
         </button>
 
         <ul>
-            <li *ngFor="let menuItem of retornoMenu.result.data; let i = index" [ngClass]="{active: selectedItem == i}"
-                (click)="navigateTo(menuItem.id); toggleMenu()">
+            <li *ngFor="let menuItem of retornoMenu.result.data | filter:menuItem" [ngClass]="{ active: menuItem.ordem == selectedItem }"
+                (click)="navigateTo(menuItem.ordem); toggleMenu()">
 
                 <em [class]="menuItem.icone"></em>
                 <span>{{ menuItem.descricao }}</span>

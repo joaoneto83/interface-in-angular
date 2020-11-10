@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './info-popover.component.html',
   styleUrls: ['./info-popover.component.scss']
 })
-export class InfoPopoverComponent implements OnInit {
+export class InfoPopoverComponent implements OnInit  {
  
   @Input() description:string;
 
@@ -15,6 +15,8 @@ export class InfoPopoverComponent implements OnInit {
       //console.log(this.description); /* Aqui nao vem descricão */
    }
    
+   
+
   ngOnInit(): void {
    
   }

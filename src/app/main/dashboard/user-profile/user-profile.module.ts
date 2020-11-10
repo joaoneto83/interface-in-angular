@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { rotas } from 'src/app/routes/app.routes';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +26,8 @@ import { LayoutsModule } from 'src/app/layouts/layouts.module';
     rotas,
     CommonModule,
     LayoutsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
   ],
   exports:[UserProfileComponent],

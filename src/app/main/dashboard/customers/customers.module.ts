@@ -17,6 +17,7 @@ import { RegularCustomerDetailComponent } from './customer-detail-modal/regular-
 import { VpcCustomerDetailComponent } from './customer-detail-modal/vpc-customer-detail/vpc-customer-detail.component';
 import { ApproveCustomerComponent } from './approve-customer/approve-customer.component';
 import { rotas } from 'src/app/routes/app.routes';
+import { QueryServiceService } from './query-customer/query-service.service';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { rotas } from 'src/app/routes/app.routes';
     entryComponents: [
         VpcCustomerDetailsModalComponent,
         CustomerDetailModalComponent
-    ]
+    ],
+    providers:[QueryServiceService]
 })
 export class CustomersModule { }

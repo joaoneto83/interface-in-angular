@@ -49,20 +49,19 @@ export class SideMenuComponent implements OnInit {
        this.dataUser = r;
      });
 
-     
      serviceMenu.getEstruturaMenuLateral({
-      cabecalho:this.ServiceToken.retornaCabecalhoRequestGlobal(),
+       cabecalho:this.ServiceToken.retornaCabecalhoRequestGlobal(),
        idPerfil: this.dataUser.PerfilId
      }).subscribe(
        r => {
         this.retornoMenu = r;
+        console.log(r);
         //console.log(this.retornoMenu); 
         //console.log(this.retornoMenu.result.data); 
      },
      error => {
         console.log(`Ocorreu um erro ao tentar coletar os dados do menu \n \n ${ error }`);
      });
-
 
    }
 
@@ -95,8 +94,11 @@ export class SideMenuComponent implements OnInit {
     }
   }
 
-  navigateTo(index: number) {
-    this.selectedItem = index -1;
+  navigateTo(order: number) {
+    
+    //this.selectedItem = order;
+    localStorage['selected'] = order;
+    //console.log(this.selectedItem);
     //this.routeId = this.menuItems[this.selectedItem].id;
 
     /* 
@@ -107,7 +109,7 @@ export class SideMenuComponent implements OnInit {
       'Titulo da rota ==>', this.routeTitle
     );
     */
-    switch(index){
+    switch(order){
       case 1:
           this.router.navigate(['inicio']);
       break;
@@ -132,7 +134,6 @@ export class SideMenuComponent implements OnInit {
         this.router.navigate(['relatorios']);
       break;
 
-
     }
     
     this.hideSideMenu();
@@ -140,9 +141,12 @@ export class SideMenuComponent implements OnInit {
 
   deslogar(){
     this.ServiceToken.removeToken();
-    this.router.navigate(['/login'])
+    window.localStorage.removeItem('selected');
+    this.router.navigate(['/login']);
   }
 
-
+getSelectedItem(){
+  return localStorage['selected'];
+}
 
 }
