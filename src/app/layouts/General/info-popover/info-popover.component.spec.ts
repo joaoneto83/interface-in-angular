@@ -9,7 +9,7 @@ describe('InfoPopoverComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InfoPopoverComponent ]
-    })
+    }) 
     .compileComponents();
   }));
 
