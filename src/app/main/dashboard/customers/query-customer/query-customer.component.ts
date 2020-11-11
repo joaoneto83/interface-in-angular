@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-detail-modal.component';
-import { QueryServiceService } from './query-service.service';
+import { CustomersServiceService } from '../customers-service.service';
 
 
 export class searchParameters{
@@ -25,7 +25,7 @@ export class QueryCustomerComponent implements OnInit {
 
   clients = ['1215151515000198', '2215151515000198'];
 
-  constructor(private modalService: NgbModal , private queryService:QueryServiceService , private tokenService:TokenService) { }
+  constructor(private modalService: NgbModal , private queryService:CustomersServiceService , private tokenService:TokenService) { }
 
   ngOnInit(): void { }
 
