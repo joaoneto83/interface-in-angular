@@ -18,6 +18,8 @@ import { VpcCustomerDetailComponent } from './customer-detail-modal/vpc-customer
 import { ApproveCustomerComponent } from './approve-customer/approve-customer.component';
 import { rotas } from 'src/app/routes/app.routes';
 import { CustomersServiceService } from './customers-service.service';
+import { InfoPopoverComponent } from 'src/app/layouts/General/info-popover/info-popover.component';
+import { LayoutsModule } from 'src/app/layouts/layouts.module';
 
 @NgModule({
     declarations: [
@@ -37,6 +39,7 @@ import { CustomersServiceService } from './customers-service.service';
         FormsModule,
         //CustomersRoutingModule,
         NgbNavModule,
+        LayoutsModule,
         NgbTypeaheadModule,
         rotas
     ],

@@ -1,18 +1,23 @@
 <section>
     <div class="px-3">
-        <p class="title">Consulta Clientes </p>
+        <p class="title" style="text-align: center;
+        font-size: 25px;">Consulta Clientes </p>
 
+        
         <div class="form-row align-items-end">
+   
 
             <div class="form-group col-md-12 m-0 search">
-                <em class="fas fa-search"></em>
-                <label for="customerSearch">Buscar Cliente</label>
+                <!-- <em class="fas fa-search"></em> -->
+                <label for="customerSearch">Buscar Cliente</label> 
+                <!-- <infoPopover [description]="infoBuscar"></infoPopover> -->
                 <input id="customerSearch" type="text" class="form-control" [(ngModel)]="searchCmp">
             </div>
+          
         </div>
 
         <div class="action-buttons my-2">
-            <div class="checkboxes-inline">
+            <div class="checkboxes-inline" >
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input type="checkbox" class="custom-control-input" id="isJuridic">
                     <label class="custom-control-label" for="isJuridic">Pessoa Jurídica</label>
@@ -27,11 +32,12 @@
                 </div>
             </div>
            
-        </div>
-
         <div class="text-center my-5">
-            <button (click)="pesquisaCliente()" class="btn btn-save"><span class="fa-search fas"></span> Pesquisar </button>
+            <button (click)="pesquisaCliente()" class="btn btn-save" style="float: right; margin-top: -17px;"><span class="fa-search fas"></span> Pesquisar </button>
         </div>
+        </div>
+ 
+
 
         <div class="action-buttons my-2">
             <button class="btn btn-export">EXPORTAR PARA EXCEL <em class="far fa-file-excel"></em></button>

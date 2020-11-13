@@ -7,6 +7,7 @@ import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-
 import { CustomersServiceService } from '../customers-service.service';
 
 
+
 export class searchParameters{
   Nome:string;
   CodERP:string;
@@ -22,6 +23,10 @@ export class searchParameters{
 export class QueryCustomerComponent implements OnInit {
 
   modelPesquisa:searchParameters;
+
+  infoBuscar:string = `<b>Senha Atual</b> <br/> 
+  busca pode ser por nome ou documento e ....
+   `;
 
   clients = ['1215151515000198', '2215151515000198'];
 
