@@ -1,3 +1,6 @@
+import { Cidades } from './cidades';
+import { Pais } from './pais';
+import { TipoEndereco } from './TipoEnderco';
 
 
 export interface Enderecos {
@@ -14,6 +17,9 @@ export interface Enderecos {
   CEP: string;
   CidadeExt: string;
   Principal: boolean;
+  TipoEndereco:TipoEndereco;
+  Cidade:Cidades;
+  Pais:Pais;
   Id: number;
   DataInclusao: string;
   UsuarioInclusaoId: number;

@@ -1,8 +1,11 @@
+
 <section>
     <div class="px-3">
         <p class="title">Consulta Clientes </p>
-
+ 
         <div class="form-row align-items-end">
+
+            
 
             <div class="form-group col-md-12 m-0 search">
                 <em class="fas fa-search"></em>
@@ -26,8 +29,9 @@
                     <label class="custom-control-label" for="isExport">Cliente Exportação</label>
                 </div>
             </div>
-           
         </div>
+
+        
 
         <div class="text-center my-5">
             <button (click)="pesquisaCliente()" class="btn btn-save"><span class="fa-search fas"></span> Pesquisar </button>
@@ -52,14 +56,14 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="text-center">01</td>
-                        <td>Alberto Portenho Inc</td>
-                        <td>30672661000125</td>
-                        <td>Sarmiento 151 - C1041 AAE</td>
-                        <td>Argentina</td>
+                    <tr *ngFor="let pessoa of dataPesquisa.result.data">
+                        <td class="text-center">{{ pessoa.id }}</td>
+                        <td>{{ pessoa.nome }}</td>
+                        <td>{{ pessoa.NumeroDocumento }}</td>
+                        <td>{{ pessoa.endereco }}</td>
+                        <td> {{ pessoa.endereco[0].Pais.Descricao }} </td>
                         <td>REFRIGERACAO NACIONAL</td>
-                        <td class="text-center">ativo</td>
+                        <td class="text-center">{{ pessoa.Ativo == true ? 'Ativo' : 'Inativo' }}</td>
                         <td class="text-center">
                             <button class="btn" (click)="openCustomerDetailModal()">
                                 <em class="fas fa-eye"></em>

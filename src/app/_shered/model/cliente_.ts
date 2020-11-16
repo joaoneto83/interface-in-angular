@@ -14,7 +14,7 @@ export interface Cliente {
     StatusSuframa: boolean;
     Atributo1: string;
     Pessoa: Pessoa[];
-    VpcCliente: VpcCliente[];
+    VpcCliente: VpcCliente;
     UsuarioInclusaoId: number;
     Ativo: boolean;
     Excluido: boolean;

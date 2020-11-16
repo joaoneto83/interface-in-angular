@@ -9,7 +9,7 @@ export interface Documento {
   DataValidade: string;
   DataEmissao: string;
   OrgaoEmissao: string;
-  TipoDocumento: TipoDocumento[];
+  TipoDocumento: TipoDocumento;
   Id: number;
   DataInclusao: string;
   UsuarioInclusaoId: number;

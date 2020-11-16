@@ -2,7 +2,7 @@
   import { Telefone } from './telefone';
   import { Email } from './email';
   import { Documento } from './documento';
-  import { Cliente } from './cliente_';
+  import { Clientes } from './Clientes';
   import { AlteracaoCadastralCliente } from './alteracaoCadastralCliente';
   import { TipoPessoa } from './tipoPessoa';
 
@@ -16,12 +16,12 @@ export interface Pessoa {
   TipoParceiro: string;
   Intercompany: boolean;
   RestricaoFinanceira: boolean;
-  TipoPessoa: TipoPessoa[];
+  TipoPessoa: TipoPessoa;
   endereco: Enderecos[];
   Telefone: Telefone[]; 
   Email: Email[];
   Documento: Documento[];
-  Cliente: Cliente[];
+  Cliente: Clientes[];
   AlteracaoCadastralCliente: AlteracaoCadastralCliente[]; 
   Id: number;
   DataInclusao: string;

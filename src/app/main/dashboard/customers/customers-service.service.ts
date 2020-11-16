@@ -12,7 +12,7 @@ export class CustomersServiceService {
 
   /* Consulta Clientes  */
   getConsutaCliente(cabecalho , dadosPesquisa:searchParameters):Observable<any>{
-    return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas?Nome=${dadosPesquisa.Nome}&CodigoERP=${dadosPesquisa.CodERP}&NumeroDocumento=${dadosPesquisa.NumDoc}`, cabecalho);
+    return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas?Nome=&CodigoERP=${dadosPesquisa.CodERP}&NumeroDocumento=`, cabecalho);
   } 
 
 

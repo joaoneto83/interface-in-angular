@@ -1,13 +1,14 @@
+import { Pessoa } from './pessoa';
 import { TipoTelefone } from './TipoTelefone';
 
 export interface Telefone {
 
-  
  TipoTelefoneId: number;
  PessoaId: number;
  Descricao: string;
  CodigoEnderecoErp: string;
- TipoTelefone: TipoTelefone[];
+ Pessoa:Pessoa;
+ TipoTelefone: TipoTelefone;
  Id: number;
  DataInclusao: string;
  UsuarioInclusaoId: number;

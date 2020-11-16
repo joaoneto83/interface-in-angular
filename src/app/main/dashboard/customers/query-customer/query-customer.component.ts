@@ -1,3 +1,4 @@
+import { Pessoa } from './../../../../_shered/model/pessoa';
 import { TokenService } from 'src/app/_core/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -5,6 +6,7 @@ import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-detail-modal.component';
 import { CustomersServiceService } from '../customers-service.service';
+import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
 
 
 export class searchParameters{
@@ -23,12 +25,14 @@ export class QueryCustomerComponent implements OnInit {
 
   modelPesquisa:searchParameters;
 
+  dataPesquisa:RetornoDataModel<Pessoa[]>;
+  
   clients = ['1215151515000198', '2215151515000198'];
 
   constructor(private modalService: NgbModal , private queryService:CustomersServiceService , private tokenService:TokenService) { }
 
   ngOnInit(): void { }
-
+  teste:string = 'asadasdads'; 
   searchCmp:string;
 
   formatter = (result: string) => result.toUpperCase();
@@ -55,7 +59,10 @@ export class QueryCustomerComponent implements OnInit {
       
       this.queryService
       .getConsutaCliente(this.tokenService.retornaCabecalhoRequestGlobal(),this.modelPesquisa).subscribe(
-        response => console.log(response),
+        response => {
+          console.log(response);
+          this.dataPesquisa = response
+        },
         error => console.log(error)
       );  
   }

@@ -6,7 +6,7 @@ export interface VpcCliente {
   ClienteId: number;
   AreaNegocioId: number;
   RaizCNPJ: string;
-  AreaNegocio: AreaNegocio [];
+  AreaNegocio: AreaNegocio;
   VpcClienteContrato: VpcClienteContrato[];
   Id: number;
   DataInclusao: string;
