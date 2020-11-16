@@ -8,27 +8,27 @@
 
 export interface Pessoa {
   
-  Guid: string;
-  CodigoERP: string;
-  NumeroDocumento: string;
-  Nome: string;
-  TipoPessoaId: number;
-  TipoParceiro: string;
-  Intercompany: boolean;
-  RestricaoFinanceira: boolean;
-  TipoPessoa: TipoPessoa;
+  guid: string;
+  codigoERP: string;
+  numeroDocumento: string;
+  nome: string;
+  tipoPessoaId: number;
+  tipoParceiro: string;
+  intercompany: boolean;
+  restricaoFinanceira: boolean;
+  tipoPessoa: TipoPessoa;
   endereco: Enderecos[];
-  Telefone: Telefone[]; 
-  Email: Email[];
-  Documento: Documento[];
-  Cliente: Clientes[];
-  AlteracaoCadastralCliente: AlteracaoCadastralCliente[]; 
-  Id: number;
+  telefone: Telefone[]; 
+  email: Email[];
+  documento: Documento[];
+  cliente: Clientes[];
+  alteracaoCadastralCliente: AlteracaoCadastralCliente[]; 
+  id: number;
   DataInclusao: string;
   UsuarioInclusaoId: number;
   DataUltimaAtualizacao: string;
   UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
+  ativo: boolean;
   Excluido: boolean;
   DataExcluido: string;
   UsuarioExcluidoId: number;

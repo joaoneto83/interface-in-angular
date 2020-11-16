@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.hmg';
-import { searchParameters } from './query-customer/query-customer.component';
+
 
 @Injectable()
 export class CustomersServiceService {
@@ -11,8 +11,8 @@ export class CustomersServiceService {
 
 
   /* Consulta Clientes  */
-  getConsutaCliente(cabecalho , dadosPesquisa:searchParameters):Observable<any>{
-    return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas?Nome=&CodigoERP=${dadosPesquisa.CodERP}&NumeroDocumento=`, cabecalho);
+  getConsutaCliente(cabecalho , queryString:string):Observable<any>{
+    return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas?${queryString}`, cabecalho);
   } 
 
 

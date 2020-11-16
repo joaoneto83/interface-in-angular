@@ -43,9 +43,8 @@ validationGeral:string;
 
 /* Mensagens de informacao */
 
-  infoSenhaAtual:string = `<b>Senha Atual</b> <br/>
-                           Coloque sua senha utilizada atualmente para entrar na conta.<br/><br/>
-                           Esta senha deverá ser exatamente igual ao que é utilizado atualmente.
+  infoSenhaAtual:string = `<b>Senha Atual</b> <br/> 
+                          Esta senha deverá ser exatamente igual ao que é utilizado atualmente.
                            `;
 
   infoNovaSenha:string = `<b>Nova Senha</b> <br/>
@@ -58,7 +57,7 @@ validationGeral:string;
                             </ul>
                           `;
   infoConfirmacaoSenha:string = `<b>Confirmação de Senha</b> <br/>
-                                 Confirmação da nova senha, esta deverá ser exatamente igual ao que foi digitado no <b>Nova Senha</b>
+                                 Confirmação da nova senha, esta deverá ser exatamente igual ao que foi digitado no campo <b>Nova Senha</b>
   
   `;
 
