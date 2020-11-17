@@ -25,7 +25,8 @@ export class searchParameters{
 export class QueryCustomerComponent implements OnInit {
 
   //modelPesquisa:searchParameters;
-
+  loading:boolean;
+show:boolean;
   dataPesquisa: RetornoDataModel<Pessoa[]>;
   
   infoBuscar:string = `<b>Senha Atual</b> <br/> 
@@ -34,7 +35,10 @@ export class QueryCustomerComponent implements OnInit {
 
   clients = ['1215151515000198', '2215151515000198'];
 
-  constructor(private modalService: NgbModal , private queryService:CustomersServiceService , private tokenService:TokenService) { }
+  constructor(private modalService: NgbModal , private queryService:CustomersServiceService , private tokenService:TokenService) {
+    this.loading = false;
+    this.show = false;
+   }
 
   ngOnInit(): void { }
   teste:string = 'asadasdads'; 
@@ -53,29 +57,47 @@ export class QueryCustomerComponent implements OnInit {
   openCustomerDetailModal() {
     this.modalService.open(CustomerDetailModalComponent, { size: 'xl', centered: true, scrollable: true });
   }
+  mostrar()
+  {
+    if(this.dataPesquisa.result.data.length != 0){
+      this.show = true;
+      this.loading = false;
+    }
+  }
 
   pesquisaCliente(){
+  
+    this.loading = true;
+
     if(this.searchCmp != ""){
-      /* Começa pesquisa tosca */
+      
+
       this.getResultConsultaCliente(`Nome=${this.searchCmp}`);
-            
+         this.mostrar();
+      
+
       setTimeout(()=>{
+
         if(this.dataPesquisa.result.data.length == 0){
+        
             this.getResultConsultaCliente(`CodigoERP=${this.searchCmp}`);
+            this.mostrar();
         }
       },1000);
       
       setTimeout(()=>{
         if(this.dataPesquisa.result.data.length == 0){
+          
             this.getResultConsultaCliente(`NumeroDocumento=${this.searchCmp}`);
+            this.mostrar();
         }
-      },5000);
+        
+      },2000);
     }else{
+      
       this.dataPesquisa.result.data = [];
     }
      
-
-        /* fim pesquisa tosca */
   }
 
 

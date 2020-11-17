@@ -6,7 +6,13 @@ section {
     font-size: 18px;
     color: var(--primary);
 }
-
+.caixa-loading{
+    text-align: center;
+}
+.loading{
+ 
+   width: 10%;
+}
 .action-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -75,7 +81,7 @@ select {
     }
 
     .form-control {
-        padding-left: 40px;
+        padding-left: 10px;
     }
 }
 
@@ -155,4 +161,6 @@ select {
             }
         }
     }
+
 }
+
