@@ -26,18 +26,24 @@ export class QueryCustomerComponent implements OnInit {
 
   //modelPesquisa:searchParameters;
   loading:boolean;
-show:boolean;
+  show:boolean;
   dataPesquisa: RetornoDataModel<Pessoa[]>;
   
   infoBuscar:string = `<b>Senha Atual</b> <br/> 
   busca pode ser por nome ou documento e ....
    `;
+   pesquisar:boolean;
+   infoPesquisa:string = `
+   Pesquisa não encontra.
+    `;
+     
 
   clients = ['1215151515000198', '2215151515000198'];
 
   constructor(private modalService: NgbModal , private queryService:CustomersServiceService , private tokenService:TokenService) {
     this.loading = false;
     this.show = false;
+    this.pesquisar = false;
    }
 
   ngOnInit(): void { }
@@ -64,6 +70,9 @@ show:boolean;
       this.loading = false;
     }
   }
+  sempesquisar(){
+    this.pesquisar = true;
+  }
 
   pesquisaCliente(){
   
@@ -75,7 +84,6 @@ show:boolean;
       this.getResultConsultaCliente(`Nome=${this.searchCmp}`);
          this.mostrar();
       
-
       setTimeout(()=>{
 
         if(this.dataPesquisa.result.data.length == 0){
@@ -90,7 +98,13 @@ show:boolean;
           
             this.getResultConsultaCliente(`NumeroDocumento=${this.searchCmp}`);
             this.mostrar();
+            
         }
+        if(this.dataPesquisa.result.data.length == 0){
+
+          this.sempesquisar();
+          
+      }
         
       },2000);
     }else{

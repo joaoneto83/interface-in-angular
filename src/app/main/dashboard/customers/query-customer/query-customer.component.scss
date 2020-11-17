@@ -6,9 +6,17 @@ section {
     font-size: 18px;
     color: var(--primary);
 }
-.caixa-loading{
+.caixa{
     text-align: center;
 }
+.sorry-texto{
+    z-index: 99;
+}
+
+.sorry-svg{
+    width: 40%;
+}
+
 .loading{
  
    width: 10%;

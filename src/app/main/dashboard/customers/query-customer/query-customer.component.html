@@ -13,7 +13,7 @@
                 <!-- <em class="fas fa-search"></em> -->
                 <label for="customerSearch">Buscar Cliente</label> 
                 <!-- <infoPopover [description]="infoBuscar"></infoPopover> -->
-                <input id="customerSearch" type="text" class="form-control" [(ngModel)]="searchCmp">
+                <input id="customerSearch" type="text" class="form-control" [(ngModel)]="searchCmp" placeholder="Nome ou Documento ou CodigoERP">
             </div>
           
         </div>
@@ -38,8 +38,17 @@
             <button (click)="pesquisaCliente()" class="btn btn-save" style="float: right; margin-top: -17px;"><span class="fa-search fas"></span> Pesquisar </button>
         </div>
         </div>
-        <div class="caixa-loading" *ngIf="loading">
+        <div class="caixa" *ngIf="loading">
             <img class="loading"src="../../../assets/login.svg" alt="elgin up logo"> 
+        </div>
+        <div class="caixa" *ngIf="Pesquisar" >
+            <div class="sorry-texto">
+            <label style="font-size: 16px;">{{infoPesquisa}}</label>
+            </div>
+            <div>
+                <img _ngcontent-yav-c184="" style="width: 40%;" src="../../assets/artefacts/undraw_Taken_if77.svg" alt="pesquisa não encontrada" >
+            </div>
+            
         </div>
 
 <div *ngIf = "show">
