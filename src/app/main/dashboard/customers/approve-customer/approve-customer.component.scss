@@ -2,6 +2,16 @@ section {
     padding: 0rem 1rem;
 }
 
+
+.btn-save {
+    min-width: 150px;
+    background-color: var(--primary);
+    font-size: var(--sub-text);
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 32px;
+}
+
 .title {
     font-size: 18px;
     color: var(--primary);

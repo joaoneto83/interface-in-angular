@@ -32,9 +32,10 @@ export class QueryCustomerComponent implements OnInit {
   infoBuscar:string = `<b>Senha Atual</b> <br/> 
   busca pode ser por nome ou documento e ....
    `;
+
    pesquisar:boolean;
    infoPesquisa:string = `
-   Pesquisa não encontra.
+   Pesquisa não encontrada.
     `;
      
 
@@ -68,28 +69,30 @@ export class QueryCustomerComponent implements OnInit {
     if(this.dataPesquisa.result.data.length != 0){
       this.show = true;
       this.loading = false;
+      this.pesquisar = false;
     }
   }
   sempesquisar(){
+    this.show = false;
     this.pesquisar = true;
   }
 
   pesquisaCliente(){
   
-    this.loading = true;
+  
 
     if(this.searchCmp != ""){
       
 
       this.getResultConsultaCliente(`Nome=${this.searchCmp}`);
-         this.mostrar();
+         
       
       setTimeout(()=>{
 
         if(this.dataPesquisa.result.data.length == 0){
         
             this.getResultConsultaCliente(`CodigoERP=${this.searchCmp}`);
-            this.mostrar();
+           
         }
       },1000);
       
@@ -97,7 +100,7 @@ export class QueryCustomerComponent implements OnInit {
         if(this.dataPesquisa.result.data.length == 0){
           
             this.getResultConsultaCliente(`NumeroDocumento=${this.searchCmp}`);
-            this.mostrar();
+            
             
         }
         if(this.dataPesquisa.result.data.length == 0){
@@ -117,11 +120,22 @@ export class QueryCustomerComponent implements OnInit {
 
 
   getResultConsultaCliente(queryString:string){
+    this.loading = true;
     this.queryService
     .getConsutaCliente(this.tokenService.retornaCabecalhoRequestGlobal(),queryString).subscribe(
       response => {
-        this.dataPesquisa = response;
-      },
+        this.loading = false;
+        console.log(response);
+          this.dataPesquisa = response;
+          if(response.result.data.length > 0){
+            this.mostrar();
+            this.pesquisar = false;
+          }
+          else {
+            this.sempesquisar();
+          }
+          
+        },
       error => console.log(error)
     ); 
   }

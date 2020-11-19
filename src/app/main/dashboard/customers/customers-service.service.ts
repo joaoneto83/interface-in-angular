@@ -17,7 +17,13 @@ export class CustomersServiceService {
 
 
 
+/* Aprova Clientes */
 
+getListagemAprovacaoCliente(cabecalho):Observable<any>{
+
+  return this.Client.get<any>(`${ environment.PORTAL_API }/AlteracaoCadastralClientes`)
+
+}
 
 
 }
