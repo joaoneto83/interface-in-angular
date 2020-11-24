@@ -9,13 +9,14 @@ import { CustomersServiceService } from '../customers-service.service';
 import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
 
 
-/* 
+
 export class searchParameters{
   Nome:string;
   CodERP:string;
   NumDoc:string;
+  QueryTipoPessoa:string;
 }
-*/
+
 
 @Component({
   selector: 'elgin-query-customer',
@@ -24,11 +25,15 @@ export class searchParameters{
 })
 export class QueryCustomerComponent implements OnInit {
 
-  //modelPesquisa:searchParameters;
+  modelPesquisa:searchParameters;
   loading:boolean;
   show:boolean;
   dataPesquisa: RetornoDataModel<Pessoa[]>;
-  
+
+  pessoaFisica:boolean = true;
+  pessoaJuridica:boolean = true;
+  pessoaExportacao:boolean = true;
+
   infoBuscar:string = `<b>Senha Atual</b> <br/> 
   busca pode ser por nome ou documento e ....
    `;
@@ -79,38 +84,33 @@ export class QueryCustomerComponent implements OnInit {
 
   pesquisaCliente(){
   
-  
-
     if(this.searchCmp != ""){
-      
+      let queryStringCompleta = ''
 
-      this.getResultConsultaCliente(`Nome=${this.searchCmp}`);
-         
-      
-      setTimeout(()=>{
-
-        if(this.dataPesquisa.result.data.length == 0){
-        
-            this.getResultConsultaCliente(`CodigoERP=${this.searchCmp}`);
-           
-        }
-      },1000);
-      
-      setTimeout(()=>{
-        if(this.dataPesquisa.result.data.length == 0){
-          
-            this.getResultConsultaCliente(`NumeroDocumento=${this.searchCmp}`);
-            
-            
-        }
-        if(this.dataPesquisa.result.data.length == 0){
-
-          this.sempesquisar();
-          
+      if(this.pessoaFisica){
+        queryStringCompleta += '&EPessoaFisica=true';
       }
-        
-      },2000);
-    }else{
+      
+      if(this.pessoaJuridica){
+        queryStringCompleta += '&EPessoaJuridica=true';
+      }
+
+      if(this.pessoaExportacao){
+        queryStringCompleta += '&EPessoaEstrangeira=true';
+      }
+
+      console.log(queryStringCompleta);
+      
+        this.modelPesquisa = {
+          CodERP: this.searchCmp,
+          Nome:this.searchCmp,
+          NumDoc:this.searchCmp,
+          QueryTipoPessoa:queryStringCompleta
+        }
+
+        this.getResultConsultaCliente(this.modelPesquisa);
+    }
+     else {
       
       this.dataPesquisa.result.data = [];
     }
@@ -119,10 +119,10 @@ export class QueryCustomerComponent implements OnInit {
 
 
 
-  getResultConsultaCliente(queryString:string){
+  getResultConsultaCliente(modeloPesquisa:searchParameters){
     this.loading = true;
     this.queryService
-    .getConsutaCliente(this.tokenService.retornaCabecalhoRequestGlobal(),queryString).subscribe(
+    .getConsutaCliente(this.tokenService.retornaCabecalhoRequestGlobal(),modeloPesquisa).subscribe(
       response => {
         this.loading = false;
         console.log(response);

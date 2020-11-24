@@ -21,6 +21,8 @@ import { CustomersServiceService } from './customers-service.service';
 import { InfoPopoverComponent } from 'src/app/layouts/General/info-popover/info-popover.component';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
     declarations: [
         CustomersComponent,
@@ -42,6 +44,7 @@ import { LayoutsModule } from 'src/app/layouts/layouts.module';
         LayoutsModule,
         NgbTypeaheadModule,
         LayoutsModule,
+        ReactiveFormsModule,
         rotas
     ],
     exports: [CustomersComponent],

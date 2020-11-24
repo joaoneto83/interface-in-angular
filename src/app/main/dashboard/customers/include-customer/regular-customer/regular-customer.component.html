@@ -4,31 +4,31 @@
 
         <div class="action-buttons">
             <button class="btn btn-upload">UPLOAD DE ARQUIVO</button>
-            <button class="btn btn-download">DOWNLOAD MODELO EM EXECEL <em class="far fa-file-excel"></em></button>
+            <button class="btn btn-download">DOWNLOAD MODELO EM EXCEL <em class="far fa-file-excel"></em></button>
         </div>
     </div>
 
     <p>Informações Principais</p>
-    <form>
+    <form [formGroup]="formCadastroClientes">
         <div class="form-row align-items-end">
             <div class="form-group col-md-10">
                 <label for="customerType" class="d-block">Escolha a opção desejada:</label>
                 <div class="d-inline-flex">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="juridic" name="juridicFisicExport" class="custom-control-input"
-                            [(ngModel)]="juridicFisicExportModel" value="isJuridic" checked>
+                        <input type="radio" id="juridic"  class="custom-control-input"
+                            formControlName="tipoPessoa" value="isJuridic" checked>
                         <label class="custom-control-label" for="juridic">Pessoa Jurídica</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="fisic" name="juridicFisicExport" class="custom-control-input"
-                            [(ngModel)]="juridicFisicExportModel" value="isFisic">
+                        <input type="radio" id="fisic" n class="custom-control-input"
+                        formControlName="tipoPessoa" value="isFisic">
                         <label class="custom-control-label" for="fisic">Pessoa Física</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="export" name="juridicFisicExport" class="custom-control-input"
-                            [(ngModel)]="juridicFisicExportModel" value="isExport">
+                        <input type="radio" id="export"  class="custom-control-input"
+                        formControlName="tipoPessoa" value="isExport">
                         <label class="custom-control-label" for="export">Cliente Exportação</label>
                     </div>
                 </div>
@@ -37,95 +37,95 @@
                 <label for="customerStatus" class="d-block">Status</label>
                 <div class="d-inline-flex">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="isActive" name="status" class="custom-control-input" checked>
+                        <input type="radio" id="isActive" formControlName="status"  [value]="true" class="custom-control-input" checked>
                         <label class="custom-control-label" for="isActive">Ativo</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="isNotActive" name="status" class="custom-control-input">
+                        <input type="radio" id="isNotActive" formControlName="status" [value]="false"  class="custom-control-input">
                         <label class="custom-control-label" for="isNotActive">Inativo</label>
                     </div>
                 </div>
             </div>
-            <div class="form-group col-md-3" *ngIf="juridicFisicExportModel === 'isJuridic'">
+            <div class="form-group col-md-3" *ngIf="formCadastroClientes.controls['tipoPessoa'].value === 'isJuridic'">
                 <label for="cnpj">CNPJ</label>
-                <input id="cnpj" class="form-control" type="text">
+                <input formControlName="cnpj" id="cnpj" class="form-control" type="text">
             </div>
-            <div class="form-group col-md-6" *ngIf="juridicFisicExportModel !== 'isJuridic'">
+            <div class="form-group col-md-6" *ngIf="formCadastroClientes.controls['tipoPessoa'].value !== 'isJuridic'">
                 <label for="name">Nome</label>
-                <input id="name" class="form-control" type="text">
+                <input formControlName="nome" id="name" class="form-control" type="text">
             </div>
-            <div class="form-group col-md-3" *ngIf="juridicFisicExportModel === 'isFisic'">
+            <div class="form-group col-md-3" *ngIf="formCadastroClientes.controls['tipoPessoa'].value === 'isFisic'">
                 <label for="cpf">CPF</label>
-                <input id="cpf" class="form-control" type="text">
+                <input formControlName="cpf"  id="cpf" class="form-control" type="text">
             </div>
-            <div class="form-group col-md-6" *ngIf="juridicFisicExportModel === 'isJuridic'">
+            <div class="form-group col-md-6" *ngIf="formCadastroClientes.controls['tipoPessoa'].value === 'isJuridic'">
                 <label for="companyName">Razão Social</label>
-                <input id="companyName" class="form-control" type="text">
+                <input formControlName="razaoSocial" id="companyName" class="form-control" type="text">
             </div>
-            <div class="form-group col-md-3" *ngIf="juridicFisicExportModel === 'isExport'">
+            <div class="form-group col-md-3" *ngIf="formCadastroClientes.controls['tipoPessoa'].value === 'isExport'">
                 <label for="country">País</label>
-                <select id="country" class="custom-select">
+                <select formControlName="pais" id="country" class="custom-select">
                     <option value="Argentina">Argentina</option>
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="area">Área</label>
-                <select id="area" class="custom-select">
+                <select formControlName="area" id="area" class="custom-select">
                     <option value="Nacional">Nacional</option>
                 </select>
             </div>
-            <div class="form-group col-md-4" *ngIf="juridicFisicExportModel !== 'isExport'">
+            <div class="form-group col-md-4" *ngIf="formCadastroClientes.controls['tipoPessoa'].value !== 'isExport'">
                 <label for="cep">CEP</label>
-                <input id="cep" class="form-control" type="text">
+                <input formControlName="cep" id="cep" class="form-control" type="text">
             </div>
-            <div class="form-group col-md-4"*ngIf="juridicFisicExportModel === 'isExport'">
+            <div class="form-group col-md-4"*ngIf="formCadastroClientes.controls['tipoPessoa'].value === 'isExport'">
                 <label for="postalCode">Código Postal</label>
-                <input id="postalCode" class="form-control" type="text">
+                <input formControlName="codPostal" id="postalCode" class="form-control" type="text">
             </div>
             <div class="form-group col-md-4">
                 <label for="address">Logradouro</label>
-                <input id="address" class="form-control" type="text">
+                <input formControlName="logradouro" id="address" class="form-control" type="text">
             </div>
             <div class="form-group col-md-2">
                 <label for="number">Número</label>
-                <input id="number" class="form-control" type="text">
+                <input formControlName="numero" id="number" class="form-control" type="text">
             </div>
             <div class="form-group col-md-2">
                 <label for="complement">Complemento</label>
-                <input id="complement" class="form-control" type="text">
+                <input formControlName="complemento" id="complement" class="form-control" type="text">
             </div>
             <div class="form-group col-md-5">
                 <label for="neighborhood">Bairro</label>
-                <input id="neighborhood" class="form-control" type="text">
+                <input formControlName="bairro" id="neighborhood" class="form-control" type="text">
             </div>
             <div class="form-group col-md-2">
                 <label for="state">UF</label>
-                <select id="state" class="custom-select">
+                <select formControlName="uf" id="state" class="custom-select">
                     <option value="SP">SP</option>
                 </select>
             </div>
             <div class="form-group col-md-5">
                 <label for="city">Cidade</label>
-                <select id="city" class="custom-select">
+                <select formControlName="cidade" id="city" class="custom-select">
                     <option value="Graça">Graça</option>
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="email">E-mail</label>
-                <input id="email" class="form-control" type="text">
+                <input  formControlName="email" id="email" class="form-control" type="text">
             </div>
             <div class="form-group col-md-3">
                 <label for="alternativeEmail">E-mail Alternativo</label>
-                <input id="alternativeEmail" class="form-control" type="text">
+                <input formControlName="AltEmail" id="alternativeEmail" class="form-control" type="text">
             </div>
             <div class="form-group col-md-3">
                 <label for="fixedTel">Telefone Fixo</label>
-                <input id="fixedTel" class="form-control" type="text">
+                <input formControlName="Telefone" id="fixedTel" class="form-control" type="text">
             </div>
             <div class="form-group col-md-3">
                 <label for="mobileTel">Telefone Celular</label>
-                <input id="mobileTel" class="form-control" type="text">
+                <input formControlName="Celular" id="mobileTel" class="form-control" type="text">
             </div>
         </div>
 
@@ -134,19 +134,19 @@
         <div class="form-row align-items-end">
             <div class="form-group col-md-3">
                 <label for="groupArea">Área</label>
-                <select id="groupArea" class="custom-select">
+                <select formControlName="grpClienteArea" id="groupArea" class="custom-select">
                     <option value="Nacional">Nacional</option>
                 </select>
             </div>
 
             <div class="form-group col-md-9">
                 <label for="groupArea">Descrição</label>
-                <input id="groupArea" class="form-control" type="text">
+                <input formControlName="DescGrpCliente" id="groupArea" class="form-control" type="text">
             </div>
         </div>
 
         <div class="text-center my-5">
-            <button class="btn btn-save">GRAVAR DADOS</button>
+            <button (click)="SaveCliente()" class="btn btn-save">GRAVAR DADOS</button>
         </div>
     </form>
 </div>

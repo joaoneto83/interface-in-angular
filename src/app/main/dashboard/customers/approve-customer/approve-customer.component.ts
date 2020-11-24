@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
 import { client } from './../../../../../shared/ObejctMock/client';
-
 import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-detail-modal.component';
 
 @Component({
@@ -20,6 +16,9 @@ export class ApproveCustomerComponent implements OnInit {
   isSelected: boolean;
   client: any;
 
+
+
+  
   constructor(private modalService: NgbModal) {
     Object.assign(this, { client });
   }

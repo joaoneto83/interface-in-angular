@@ -13,8 +13,7 @@ export interface Clientes {
     DataUltimaVerificacaoSuframa: string;
     StatusSuframa: boolean;
     Atributo1: string;
-    //Pessoa: Pessoa[];
-    
+    Pessoa: Pessoa;
     VpcCliente: VpcCliente[];
     UsuarioInclusaoId: number;
     Ativo: boolean;
