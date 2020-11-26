@@ -1,3 +1,4 @@
+import { BaseModel } from './BaseModel';
   import { Enderecos } from './enderecos';
   import { Telefone } from './telefone';
   import { Email } from './email';
@@ -6,7 +7,7 @@
   import { AlteracaoCadastralCliente } from './alteracaoCadastralCliente';
   import { TipoPessoa } from './tipoPessoa';
 
-export interface Pessoa {
+export interface Pessoa extends BaseModel {
   
   guid: string;
   codigoERP: string;
@@ -23,14 +24,5 @@ export interface Pessoa {
   documento: Documento[];
   cliente: Clientes[];
   alteracaoCadastralCliente: AlteracaoCadastralCliente[]; 
-  id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number;
-
+ 
 }; 

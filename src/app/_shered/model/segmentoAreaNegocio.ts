@@ -1,16 +1,10 @@
+import { BaseModel } from './BaseModel';
 
-export interface SegmentoAreaNegocio {
+export interface SegmentoAreaNegocio extends BaseModel {
+
   AreaNegocioId: number;
   SegmentoId: number;
   Descricao: string;
   LiberadoVenda: boolean;
-  Id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number;
+
 } 

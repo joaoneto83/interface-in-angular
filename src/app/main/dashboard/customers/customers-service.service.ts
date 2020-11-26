@@ -1,3 +1,4 @@
+import { Cliente } from './../../../_shered/model/cliente_';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -14,8 +15,10 @@ export class CustomersServiceService {
 
 
 /* Inclui Clientes - model incompleta precisa ajustar */
-  gravarCliente(cabecalho, modelCliente:Clientes):Observable<any>{
-    return this.Client.post<any>(`${ environment.PORTAL_API }/api/Clientes`,modelCliente,cabecalho);
+  gravarCliente( cabecalho, modelCliente:Clientes ):Observable<any>{
+    //console.log(cabecalho);
+    console.log(JSON.stringify(modelCliente));
+    return this.Client.post<any>(`${ environment.PORTAL_API }/Clientes`,modelCliente , cabecalho);
   }
 
 
@@ -29,7 +32,7 @@ export class CustomersServiceService {
 /* Aprova Clientes */
 
 getListagemAprovacaoCliente(cabecalho):Observable<any>{
-  return this.Client.get<any>(`${ environment.PORTAL_API }/api/Pessoas?Includes=AlteracaoCadastralCliente&codigoERP=`)
+  return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas?Includes=AlteracaoCadastralCliente&codigoERP=`)
 }
 
 

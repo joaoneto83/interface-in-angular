@@ -1,16 +1,10 @@
+import { BaseModel } from './BaseModel';
 import { Cidades } from './cidades';
 
-export interface Estado {
+export interface Estado extends BaseModel {
+
     Nome: string;
     Uf:string;
     Cidades:Cidades[];
-    Id:number;
-    DataInclusao:string;
-    UsuarioInclusaoId:Number;
-    DataUltimaAtualizacao:string;
-    UsuarioUltimaAtualizacaoId:Number;
-    Ativo:boolean;
-    Excluido:boolean;
-    DataExcluido:string;
-    UsuarioExcluidoId:Number;
+    
   }

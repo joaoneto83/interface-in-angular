@@ -1,16 +1,10 @@
+import { BaseModel } from './BaseModel';
 
 
-export interface TipoEmail {
+export interface TipoEmail extends BaseModel {
   
  Descricao:  string;
  Sigla:  string;
- Id: number;
- DataInclusao: string;
- UsuarioInclusaoId: number;
- DataUltimaAtualizacao: string;
- UsuarioUltimaAtualizacaoId: number;
- Ativo: boolean;
- Excluido: boolean;
- DataExcluido: string;
- UsuarioExcluidoId: number;
+
+
 }; 

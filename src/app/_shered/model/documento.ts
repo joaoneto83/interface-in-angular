@@ -1,7 +1,9 @@
+import { BaseModel } from './BaseModel';
 import { TipoDocumento } from './tipoDocumento';
 
 
-export interface Documento {
+export interface Documento extends BaseModel {
+
   PessoaId: number;
   TipoDocumentoId: number;
   DescricaoDocumento: string;
@@ -10,14 +12,5 @@ export interface Documento {
   DataEmissao: string;
   OrgaoEmissao: string;
   TipoDocumento: TipoDocumento;
-  Id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number
     
 }; 

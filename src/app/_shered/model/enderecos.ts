@@ -1,9 +1,10 @@
+import { BaseModel } from './BaseModel';
 import { Cidades } from './cidades';
 import { Pais } from './pais';
 import { TipoEndereco } from './TipoEnderco';
 
 
-export interface Enderecos {
+export interface Enderecos extends BaseModel {
 
   PessoaId: number;
   TipoEnderecoid: number;
@@ -20,14 +21,5 @@ export interface Enderecos {
   TipoEndereco:TipoEndereco;
   Cidade:Cidades;
   Pais:Pais;
-  Id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number;
-    
+
 }; 

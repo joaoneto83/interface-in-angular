@@ -1,5 +1,6 @@
+import { BaseModel } from './BaseModel';
 
-export interface AlteracaoCadastralCliente {
+export interface  AlteracaoCadastralCliente extends BaseModel {
 
   PessoaId: number;
   ComentarioCorrecao: string;
@@ -7,14 +8,5 @@ export interface AlteracaoCadastralCliente {
   DataConclusao: string;
   MotivoReprovacao: string;
   Status: number;
-  Id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number
-    
+
 }; 

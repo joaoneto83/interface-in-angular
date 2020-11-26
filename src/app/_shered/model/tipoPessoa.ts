@@ -1,17 +1,8 @@
+import { BaseModel } from './BaseModel';
 
-
-export interface TipoPessoa {
+export interface TipoPessoa extends BaseModel {
 
     Sigla: string,
     Descricao: string;
-    Id: number;
-    DataInclusao: string,
-    UsuarioInclusaoId: number;
-    DataUltimaAtualizacao: boolean;
-    UsuarioUltimaAtualizacaoId: number;
-    Ativo: boolean;
-    Excluido: boolean;
-    DataExcluido: string;
-    UsuarioExcluidoId: number;
     
 }; 

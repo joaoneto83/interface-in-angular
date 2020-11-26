@@ -1,12 +1,4 @@
-export class TipoEndereco{
+import { BaseModel } from './BaseModel';
+export class TipoEndereco extends BaseModel {
     Descricao:string;
-    Id: number;
-    DataInclusao: string;
-    UsuarioInclusaoId: number;
-    DataUltimaAtualizacao: string;
-    UsuarioUltimaAtualizacaoId: number;
-    Ativo: boolean;
-    Excluido: boolean;
-    DataExcluido: string;
-    UsuarioExcluidoId: number;
 }

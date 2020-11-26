@@ -1,8 +1,8 @@
+import { BaseModel } from './BaseModel';
 
 import {EstruturaLinha}from './estruturaLinha';
 
-export interface VpcClienteContrato {
- 
+export interface VpcClienteContrato extends BaseModel {
   
   VpcClienteId: number;
   EstruturaLinhaId: number;
@@ -10,16 +10,6 @@ export interface VpcClienteContrato {
   PercentualProvisaoDiretoria: number;
   PercentualProvisaoComercial: number;
   EmpresaCod: string;
-  EstruturaLinha: EstruturaLinha [];
-  Id: number;
-  DataInclusao: string;
-  UsuarioInclusaoId: number;
-  DataUltimaAtualizacao: string;
-  UsuarioUltimaAtualizacaoId: number;
-  Ativo: boolean;
-  Excluido: boolean;
-  DataExcluido: string;
-  UsuarioExcluidoId: number;
-
+  EstruturaLinha: EstruturaLinha[];
 
 }; 
