@@ -1,10 +1,11 @@
 import { TokenService } from './../../../../../_core/services/token.service';
 import { Clientes } from 'src/app/_shered/model/Clientes';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CustomersServiceService } from '../../customers-service.service';
 import { ValorTest } from './testParameter';
+import { ResultDataModel } from 'src/app/_shered/model/RetornoModel';
+import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class RegularCustomerComponent implements OnInit {
 
  // juridicFisicExportModel = 'isJuridic';
  /* Instancia Formulario */
+
+  
 
    formCadastroClientes = new FormGroup({
 
@@ -75,14 +78,15 @@ export class RegularCustomerComponent implements OnInit {
   ngOnInit(): void { }
 
   SaveCliente(){
+   
     /* Somente vincular as propriedades do form para essa propriedade  */
     let modelClienteSave:Clientes  = ValorTest;
 
     this.customersService.gravarCliente(this.tokenService.retornaCabecalhoRequestGlobal(),modelClienteSave)
     .subscribe(
         r => {
-          console.log(r);
-          console.log(`ok`);
+          console.log(r.result.data);
+          
          },
         error => {
           console.log(`Erro \n ${ error }`);

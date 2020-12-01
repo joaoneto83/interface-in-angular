@@ -1,4 +1,4 @@
-import { BaseModel } from './BaseModel';
+  import { BaseModel } from './BaseModel';
   import { Enderecos } from './enderecos';
   import { Telefone } from './telefone';
   import { Email } from './email';

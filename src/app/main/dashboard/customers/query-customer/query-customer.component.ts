@@ -7,6 +7,7 @@ import { debounceTime, distinctUntilChanged, map, repeat } from 'rxjs/operators'
 import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-detail-modal.component';
 import { CustomersServiceService } from '../customers-service.service';
 import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
+import { TipoPessoaCheckBox } from 'src/app/_shered/model/TipoPessoaCheckBox';
 
 
 
@@ -28,11 +29,9 @@ export class QueryCustomerComponent implements OnInit {
   modelPesquisa:searchParameters;
   loading:boolean;
   show:boolean;
-  dataPesquisa: RetornoDataModel<Pessoa[]>;
+  dataPesquisa:RetornoDataModel<Pessoa[]>;
 
-  pessoaFisica:boolean = true;
-  pessoaJuridica:boolean = true;
-  pessoaExportacao:boolean = true;
+  checkBoxTipoPessoa:TipoPessoaCheckBox;
 
   infoBuscar:string = `<b>Senha Atual</b> <br/> 
   busca pode ser por nome ou documento e ....
@@ -50,6 +49,12 @@ export class QueryCustomerComponent implements OnInit {
     this.loading = false;
     this.show = false;
     this.pesquisar = false;
+
+    this.checkBoxTipoPessoa = {
+      pessoaFisica:true,
+      pessoaExportacao:true,
+      pessoaJuridica:true
+    }
    }
 
   ngOnInit(): void { }
@@ -87,15 +92,15 @@ export class QueryCustomerComponent implements OnInit {
     if(this.searchCmp != ""){
       let queryStringCompleta = ''
 
-      if(this.pessoaFisica){
+      if(this.checkBoxTipoPessoa.pessoaFisica){
         queryStringCompleta += '&EPessoaFisica=true';
       }
       
-      if(this.pessoaJuridica){
+      if(this.checkBoxTipoPessoa.pessoaJuridica){
         queryStringCompleta += '&EPessoaJuridica=true';
       }
 
-      if(this.pessoaExportacao){
+      if(this.checkBoxTipoPessoa.pessoaExportacao){
         queryStringCompleta += '&EPessoaEstrangeira=true';
       }
 

@@ -3,30 +3,32 @@ import { Pessoa } from './../../../../../_shered/model/pessoa';
 import { Clientes } from "src/app/_shered/model/Clientes";
 
 
-export const ValorTest:Clientes = {
+/* Model envio clientes  */
 
-    PessoaId:4,
-    CategoriaCfop:1,
-    ContribuinteIcms:true,
+export const ValorTest:Clientes = {
+    PessoaId:null,
+    CategoriaCfop:null,
+    ContribuinteIcms:true ,
     TipoPrincipalSetorIndustrial:1,
     RegimeDeclaracaoPisCofins:1,
     Cnae:'123213123',
+    /* Preechido pela consulta CNPJ - PODE OU NAO SER NULL */
     CodigoSuframa:'cod_suf',
-    DataUltimaVerificacaoSuframa:'01/10/2020',
+    DataUltimaVerificacaoSuframa:null,
     StatusSuframa:false,
     Atributo1:'teste',
     VpcCliente:null,
     ClienteAreaNegocio:null,
     ClienteEmpresa:null,
-    Id:0,
-    DataInclusao:'01/10/2020',
-    Ativo:true,
-    UsuarioInclusaoId:1,
+    Id:null,
+    DataInclusao:null,
+    Ativo:null,
+    UsuarioInclusaoId:null,
     DataExcluido:null,
     DataUltimaAtualizacao:null,
     Excluido:null,
     UsuarioExcluidoId:null,
-    UsuarioUltimaAtualizacaoId:null  ,
+    UsuarioUltimaAtualizacaoId:null,
     Pessoa:null
 
 }

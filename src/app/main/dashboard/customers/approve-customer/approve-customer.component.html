@@ -1,31 +1,28 @@
 <section>
     <div class="px-3">
         <p class="title">Aprovação</p>
-
-        <div class="form-row align-items-end">
+        <!--
+        <div hidden="hidden" class="form-row align-items-end">
 
             <div class="form-group col-md-12 m-0 search">
                 <em class="fas fa-search"></em>
                 <label for="customerSearch">Buscar Cliente</label>
-                <input id="customerSearch" type="text" class="form-control" [ngbTypeahead]="search"
-                    [resultFormatter]="formatter">
+                <input id="customerSearch" placeholder="Nome ou Documento"  type="text" class="form-control" [(ngModel)]="descriptionPesquisa">
             </div>
         </div>
              
-   
-
-        <div class="action-buttons my-2">
+        <div hidden="hidden" class="action-buttons my-2">
             <div class="checkboxes-inline">
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="isJuridic">
+                    <input type="checkbox"  [(ngModel)]="TipoPessoaCheckBox.pessoaJuridica" class="custom-control-input" id="isJuridic">
                     <label class="custom-control-label" for="isJuridic">Pessoa Jurídica</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="isFisic">
-                    <label class="custom-control-label" for="isFisic">Pessoa Física</label>
+                    <input type="checkbox" [(ngModel)]="TipoPessoaCheckBox.pessoaFisica" class="custom-control-input" id="isFisic">
+                    <label class="custom-control-label"  for="isFisic">Pessoa Física</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="isExport">
+                    <input type="checkbox"  [(ngModel)]="TipoPessoaCheckBox.pessoaExportacao" class="custom-control-input" id="isExport">
                     <label class="custom-control-label" for="isExport">Cliente Exportação</label>
                 </div>
                 <div hidden="hidden" class="custom-control custom-checkbox custom-control-inline">
@@ -44,11 +41,11 @@
            
         </div>
 
-        <div class="text-center my-5">
-            <button  class="btn btn-save" style="float: right; margin-top: -17px;"><span class="fa-search fas"></span> Pesquisar </button>
+        <div hidden="hidden" class="text-center my-5">
+            <button (click)="getConsultaAprovacao()" class="btn btn-save" style="float: right; margin-top: -17px;"><span class="fa-search fas"></span> Pesquisar </button>
         </div>
         <br/>
-
+-->
         <div class="d-flex flex-wrap align-items-end justify-content-between mt-4">
             <small>186 clientes encontrados</small>
 
@@ -85,40 +82,41 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let item of client; let i = index" (click)="openCustomerDetailsModal($event)">
-                        <td class="text-center">
-                            <div class="custom-control custom-checkbox" (click)="stopPropagation($event)">
-                                <input type="checkbox" class="custom-control-input" name="selector" id="all{{i}}"
-                                    [checked]="isSelected">
-                                <label class="custom-control-label" for="all{{i}}"></label>
-                            </div>
-                        </td>
-                        <td class="text-center">{{item?.faseDate}}</td>
-                        <td>{{item?.order}}</td>
-                        <td>{{item?.cnpj}}</td>
-                        <td>{{item?.customer}}</td>
-                        <td class="text-center">{{item?.country}}</td>
-                        <td class="text-center">{{item?.invoiceNumber}}</td>
-                        <td class="text-center">{{item?.fase}}</td>
-                        <td class="text-center">{{item?.type}}</td>
-                        <td class="text-center">
-                            <span class="status" [ngClass]="{
-                                    'approved' : item?.stautus === 'aprovado',
-                                    'reproved' : item?.stautus === 'reprovado',
-                                    'pending' : item?.stautus === 'pendente'
-                                }">{{item?.stautus}}</span>
-                        </td>
-                        <td class="text-center" (click)="stopPropagation($event)">
-                            <button class="btn" [disabled]="item?.stautus === 'reprovado'">
-                                <em class="fas fa-check-circle fa-lg"></em>
-                            </button>
-                        </td>
-                        <td class="text-center" (click)="stopPropagation($event)">
-                            <button class="btn" [disabled]="item?.stautus === 'aprovado'">
-                                <em class="fas fa-times-circle fa-lg"></em>
-                            </button>
-                        </td>
-                    </tr>
+                        <tr *ngFor="let aprovacao of datatableMontado" (click)="openCustomerDetailsModal($event)">
+                            <td class="text-center">
+                                <div class="custom-control custom-checkbox" (click)="stopPropagation($event)">
+                                    <input type="checkbox" class="custom-control-input" name="selector" [id]="aprovacao.id"
+                                        [checked]="isSelected">
+                                    <label class="custom-control-label" [for]="aprovacao.id"></label>
+                                </div>
+                            </td>
+                            <td class="text-center">{{aprovacao.data}}</td>
+                            <td>{{ aprovacao.id }}</td>
+                            <td> nao há </td>
+                            <td>{{ aprovacao.nomeEmpresa }}</td>
+                            <td class="text-center">{{aprovacao?.pais?.Descricao}}</td>
+                            <td class="text-center">{{aprovacao?.invoiceNumber}}</td>
+                            <td class="text-center">{{aprovacao?.fase}}</td>
+                            <td class="text-center">{{aprovacao?.tipo}}</td>
+                            <td class="text-center">
+                                <span class="status" [ngClass]="{
+                                        'approved' : aprovacao.status === 'Aprovado',
+                                        'reproved' : aprovacao.status === 'Reprovado',
+                                        'pending' :  aprovacao.status === 'Pendente'
+                                    }">{{ aprovacao.status }}</span>
+                            </td>
+                            <td class="text-center" (click)="stopPropagation($event)">
+                                <button class="btn" [disabled]="aprovacao.status === 'reprovado'">
+                                    <em class="fas fa-check-circle fa-lg"></em>
+                                </button>
+                            </td>
+                            <td class="text-center" (click)="stopPropagation($event)">
+                                <button class="btn" [disabled]="aprovacao.status === 'aprovado'">
+                                    <em class="fas fa-times-circle fa-lg"></em>
+                                </button>
+                            </td>
+                        </tr>
+                   
                 </tbody>
             </table>
         </div>
