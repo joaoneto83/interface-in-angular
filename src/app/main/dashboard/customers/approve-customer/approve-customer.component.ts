@@ -9,6 +9,7 @@ import { CustomerDetailModalComponent } from '../customer-detail-modal/customer-
 import { TipoPessoaCheckBox } from 'src/app/_shered/model/TipoPessoaCheckBox';
 import { CustomersServiceService } from '../customers-service.service';
 import { AprovacaoCadastral } from 'src/app/_shered/model/AprovacaoCadastral';
+import { AproveReproveClienteModel } from 'src/app/_shered/model/AproveReproveClienteModel';
 
 
 export class PesquisaAprovacaoModel {
@@ -29,7 +30,8 @@ export class ApproveCustomerComponent implements OnInit {
   isSelected: boolean;
   client: any;
   TipoPessoaCheckBox:TipoPessoaCheckBox;
-
+  loading:boolean;
+  mostrar:boolean;
   datatableMontado:any[] = [];
 
   //listDataTable:AprovacaoCadastral[];
@@ -111,6 +113,8 @@ export class ApproveCustomerComponent implements OnInit {
 
 
   getDataTableAprovacao(){
+    this.mostrar = false;
+    this.loading = true;
     this.serviceCustomer.getListagemAprovacaoCliente(this.tokenService.retornaCabecalhoRequestGlobal())
     .subscribe( r => {
         r.result.data.map( result =>
@@ -120,6 +124,7 @@ export class ApproveCustomerComponent implements OnInit {
               let date = new Date(apr.data);
                 let obj = {
                     id:apr.id,
+                    pessoaID:result.id,
                     data:`${ date.getDate() } / ${ date.getMonth() + 1 } / ${ date.getFullYear() }`,
                     usuario:apr.usuario,
                     tipo:apr.tipo,
@@ -134,11 +139,63 @@ export class ApproveCustomerComponent implements OnInit {
            );
       //console.log(r);
       //this.listDataTable = r.result.data;
-
+      this.mostrar = true;
+      this.loading = false;
     },error=>{
+      this.mostrar = true;
+      this.loading = false;
       console.log(error);
     });
   }
+
+
+  AprovarCliente(pessoaID , idAprovacao) {
+    //Prepara model
+    let modeloAprovar:AproveReproveClienteModel = {
+       Id:idAprovacao,
+       PessoaId:pessoaID,
+       /* Branco ou nulo é considerado como aprovado */
+       MotivoReprovacao:null,
+       Excluido:false,
+       Ativo:true
+    };
+    //alert(`Pessoa ID : ${pessoaID} e aprovacao ID : ${idAprovacao}`);
+    this.serviceCustomer.ApproveReproveCliente(this.tokenService.retornaCabecalhoRequestGlobal(),modeloAprovar)
+    .subscribe( response => {
+      this.getDataTableAprovacao();
+    },
+    error => {
+      alert(`Ocorreu um erro ${ error }`)
+    });
+
+  }
+
+
+
+  
+  ReprovarCliente(pessoaID , idAprovacao , comentario) {
+    //alert(`Pessoa ID : ${pessoaID} e aprovacao ID : ${idAprovacao}`);
+
+    let modeloAprovar:AproveReproveClienteModel = {
+      Id:idAprovacao,
+      PessoaId:pessoaID,
+      /* Com dado preenchido é considerado como reprovado */
+      MotivoReprovacao:'aa',
+      Excluido:false,
+      Ativo:true
+   };
+
+   //alert(`Pessoa ID : ${pessoaID} e aprovacao ID : ${idAprovacao}`);
+   this.serviceCustomer.ApproveReproveCliente(this.tokenService.retornaCabecalhoRequestGlobal(),modeloAprovar)
+   .subscribe( response => {
+     this.getDataTableAprovacao();
+   },
+   error => {
+     alert(`Ocorreu um erro ${ error }`)
+   });
+
+  }
+
 
 
 }

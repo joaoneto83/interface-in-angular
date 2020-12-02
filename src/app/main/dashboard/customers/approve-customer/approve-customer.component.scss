@@ -2,7 +2,21 @@ section {
     padding: 0rem 1rem;
 }
 
+.caixa{
+    text-align: center;
+}
+.sorry-texto{
+    z-index: 99;
+}
 
+.sorry-svg{
+    width: 40%;
+}
+
+.loading{
+ 
+   width: 10%;
+}
 .btn-save {
     min-width: 150px;
     background-color: var(--primary);

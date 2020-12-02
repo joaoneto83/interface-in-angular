@@ -51,15 +51,14 @@ export class CustomersServiceService {
   /* Aprova Clientes */
   getListagemAprovacaoCliente(cabecalho):Observable<RetornoDataModel<AprovacaoCadastral[]>>{
     //console.log(`${environment.PORTAL_API}​/Pessoas/GridAprovacaoCadastral`);
-    return this.Client.get<any>(`${environment.PORTAL_API}/Pessoas/GridAprovacaoCadastral`,cabecalho)
+    return this.Client.get<any>(`${ environment.PORTAL_API }/Pessoas/GridAprovacaoCadastral`,cabecalho)
     .pipe(map(response => Object.assign(new RetornoDataModel<AprovacaoCadastral[]>() , response)));
   }
 
-  /* Em construção - precisa verificar se rota funciona de forma certa -  01/12/2020 */
+  /* Em construção - precisa verificar se rota funciona de forma certa -  01/12/2020  - VALIDADO 02/12/2020 */
   ApproveReproveCliente(cabecalho, modelAprovarReprovar:AproveReproveClienteModel):Observable<RetornoDataModel<AproveReproveClienteModel>>{
-    return this.Client.post<any>(`${environment.PORTAL_API}/api/AprovacoesCadastraisClientes`, modelAprovarReprovar , cabecalho)
+    return this.Client.put<any>(`${ environment.PORTAL_API }/AprovacoesCadastraisClientes`, modelAprovarReprovar , cabecalho)
     .pipe(map(response => Object.assign(new RetornoDataModel<AproveReproveClienteModel>(), response )));
-
   }
 
 //#endregion

@@ -55,8 +55,10 @@
                 <button class="btn btn-disable">BLOQUEAR SELECIONADOS</button>
             </div>
         </div>
-
-        <div class="table-responsive">
+        <div class="caixa" *ngIf="loading">
+            <img class="loading"src="../../../assets/login.svg" alt="elgin up logo"> 
+        </div>
+        <div *ngIf="mostrar" class="table-responsive">
             <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
                 <thead>
                     <tr>
@@ -106,12 +108,12 @@
                                     }">{{ aprovacao.status }}</span>
                             </td>
                             <td class="text-center" (click)="stopPropagation($event)">
-                                <button class="btn" [disabled]="aprovacao.status === 'reprovado'">
+                                <button class="btn" (click)="AprovarCliente(aprovacao.pessoaID , aprovacao.id)" [disabled]="aprovacao.status === 'reprovado'">
                                     <em class="fas fa-check-circle fa-lg"></em>
                                 </button>
                             </td>
                             <td class="text-center" (click)="stopPropagation($event)">
-                                <button class="btn" [disabled]="aprovacao.status === 'aprovado'">
+                                <button class="btn" (click)="ReprovarCliente(aprovacao.pessoaID , aprovacao.id , '')" [disabled]="aprovacao.status === 'aprovado'">
                                     <em class="fas fa-times-circle fa-lg"></em>
                                 </button>
                             </td>
