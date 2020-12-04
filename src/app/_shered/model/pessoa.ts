@@ -8,7 +8,6 @@
   import { TipoPessoa } from './tipoPessoa';
 
 export interface Pessoa extends BaseModel {
-  
   guid: string;
   codigoERP: string;
   numeroDocumento: string;
