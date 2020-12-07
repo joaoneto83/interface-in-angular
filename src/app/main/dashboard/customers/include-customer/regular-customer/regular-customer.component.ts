@@ -23,9 +23,9 @@ export class RegularCustomerComponent implements OnInit {
    FactoryModelRequests = new PessoaCommands();
    postParameterPessoa = this.FactoryModelRequests.CreatePessoaCommand();
 
-   /* Novo formulario  */
+   /* Novo formulario 
 
-   formCadastroCliente = new FormBuilder().group({
+   formCadastroClientes = new FormBuilder().group({
     status : [this.postParameterPessoa.Ativo],
     tipoPessoa: [this.postParameterPessoa.tipoPessoaId],
     nome: [this.postParameterPessoa.nome],
@@ -50,9 +50,9 @@ export class RegularCustomerComponent implements OnInit {
     DescGrpCliente:new FormControl()
    });
    
-   
+    */
 
-/*
+
    formCadastroClientes = new FormGroup({
 
     status : new FormControl(true),
@@ -79,7 +79,7 @@ export class RegularCustomerComponent implements OnInit {
     DescGrpCliente:new FormControl()
     
 });
-  */
+  
   constructor(private customersService:CustomersServiceService , private tokenService:TokenService ) {
     /* Trigger para mudança de Tipo Pessoa (onChange) 
     this.formCadastroClientes.get('tipoPessoa').valueChanges.subscribe ( r => {
@@ -120,7 +120,7 @@ export class RegularCustomerComponent implements OnInit {
         restricaoFinanceira:false,
         endereco:[{
            TipoEnderecoid:1,
-           CidadeId:1,
+           CidadeId:1100015,
            Logradouro:'teste logra',
            Numero:'123',
            Complemento:'teste complemento',
@@ -151,13 +151,14 @@ export class RegularCustomerComponent implements OnInit {
              Ativo:true
           }],
         cliente:[{
+          
           StatusSuframa:true,
+          Cnae:'',
           Ativo:true,
           Atributo1:'atr',
           CodigoSuframa:'cod',
           DataUltimaVerificacaoSuframa:'04/12/2020'
         }],
-
         Ativo:true
     }
     

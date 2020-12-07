@@ -5,6 +5,8 @@ import { Enderecos } from '../model/enderecos';
 import { Pessoa } from '../model/pessoa';
 import { Telefone } from '../model/telefone';
 
+
+/* Commands Pessoa  */
 export class PessoaCommands {
 
     /* Monta um objeto do tipo Create pessoa command  */
@@ -34,7 +36,6 @@ export class PessoaCommands {
                 {
                 telefone:Pick<Telefone ,
                             "TipoTelefoneId" | 
-                            
                             "Descricao" |
                             "Ativo" >[]
 
@@ -42,13 +43,11 @@ export class PessoaCommands {
                 { 
                 email:Pick<Email, 
                             "TipoEmailId" | 
-                            
                             "Descricao" |
                             "Ativo">[]
                 }&
                 {
                 documento:Pick<Documento ,
-                            
                                 "TipoDocumentoId" |
                                 "DescricaoDocumento" |
                                 "DataSituacao" |
@@ -59,8 +58,8 @@ export class PessoaCommands {
                 }&
                 {
                 cliente:Pick<Clientes,
-                            
                             "CodigoSuframa" |
+                            "Cnae" |
                             "DataUltimaVerificacaoSuframa" |
                             "StatusSuframa" | 
                             "Atributo1" |

@@ -51,8 +51,8 @@
 
             <div class="action-buttons">
                 <button class="btn btn-export">EXPORTAR PARA EXCEL <em class="far fa-file-excel"></em></button>
-                <button class="btn btn-enable">LIBERAR SELECIONADOS</button>
-                <button class="btn btn-disable">BLOQUEAR SELECIONADOS</button>
+                <!-- <button class="btn btn-enable">LIBERAR SELECIONADOS</button>
+                <button class="btn btn-disable">BLOQUEAR SELECIONADOS</button> -->
             </div>
         </div>
         <div class="caixa" *ngIf="loading">
@@ -62,17 +62,18 @@
             <table class="table table-bordered table-hover table-sm" aria-describedby="orders table">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-center">
+                        <!-- <th scope="col" class="text-center">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="all"
                                     (change)="isSelected = !isSelected">
                                 <label class="custom-control-label" for="all"></label>
                             </div>
-                        </th>
-                        <th scope="col" class="text-center">Data fase</th>
-                        <th scope="col">Pedido<em class="fas fa-search"></em></th>
-                        <th scope="col">CNPJ<em class="fas fa-search"></em></th>
-                        <th scope="col">Cliente <em class="fas fa-search"></em></th>
+                        </th> -->
+                       
+                        <th scope="col">Pedido</th>
+                        <th scope="col"  >Data fase</th>
+                        <th scope="col">CNPJ</th>
+                        <th scope="col">Cliente </th>
                         <th scope="col" class="text-center">País</th>
                         <th scope="col" class="text-center">Nº NF</th>
                         <th scope="col" class="text-center">Fase</th>
@@ -85,15 +86,16 @@
 
                 <tbody>
                         <tr *ngFor="let aprovacao of datatableMontado" (click)="openCustomerDetailsModal($event)">
-                            <td class="text-center">
+                            <!-- <td class="text-center">
                                 <div class="custom-control custom-checkbox" (click)="stopPropagation($event)">
                                     <input type="checkbox" class="custom-control-input" name="selector" [id]="aprovacao.id"
                                         [checked]="isSelected">
                                     <label class="custom-control-label" [for]="aprovacao.id"></label>
                                 </div>
-                            </td>
-                            <td class="text-center">{{aprovacao.data}}</td>
+                            </td> -->
+                            
                             <td>{{ aprovacao.id }}</td>
+                            <td >{{aprovacao.data}}</td>
                             <td> nao há </td>
                             <td>{{ aprovacao.nomeEmpresa }}</td>
                             <td class="text-center">{{aprovacao?.pais?.Descricao}}</td>
