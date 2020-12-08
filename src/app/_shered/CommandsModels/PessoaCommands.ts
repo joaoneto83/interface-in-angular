@@ -6,70 +6,58 @@ import { Pessoa } from '../model/pessoa';
 import { Telefone } from '../model/telefone';
 
 
-/* Commands Pessoa  */
-export class PessoaCommands {
+export type CreatePessoaCommand = Pick<Pessoa, 
+        "numeroDocumento" |
+        "nome" | 
+        "tipoPessoaId" | 
+        "intercompany" | 
+        "restricaoFinanceira" | 
+        "Ativo"> & 
+        {
+        endereco:Pick<Enderecos,
+                    "TipoEnderecoid" |
+                    "CidadeId" |
+                    "Logradouro"|
+                    "Numero" | 
+                    "Complemento" |
+                    "Bairro" |
+                    "CEP" |
+                    "CidadeExt" |
+                    "Principal" |
+                    "PaisId" |
+                    "Ativo">[]
+        } & 
+        {
+        telefone:Pick<Telefone ,
+                    "TipoTelefoneId" | 
+                    "Descricao" |
+                    "Ativo" >[]
 
-    /* Monta um objeto do tipo Create pessoa command  */
-    CreatePessoaCommand(){
-
-        type CreatePessoaCommand = Pick<Pessoa, 
-                "numeroDocumento" |
-                "nome" | 
-                "tipoPessoaId" | 
-                "intercompany" | 
-                "restricaoFinanceira" | 
-                "Ativo"> & 
-                {
-                endereco:Pick<Enderecos,
-                            "TipoEnderecoid" |
-                            "CidadeId" |
-                            "Logradouro"|
-                            "Numero" | 
-                            "Complemento" |
-                            "Bairro" |
-                            "CEP" |
-                            "CidadeExt" |
-                            "Principal" |
-                            "PaisId" |
-                            "Ativo">[]
-                } & 
-                {
-                telefone:Pick<Telefone ,
-                            "TipoTelefoneId" | 
-                            "Descricao" |
-                            "Ativo" >[]
-
-                }&
-                { 
-                email:Pick<Email, 
-                            "TipoEmailId" | 
-                            "Descricao" |
-                            "Ativo">[]
-                }&
-                {
-                documento:Pick<Documento ,
-                                "TipoDocumentoId" |
-                                "DescricaoDocumento" |
-                                "DataSituacao" |
-                                "DataValidade" |
-                                "DataEmissao" |
-                                "OrgaoEmissao" |
-                                "Ativo">[]
-                }&
-                {
-                cliente:Pick<Clientes,
-                            "CodigoSuframa" |
-                            "Cnae" |
-                            "DataUltimaVerificacaoSuframa" |
-                            "StatusSuframa" | 
-                            "Atributo1" |
-                            "Ativo">[]
-                }
-
-        let post_pessoa:CreatePessoaCommand;
-
-        return post_pessoa;                         
-    }
+        }&
+        { 
+        email:Pick<Email, 
+                    "TipoEmailId" | 
+                    "Descricao" |
+                    "Ativo">[]
+        }&
+        {
+        documento:Pick<Documento ,
+                        "TipoDocumentoId" |
+                        "DescricaoDocumento" |
+                        "DataSituacao" |
+                        "DataValidade" |
+                        "DataEmissao" |
+                        "OrgaoEmissao" |
+                        "Ativo">[]
+        }&
+        {
+        cliente:Pick<Clientes,
+                    "CodigoSuframa" |
+                    "Cnae" |
+                    "DataUltimaVerificacaoSuframa" |
+                    "StatusSuframa" | 
+                    "Atributo1" |
+                    "Ativo">[]
+        }
 
 
-}

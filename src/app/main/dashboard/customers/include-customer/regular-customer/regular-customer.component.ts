@@ -9,7 +9,7 @@ import { CustomersServiceService } from '../../customers-service.service';
 
 import { ResultDataModel } from 'src/app/_shered/model/RetornoModel';
 import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
-import { PessoaCommands } from 'src/app/_shered/CommandsModels/PessoaCommands';
+import { CreatePessoaCommand } from 'src/app/_shered/CommandsModels/PessoaCommands';
 
 
 
@@ -20,8 +20,8 @@ import { PessoaCommands } from 'src/app/_shered/CommandsModels/PessoaCommands';
 })
 export class RegularCustomerComponent implements OnInit {
 
-   FactoryModelRequests = new PessoaCommands();
-   postParameterPessoa = this.FactoryModelRequests.CreatePessoaCommand();
+
+   postParameterPessoa:CreatePessoaCommand;
 
    /* Novo formulario 
 
