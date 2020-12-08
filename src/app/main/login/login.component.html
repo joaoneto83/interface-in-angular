@@ -28,9 +28,7 @@
         </div>
         <div *ngIf="trocaSenha">
 
-            <div class="voltar"  (click) ="voltarFunction();" *ngIf="!loading">
-                <span>Voltar</span>
-            </div>
+          
             <div  class="titulo" *ngIf="!loading">
                 <span>Recuperar Senha</span>
             </div>
@@ -50,11 +48,23 @@
                 <div>
                     <button (click) ="enviar();" type="submit" class="btn btn-primary"  >enviar</button>
                 </div>
+
+             
              
             </form>
 
+            <div class="voltar"  (click) ="voltarFunction();" *ngIf="!loading">
+                <span> << Voltar </span>
             </div>
-     
+           
+         
+            </div>
+
+          
+             
         </div>
+
+     
+
     </div>
 </div>
