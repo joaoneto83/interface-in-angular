@@ -6,6 +6,7 @@ import { Pessoa } from '../model/pessoa';
 import { Telefone } from '../model/telefone';
 
 
+/* Tipo Parametro Create Pessoa  */
 export type CreatePessoaCommand = Pick<Pessoa, 
         "numeroDocumento" |
         "nome" | 

@@ -17,6 +17,7 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProductGroupModalComponent } from './products-group/edit-product-group-modal/edit-product-group-modal.component';
 import { ProductsPriceComponent } from './products-price/products-price.component';
 import { rotas } from 'src/app/routes/app.routes';
+import { ProductsServiceService } from './products-service.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { rotas } from 'src/app/routes/app.routes';
     OrderTypesModalComponent,
     ProductLineModalComponent,
     EditProductGroupModalComponent
-  ]
+  ],
+  providers:[ProductsServiceService]
 })
 export class ProductsModule { }
 

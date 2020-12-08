@@ -10,6 +10,7 @@ import { MultipleProductModalComponent } from './multiple-product-modal/multiple
 import { ProductDetailModalComponent } from '../product-detail-modal/product-detail-modal.component';
 import { OrderTypesModalComponent } from '../order-types-modal/order-types-modal.component';
 import { ProductLineModalComponent } from './product-line-modal/product-line-modal.component';
+import { ProductsServiceService } from '../products-service.service';
 
 @Component({
   selector: 'elgin-include-product',
@@ -30,7 +31,7 @@ export class IncludeProductComponent implements OnInit {
 
   url = '';
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal , private ServiceProduct:ProductsServiceService) {
     Object.assign(this, { elginProducts });
   }
 

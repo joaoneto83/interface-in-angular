@@ -13,6 +13,7 @@ import { CreatePessoaCommand } from 'src/app/_shered/CommandsModels/PessoaComman
 
 
 
+
 @Component({
   selector: 'elgin-regular-customer',
   templateUrl: './regular-customer.component.html',
@@ -23,6 +24,7 @@ export class RegularCustomerComponent implements OnInit {
 
    postParameterPessoa:CreatePessoaCommand;
 
+ 
    /* Novo formulario 
 
    formCadastroClientes = new FormBuilder().group({
