@@ -1,11 +1,17 @@
+import { Centro } from './../../../../../_shered/model/Centro';
+import { Pessoa } from 'src/app/_shered/model/pessoa';
+import { Enderecos } from './../../../../../_shered/model/enderecos';
 import { TokenService } from './../../../../../_core/services/token.service';
 import { Clientes } from 'src/app/_shered/model/Clientes';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CustomersServiceService } from '../../customers-service.service';
-import { ValorTest } from './testParameter';
+
 import { ResultDataModel } from 'src/app/_shered/model/RetornoModel';
 import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
+import { CreatePessoaCommand } from 'src/app/_shered/CommandsModels/PessoaCommands';
+
+
 
 
 @Component({
@@ -15,10 +21,39 @@ import { RetornoDataModel } from 'src/app/_shered/model/RetornoDataModel';
 })
 export class RegularCustomerComponent implements OnInit {
 
- // juridicFisicExportModel = 'isJuridic';
- /* Instancia Formulario */
 
-  
+   postParameterPessoa:CreatePessoaCommand;
+
+ 
+   /* Novo formulario 
+
+   formCadastroClientes = new FormBuilder().group({
+    status : [this.postParameterPessoa.Ativo],
+    tipoPessoa: [this.postParameterPessoa.tipoPessoaId],
+    nome: [this.postParameterPessoa.nome],
+    cpf: [this.postParameterPessoa.numeroDocumento],
+    cnpj: [this.postParameterPessoa.numeroDocumento],
+   // razaoSocial:[this.postParameterPessoa.,
+    pais:[this.postParameterPessoa.endereco[0].PaisId],
+    area:new FormControl('Nacional'),
+    cep:new FormControl(),
+    codPostal:new FormControl(),
+    logradouro:new FormControl(),
+    numero:new FormControl(),
+    complemento:new FormControl(),
+    bairro:new FormControl(),
+    uf:new FormControl(),
+    cidade:new FormControl(),
+    email:new FormControl(),
+    AltEmail:new FormControl(),
+    Telefone:new FormControl(),
+    Celular:new FormControl(),
+    grpClienteArea:new FormControl('Nacional'),
+    DescGrpCliente:new FormControl()
+   });
+   
+    */
+
 
    formCadastroClientes = new FormGroup({
 
@@ -48,7 +83,7 @@ export class RegularCustomerComponent implements OnInit {
 });
   
   constructor(private customersService:CustomersServiceService , private tokenService:TokenService ) {
-    /* Trigger para mudança de Tipo Pessoa (onChange) */
+    /* Trigger para mudança de Tipo Pessoa (onChange) 
     this.formCadastroClientes.get('tipoPessoa').valueChanges.subscribe ( r => {
       this.formCadastroClientes.controls['status'].reset(true);  
       this.formCadastroClientes.controls['nome'].reset('');  
@@ -72,17 +107,67 @@ export class RegularCustomerComponent implements OnInit {
       this.formCadastroClientes.controls['grpClienteArea'].reset('Nacional');
       this.formCadastroClientes.controls['DescGrpCliente'].reset('');
     });   
-
+*/
    }
 
   ngOnInit(): void { }
 
   SaveCliente(){
    
-    /* Somente vincular as propriedades do form para essa propriedade  */
-    let modelClienteSave:Clientes  = ValorTest;
+    this.postParameterPessoa = {
+        numeroDocumento:"630.121.430-76",
+        nome:"teste_pessoa",
+        tipoPessoaId:1,
+        intercompany:true,
+        restricaoFinanceira:false,
+        endereco:[{
+           TipoEnderecoid:1,
+           CidadeId:1100015,
+           Logradouro:'teste logra',
+           Numero:'123',
+           Complemento:'teste complemento',
+           Bairro:'teste',
+           CEP:'te',
+           CidadeExt:'',
+           Principal:true,
+           PaisId:38,
+           Ativo:true
+        }],
+        telefone:[{
+          TipoTelefoneId :1,
+          Descricao:'11997083252',
+          Ativo:true
+        }],
+        email:[{
+            TipoEmailId:1,
+            Descricao:"email.teste@hotmail.com",
+            Ativo:true
+          }],
+        documento:[{
+             TipoDocumentoId:1,
+             OrgaoEmissao:'SSP',
+             DescricaoDocumento:'2803086792',
+             DataValidade:'2020-10-15T14:19:13.169Z',
+             DataSituacao:'2020-10-15T14:19:13.169Z',
+             DataEmissao:'2020-10-15T14:19:13.169Z',
+             Ativo:true
+          }],
+        cliente:[{
+          
+          StatusSuframa:true,
+          Cnae:'',
+          Ativo:true,
+          Atributo1:'atr',
+          CodigoSuframa:'cod',
+          DataUltimaVerificacaoSuframa:'04/12/2020'
+        }],
+        Ativo:true
+    }
+    
+    console.log(JSON.stringify(this.postParameterPessoa));
+   
 
-    this.customersService.gravarCliente(this.tokenService.retornaCabecalhoRequestGlobal(),modelClienteSave)
+    this.customersService.gravarCliente(this.tokenService.retornaCabecalhoRequestGlobal(),this.postParameterPessoa)
     .subscribe(
         r => {
           console.log(r.result.data);
@@ -96,7 +181,7 @@ export class RegularCustomerComponent implements OnInit {
   }
 
   limparFormTotal(){
-    this.formCadastroClientes.reset();
+    //this.formCadastroClientes.reset();
   }
 
 }

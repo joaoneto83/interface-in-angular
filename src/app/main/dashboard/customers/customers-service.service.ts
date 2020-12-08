@@ -23,11 +23,11 @@ export class CustomersServiceService {
   // #region incluir clientes 
 
     /* Inclui Clientes - model incompleta precisa ajustar */
-    gravarCliente( cabecalho , modelCliente:Clientes ):Observable<RetornoDataModel<Clientes>>{
+    gravarCliente( cabecalho , modelPessoa:any ):Observable<RetornoDataModel<Pessoa>>{
       //console.log(cabecalho);
       //console.log(JSON.stringify(modelCliente));
-      return this.Client.post(`${ environment.PORTAL_API }/Clientes`,modelCliente , cabecalho)
-      .pipe(map(response => Object.assign(new RetornoDataModel<Clientes>(), response )));
+      return this.Client.post(`${ environment.PORTAL_API }/Pessoas`,modelPessoa , cabecalho)
+      .pipe(map(response => Object.assign(new RetornoDataModel<Pessoa>(), response )));
     }
 
   // #endregion
