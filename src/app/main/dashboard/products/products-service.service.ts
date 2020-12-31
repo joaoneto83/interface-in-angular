@@ -18,7 +18,7 @@ export class ProductsServiceService {
   }
 
   getProdutoFromBody(cabecalho , pessoaModel:any):Observable<RetornoDataModel<Produto[]>>{
-    return this.HttpClient.get(`${ environment.PORTAL_API }/Produtos`,cabecalho , pessoaModel).pipe(
+    return this.HttpClient.get(`${ environment.PORTAL_API }/Produtos`,cabecalho ).pipe(
       map(response => Object.assign(new RetornoDataModel<Produto[]>(),response))
     );
   }
